@@ -77,3 +77,4 @@ C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\bin\
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\bin\Debug\net6.0\User.Gestion.Service.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\bin\Debug\net6.0\User.Gestion.Service.pdb
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.sourcelink.json
