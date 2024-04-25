@@ -1,4 +1,5 @@
-﻿using Gestion_User.Models.Authentication.SignUp;
+﻿using Gestion_User.Models.Authentication.Login;
+using Gestion_User.Models.Authentication.SignUp;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,7 @@ namespace User.Gestion.Service.Services
         Task<ApiResponse<CreateUserResponse>> CreateUserWithTokenAsync(RegisterUser registerUser);
 
         Task<ApiResponse<List<string>>> AssignRoleToUserAsync(List<string> roles, IdentityUser user);
+        Task<ApiResponse<LoginOtpResponse>> GetOtpByLoginAsync(LoginModel loginModel);
+
     }
 }
