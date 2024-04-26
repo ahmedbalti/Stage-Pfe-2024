@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gestion_User.Models
+namespace User.Gestion.Data.Models
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {

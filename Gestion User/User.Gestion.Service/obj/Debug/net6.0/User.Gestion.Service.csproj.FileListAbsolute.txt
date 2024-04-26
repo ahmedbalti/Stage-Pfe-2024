@@ -13,3 +13,6 @@ C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\User.Gestion.Serv
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\User.Gestion.Service\bin\Debug\net6.0\User.Gestion.Service.runtimeconfig.json
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\User.Gestion.Service\obj\Debug\net6.0\User.Gestion.Service.sourcelink.json
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\User.Gestion.Service\obj\Debug\net6.0\User.Gestion.Service.genruntimeconfig.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\User.Gestion.Service\bin\Debug\net6.0\User.Gestion.Data.dll
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\User.Gestion.Service\bin\Debug\net6.0\User.Gestion.Data.pdb
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\User.Gestion.Service\obj\Debug\net6.0\User.Ges.D06299EB.Up2Date

@@ -1078,6 +1078,21 @@
           }
         }
       },
+      "User.Gestion.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
+          "Microsoft.EntityFrameworkCore": "6.0.10",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10"
+        },
+        "compile": {
+          "bin/placeholder/User.Gestion.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/User.Gestion.Data.dll": {}
+        }
+      },
       "User.Gestion.Service/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1088,7 +1103,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.6",
           "NETCore.MailKit": "2.1.0",
-          "Swashbuckle.AspNetCore": "6.2.3"
+          "Swashbuckle.AspNetCore": "6.2.3",
+          "User.Gestion.Data": "1.0.0"
         },
         "compile": {
           "bin/placeholder/User.Gestion.Service.dll": {}
@@ -2800,6 +2816,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "User.Gestion.Data/1.0.0": {
+      "type": "project",
+      "path": "../User.Gestion.Data/User.Gestion.Data.csproj",
+      "msbuildProject": "../User.Gestion.Data/User.Gestion.Data.csproj"
     },
     "User.Gestion.Service/1.0.0": {
       "type": "project",

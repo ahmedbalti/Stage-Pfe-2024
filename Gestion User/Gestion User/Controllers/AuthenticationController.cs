@@ -47,8 +47,8 @@ namespace Gestion_User.Controllers
             var tokenResponse = await _user.CreateUserWithTokenAsync(registerUser);
             if(tokenResponse.IsSuccess)
             {
-                await _user.AssignRoleToUserAsync(registerUser.Roles,tokenResponse.Response.User);
-            var confirmationLink = Url.Action(nameof(ConfirmEmail), "Authentication", new { tokenResponse.Response.Token, email = registerUser.Email }, Request.Scheme);
+                await _user.AssignRoleToUserAsync(registerUser.Roles, tokenResponse.Response.User);
+                var confirmationLink = Url.Action(nameof(ConfirmEmail), "Authentication", new { tokenResponse.Response.Token, email = registerUser.Email }, Request.Scheme);
             var message = new Message(new string[] { registerUser.Email! }, "Confirmation email link", confirmationLink!);
             _emailService.SendEmail(message);
             return StatusCode(StatusCodes.Status200OK,

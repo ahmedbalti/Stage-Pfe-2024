@@ -1077,6 +1077,21 @@
             "rid": "win"
           }
         }
+      },
+      "User.Gestion.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
+          "Microsoft.EntityFrameworkCore": "6.0.10",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10"
+        },
+        "compile": {
+          "bin/placeholder/User.Gestion.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/User.Gestion.Data.dll": {}
+        }
       }
     }
   },
@@ -2781,6 +2796,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "User.Gestion.Data/1.0.0": {
+      "type": "project",
+      "path": "../User.Gestion.Data/User.Gestion.Data.csproj",
+      "msbuildProject": "../User.Gestion.Data/User.Gestion.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2792,7 +2812,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.10",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.19.6",
       "NETCore.MailKit >= 2.1.0",
-      "Swashbuckle.AspNetCore >= 6.2.3"
+      "Swashbuckle.AspNetCore >= 6.2.3",
+      "User.Gestion.Data >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2821,7 +2842,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\Gestion User\\User.Gestion.Data\\User.Gestion.Data.csproj": {
+              "projectPath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\Gestion User\\User.Gestion.Data\\User.Gestion.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

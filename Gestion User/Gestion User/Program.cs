@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-
+using User.Gestion.Data.Models;
 using User.Gestion.Service.Models;
 using User.Gestion.Service.Services;
 
