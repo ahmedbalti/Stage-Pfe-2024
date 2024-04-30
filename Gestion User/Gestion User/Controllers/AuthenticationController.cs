@@ -11,6 +11,8 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using User.Gestion.Data.Models;
+using User.Gestion.Service.Models.Authentication.User;
 
 namespace Gestion_User.Controllers
 {
@@ -19,8 +21,8 @@ namespace Gestion_User.Controllers
     public class AuthenticationController : ControllerBase
     {
 
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
         private readonly IEmailService _emailService;
@@ -28,8 +30,8 @@ namespace Gestion_User.Controllers
 
 
 
-        public AuthenticationController(UserManager<IdentityUser> userManager, IEmailService emailService,
-            RoleManager<IdentityRole> roleManager,IUserManagement user, IConfiguration configuration, SignInManager<IdentityUser> signInManager)
+        public AuthenticationController(UserManager<ApplicationUser> userManager, IEmailService emailService,
+            RoleManager<IdentityRole> roleManager,IUserManagement user, IConfiguration configuration, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -124,38 +126,27 @@ namespace Gestion_User.Controllers
 
 
         }
-
         [HttpPost]
         [Route("login-2FA")]
-        public async Task<IActionResult> LoginWithOTP(string code, string username)
+        public async Task<IActionResult> LoginWithOTP(string code, string userName)
         {
-            var user = await _userManager.FindByNameAsync(username);
-            var signIn = await _signInManager.TwoFactorSignInAsync("Email", code, false, false);
-            if (signIn.Succeeded)
+            var jwt = await _user.LoginUserWithJWTokenAsync(code, userName);
+            if (jwt.IsSuccess)
             {
-                if (user != null)
-                {
-                    var authClaims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                };
-                    var userRoles = await _userManager.GetRolesAsync(user);
-                    foreach (var role in userRoles)
-                    {
-                        authClaims.Add(new Claim(ClaimTypes.Role, role));
-                    }
+                return Ok(jwt);
+            }
+            return StatusCode(StatusCodes.Status404NotFound,
+                new Response { Status = "Success", Message = $"Invalid Code" });
+        }
 
-                    var jwtToken = GetToken(authClaims);
-
-                    return Ok(new
-                    {
-                        token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
-                        expiration = jwtToken.ValidTo
-                    });
-                    //returning the token...
-
-                }
+        [HttpPost]
+        [Route("Refresh-Token")]
+        public async Task<IActionResult> RefreshToken(LoginResponse tokens)
+        {
+            var jwt = await _user.RenewAccessTokenAsync(tokens);
+            if (jwt.IsSuccess)
+            {
+                return Ok(jwt);
             }
             return StatusCode(StatusCodes.Status404NotFound,
                 new Response { Status = "Success", Message = $"Invalid Code" });

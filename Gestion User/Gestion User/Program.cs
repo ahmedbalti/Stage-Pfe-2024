@@ -2,11 +2,12 @@ using Gestion_User.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 using User.Gestion.Data.Models;
 using User.Gestion.Service.Models;
 using User.Gestion.Service.Services;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +18,26 @@ var configuration = builder.Configuration;
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ConnStr")));
 
 // For Identity
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
+//builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    //.AddEntityFrameworkStores<ApplicationDbContext>()
+   // .AddDefaultTokenProviders();
+
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
+    // Other identity options
+    options.Tokens.ProviderMap["Email"] = new TokenProviderDescriptor(typeof(EmailTokenProvider<ApplicationUser>));
+}).AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+
+
+builder.Services.Configure<DataProtectionTokenProviderOptions>(options =>
+{
+    // Set the expiration time for the OTP
+    options.TokenLifespan = TimeSpan.FromMinutes(5); // Adjust the time span as needed
+});
+
+
 
 //Add Config for Required Email
 builder.Services.Configure<IdentityOptions>(
@@ -32,7 +50,22 @@ builder.Services.AddAuthentication(options =>
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ClockSkew = TimeSpan.Zero,
 
+        ValidAudience = configuration["JWT:ValidAudience"],
+        ValidIssuer = configuration["JWT:ValidIssuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
+    };
 });
 
 //Add Email Configs

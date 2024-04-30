@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using User.Gestion.Data.Models;
 
@@ -11,9 +12,10 @@ using User.Gestion.Data.Models;
 namespace User.Gestion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240428135107_ApplicationUserAdded")]
+    partial class ApplicationUserAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,14 +53,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "175344af-2fc9-4d26-ad44-b87a98231807",
+                            Id = "1a8cff26-9e1b-40c0-8add-9a46c8bd835e",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "3b115a19-e1db-4ad5-86a3-17fdc38b3101",
+                            Id = "aedd2e79-6b50-43e1-8baf-34f92d440839",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -214,9 +216,10 @@ namespace User.Gestion.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("RefreshToken")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("RefreshTokenExpiry")
+                    b.Property<DateTime>("RefreshTokenExpiry")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SecurityStamp")
