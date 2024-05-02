@@ -19,9 +19,20 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 // For Identity
 //builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    //.AddEntityFrameworkStores<ApplicationDbContext>()
-   // .AddDefaultTokenProviders();
+//.AddEntityFrameworkStores<ApplicationDbContext>()
+// .AddDefaultTokenProviders();
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin", builder =>
+    {
+        builder
+            .WithOrigins("http://localhost:4200") 
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
@@ -120,6 +131,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowOrigin");
 
 app.UseAuthentication();
 
