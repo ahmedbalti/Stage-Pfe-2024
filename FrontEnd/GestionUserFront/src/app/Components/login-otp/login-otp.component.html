@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="userName">Nom d'utilisateur:</label>
+    <input type="text" id="userName" name="userName" [(ngModel)]="userName" required>
+  </div>
+  <div>
+    <label for="code">Code OTP:</label>
+    <input type="text" id="code" name="code" [(ngModel)]="code" required>
+  </div>
+  <button type="submit">Connexion</button>
+</form>
+
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>

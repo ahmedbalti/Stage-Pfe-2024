@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SignupService } from '../signup.service';
+import { SignupService } from '../../Services/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +13,7 @@ export class SignupComponent {
     email: '',
     password:'',
     roles: [
-      "User"
+      "Client"
     ]
   };
 

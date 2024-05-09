@@ -76,39 +76,40 @@ namespace Gestion_User.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError,
                        new Response { Status = "Error", Message = "This User Doesnot exist!" });
         }
-
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
             var loginOtpResponse = await _user.GetOtpByLoginAsync(loginModel);
-            if(loginOtpResponse.Response !=null)
+
+            if (loginOtpResponse.Response != null)
             {
-
                 var user = loginOtpResponse.Response.User;
-                if (user.TwoFactorEnabled)
-                {
-                    var token = loginOtpResponse.Response.Token;
 
-                    var message = new Message(new string[] { user.Email! }, "OTP Confirmation", token);
-                    _emailService.SendEmail(message);
-
-                    return StatusCode(StatusCodes.Status200OK,
-                     new Response { IsSuccess = loginOtpResponse.IsSuccess, Message = $"We have sent an OTP to your Email {user.Email}" });
-                }
+                // Assurez-vous que le mot de passe est correct avant d'envoyer l'OTP
                 if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
                 {
+                    if (user.TwoFactorEnabled)
+                    {
+                        var token = loginOtpResponse.Response.Token;
+                        var message = new Message(new string[] { user.Email! }, "OTP Confirmation", token);
+                        _emailService.SendEmail(message);
+
+                        return StatusCode(StatusCodes.Status200OK,
+                            new Response { IsSuccess = loginOtpResponse.IsSuccess, Message = $"We have sent an OTP to your Email {user.Email}" });
+                    }
+
                     var authClaims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                };
+            {
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            };
+
                     var userRoles = await _userManager.GetRolesAsync(user);
                     foreach (var role in userRoles)
                     {
                         authClaims.Add(new Claim(ClaimTypes.Role, role));
                     }
-
 
                     var jwtToken = GetToken(authClaims);
 
@@ -117,19 +118,21 @@ namespace Gestion_User.Controllers
                         token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
                         expiration = jwtToken.ValidTo
                     });
-                    //returning the token...
-
                 }
             }
 
-            return Unauthorized();
-
-
+            return Unauthorized(new { message = "Invalid credentials" });
         }
+
         [HttpPost]
         [Route("login-2FA")]
-        public async Task<IActionResult> LoginWithOTP(string code, string userName)
+        public async Task<IActionResult> LoginWithOTP([FromQuery] string code, [FromQuery] string userName)
         {
+            if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(userName))
+            {
+                return BadRequest("Code and userName are required.");
+            }
+
             var jwt = await _user.LoginUserWithJWTokenAsync(code, userName);
             if (jwt.IsSuccess)
             {
@@ -138,6 +141,7 @@ namespace Gestion_User.Controllers
             return StatusCode(StatusCodes.Status404NotFound,
                 new Response { Status = "Success", Message = $"Invalid Code" });
         }
+
 
         [HttpPost]
         [Route("Refresh-Token")]
