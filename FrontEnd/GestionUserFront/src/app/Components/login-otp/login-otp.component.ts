@@ -18,11 +18,16 @@ export class LoginOtpComponent {
     this.authService.loginWithOTP(this.code, this.userName)
       .subscribe(
         response => {
-          // Gérer la réponse du backend
           console.log(response);
+          if (response.isSuccess) {
+            // Redirection ou action à effectuer en cas de succès
+            // Par exemple, stocker le jeton dans le stockage local
+          } else {
+            this.errorMessage = response.message;
+          }
         },
         error => {
-          this.errorMessage = error.error.message;
+          this.errorMessage = "Une erreur s'est produite. Veuillez réessayer.";
           console.error('Erreur:', error);
         }
       );

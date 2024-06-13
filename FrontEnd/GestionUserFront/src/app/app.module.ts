@@ -11,6 +11,9 @@ import { LoginComponent } from './Components/login/login.component';
 import { LoginOtpComponent } from './Components/login-otp/login-otp.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { AuthService } from './Services/auth.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { AuthInterceptor } from './Interceptors/auth.interceptor';
     SignupComponent,
     LoginComponent,
     LoginOtpComponent,
-    DashboardComponent
+    DashboardComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import { AuthInterceptor } from './Interceptors/auth.interceptor';
     HttpClientModule,
     CommonModule,
   ],
-  providers: [
+  providers: [AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
 
   ],

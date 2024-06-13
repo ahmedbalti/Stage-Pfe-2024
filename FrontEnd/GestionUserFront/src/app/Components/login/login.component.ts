@@ -21,7 +21,7 @@ export class LoginComponent {
     this.authService.login(this.loginData).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/loginOtp']);
       },
       error: (err) => {
         this.errorMessage = 'Invalid login credentials';
