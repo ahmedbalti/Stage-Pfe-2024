@@ -103,6 +103,8 @@ namespace Gestion_User.Controllers
             {
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.Id) // Ajoutez cette ligne
+
             };
 
                     var userRoles = await _userManager.GetRolesAsync(user);

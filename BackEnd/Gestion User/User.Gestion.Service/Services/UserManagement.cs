@@ -154,10 +154,11 @@ namespace User.Gestion.Service.Services
         public async Task<ApiResponse<LoginResponse>> GetJwtTokenAsync(ApplicationUser user)
         {
             var authClaims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                };
+    {
+        new Claim(ClaimTypes.Name, user.UserName),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new Claim(ClaimTypes.NameIdentifier, user.Id) // Ajouter l'ID utilisateur ici
+    };
 
             var userRoles = await _userManager.GetRolesAsync(user);
             foreach (var role in userRoles)
@@ -165,7 +166,7 @@ namespace User.Gestion.Service.Services
                 authClaims.Add(new Claim(ClaimTypes.Role, role));
             }
 
-            var jwtToken = GetToken(authClaims); //access token
+            var jwtToken = GetToken(authClaims); // access token
             var refreshToken = GenerateRefreshToken();
             _ = int.TryParse(_configuration["JWT:RefreshTokenValidity"], out int refreshTokenValidity);
 
@@ -192,9 +193,10 @@ namespace User.Gestion.Service.Services
 
                 IsSuccess = true,
                 StatusCode = 200,
-                Message = $"Token created"
+                Message = "Token created"
             };
         }
+
 
         public async Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(string otp, string userName)
         {

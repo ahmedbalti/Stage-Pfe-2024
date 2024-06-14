@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using User.Gestion.Data.Models;
 
@@ -11,9 +12,10 @@ using User.Gestion.Data.Models;
 namespace User.Gestion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240613154614_ticketMigration")]
+    partial class ticketMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,14 +53,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e93d3477-1bf3-4a51-9939-c997421d30cd",
+                            Id = "61dfad88-60be-4364-87ab-f1b567f97383",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "0261b9be-8cee-4525-9f34-b818ea9b1d60",
+                            Id = "d3527c6e-2d96-47d8-9393-ee8d4a7a9638",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"

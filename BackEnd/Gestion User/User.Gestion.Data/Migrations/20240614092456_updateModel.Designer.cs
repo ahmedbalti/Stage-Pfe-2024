@@ -12,8 +12,8 @@ using User.Gestion.Data.Models;
 namespace User.Gestion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240430153303_ApplicationAdded")]
-    partial class ApplicationAdded
+    [Migration("20240614092456_updateModel")]
+    partial class updateModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,14 +53,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "175344af-2fc9-4d26-ad44-b87a98231807",
+                            Id = "44fc280b-7d8c-4a4b-b34a-8a1c545d662f",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "3b115a19-e1db-4ad5-86a3-17fdc38b3101",
+                            Id = "ccbb1512-f45e-4342-a4ea-5795f94c9c0c",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -244,6 +244,43 @@ namespace User.Gestion.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.Ticket", b =>
+                {
+                    b.Property<Guid>("IdTicket")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("OwnerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ResolutionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Statut")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Titre")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdTicket");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("Tickets");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -293,6 +330,22 @@ namespace User.Gestion.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.Ticket", b =>
+                {
+                    b.HasOne("User.Gestion.Data.Models.ApplicationUser", "Owner")
+                        .WithMany("Tickets")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,6 +11,15 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\AdminController.cs" />
+    <Compile Remove="Migrations\20240412090759_InitialMigration.cs" />
+    <Compile Remove="Migrations\20240412090759_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20240412105548_RoleMigration.cs" />
+    <Compile Remove="Migrations\20240412105548_RoleMigration.Designer.cs" />
+    <Compile Remove="Migrations\20240416093918_SecondMigration.cs" />
+    <Compile Remove="Migrations\20240416093918_SecondMigration.Designer.cs" />
+    <Compile Remove="Migrations\20240416094753_RolesSeeded.cs" />
+    <Compile Remove="Migrations\20240416094753_RolesSeeded.Designer.cs" />
+    <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Remove="Models\LoginOtpRequest.cs" />
   </ItemGroup>
 
@@ -41,6 +50,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\User.Gestion.Service\User.Gestion.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

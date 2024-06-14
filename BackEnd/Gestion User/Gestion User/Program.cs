@@ -14,8 +14,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // For Entity Framework
+//var configuration = builder.Configuration;
+//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ConnStr")));
+
 var configuration = builder.Configuration;
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ConnStr")));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(configuration.GetConnectionString("ConnStr"),
+    b => b.MigrationsAssembly("User.Gestion.Data")));
 
 // For Identity
 //builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -33,6 +38,11 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
+
+
+// Register ITicketService
+builder.Services.AddScoped<ITicketService, TicketService>();
+
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
