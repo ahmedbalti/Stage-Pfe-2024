@@ -12,8 +12,8 @@ using User.Gestion.Data.Models;
 namespace User.Gestion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240614092456_updateModel")]
-    partial class updateModel
+    [Migration("20240618150524_fourthMigration")]
+    partial class fourthMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,14 +53,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "44fc280b-7d8c-4a4b-b34a-8a1c545d662f",
+                            Id = "5e7c5004-84e2-4498-9d91-aacb5731416e",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "ccbb1512-f45e-4342-a4ea-5795f94c9c0c",
+                            Id = "03f9c33b-a238-4608-9607-da577b641fcf",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -244,6 +244,78 @@ namespace User.Gestion.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.Contract", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PolicyNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Contracts");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.Sinistre", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateDeclaration")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("MontantEstime")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("MontantPaye")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("NumeroDossier")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Statut")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Sinistres");
+                });
+
             modelBuilder.Entity("User.Gestion.Data.Models.Ticket", b =>
                 {
                     b.Property<Guid>("IdTicket")
@@ -332,6 +404,28 @@ namespace User.Gestion.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.Contract", b =>
+                {
+                    b.HasOne("User.Gestion.Data.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Contracts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.Sinistre", b =>
+                {
+                    b.HasOne("User.Gestion.Data.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Sinistres")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+                });
+
             modelBuilder.Entity("User.Gestion.Data.Models.Ticket", b =>
                 {
                     b.HasOne("User.Gestion.Data.Models.ApplicationUser", "Owner")
@@ -345,6 +439,10 @@ namespace User.Gestion.Data.Migrations
 
             modelBuilder.Entity("User.Gestion.Data.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("Contracts");
+
+                    b.Navigation("Sinistres");
+
                     b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618

@@ -10,5 +10,13 @@ namespace User.Gestion.Data.Models
 
         public ICollection<Ticket> Tickets { get; set; }
 
+        public ICollection<Contract> Contracts { get; set; }  // Ajout de cette ligne
+
+        public ICollection<Sinistre> Sinistres { get; set; }
+
+        public ICollection<Devis> Devis { get; set; }
+
+
+
     }
 }

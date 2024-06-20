@@ -43,6 +43,12 @@ builder.Services.AddCors(options =>
 // Register ITicketService
 builder.Services.AddScoped<ITicketService, TicketService>();
 
+builder.Services.AddScoped<IContractService, ContractService>();
+
+builder.Services.AddScoped<ISinistreService, SinistreService>();
+
+builder.Services.AddScoped<IDevisService, DevisService>();
+
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
