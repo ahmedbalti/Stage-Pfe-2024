@@ -26,6 +26,8 @@ namespace User.Gestion.Data.Models
         // Navigation property
         [ForeignKey("OwnerId")]
         public ApplicationUser Owner { get; set; }
+
+        public ICollection<Opportunity> Opportunities { get; set; }
     }
 }
 

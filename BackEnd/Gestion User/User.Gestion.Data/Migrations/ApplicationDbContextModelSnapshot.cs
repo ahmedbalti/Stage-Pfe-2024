@@ -51,14 +51,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8b9253a0-d9e6-485c-bae0-daf8ecf7b03d",
+                            Id = "98df41d5-b203-4bb6-aec9-62f4cb36455e",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "2bcf4e66-1315-4b8a-b2c9-1821238a41c8",
+                            Id = "56555bc6-32db-46c7-89ed-24fe033376c3",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -305,6 +305,57 @@ namespace User.Gestion.Data.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("Devis");
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.Opportunity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AssuranceType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Couverture")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DevisId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DureeContrat")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Montant")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PrimeAnnuelle")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DevisId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Opportunities");
+                });
+
             modelBuilder.Entity("User.Gestion.Data.Models.Sinistre", b =>
                 {
                     b.Property<int>("Id")
@@ -535,6 +586,25 @@ namespace User.Gestion.Data.Migrations
                     b.Navigation("Owner");
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.Opportunity", b =>
+                {
+                    b.HasOne("User.Gestion.Data.Models.Devis", "Devis")
+                        .WithMany("Opportunities")
+                        .HasForeignKey("DevisId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("User.Gestion.Data.Models.ApplicationUser", "User")
+                        .WithMany("Opportunities")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Devis");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("User.Gestion.Data.Models.Sinistre", b =>
                 {
                     b.HasOne("User.Gestion.Data.Models.ApplicationUser", "ApplicationUser")
@@ -563,9 +633,16 @@ namespace User.Gestion.Data.Migrations
 
                     b.Navigation("Devis");
 
+                    b.Navigation("Opportunities");
+
                     b.Navigation("Sinistres");
 
                     b.Navigation("Tickets");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.Devis", b =>
+                {
+                    b.Navigation("Opportunities");
                 });
 #pragma warning restore 612, 618
         }

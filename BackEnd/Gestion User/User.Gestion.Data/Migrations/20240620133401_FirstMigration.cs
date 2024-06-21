@@ -180,6 +180,43 @@ namespace User.Gestion.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Devis",
+                columns: table => new
+                {
+                    IdDevis = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TypeAssurance = table.Column<int>(type: "int", nullable: false),
+                    Montant = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OwnerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NumeroImmatriculation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreDeChevaux = table.Column<int>(type: "int", nullable: true),
+                    AgeVoiture = table.Column<int>(type: "int", nullable: true),
+                    Carburant = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    InformationsHabitation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adresse = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surface = table.Column<int>(type: "int", nullable: true),
+                    NombreDePieces = table.Column<int>(type: "int", nullable: true),
+                    NumeroSecuriteSociale = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Age = table.Column<int>(type: "int", nullable: true),
+                    Sexe = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Fumeur = table.Column<bool>(type: "bit", nullable: true),
+                    Beneficiaire = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Duree = table.Column<int>(type: "int", nullable: true),
+                    Capital = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Devis", x => x.IdDevis);
+                    table.ForeignKey(
+                        name: "FK_Devis_AspNetUsers_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sinistres",
                 columns: table => new
                 {
@@ -228,15 +265,48 @@ namespace User.Gestion.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "21fded5f-22e1-490e-b042-c8e2db131436", "1", "User", "User" });
+            migrationBuilder.CreateTable(
+                name: "Opportunities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Montant = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DateCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AssuranceType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PrimeAnnuelle = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DureeContrat = table.Column<int>(type: "int", nullable: false),
+                    Couverture = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DevisId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsApproved = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Opportunities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Opportunities_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Opportunities_Devis_DevisId",
+                        column: x => x.DevisId,
+                        principalTable: "Devis",
+                        principalColumn: "IdDevis");
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "ab804d16-ebef-4227-9c5e-480e17871b75", "2", "Client", "Client" });
+                values: new object[] { "56555bc6-32db-46c7-89ed-24fe033376c3", "2", "Client", "Client" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "98df41d5-b203-4bb6-aec9-62f4cb36455e", "1", "User", "User" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -283,6 +353,21 @@ namespace User.Gestion.Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Devis_OwnerId",
+                table: "Devis",
+                column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Opportunities_DevisId",
+                table: "Opportunities",
+                column: "DevisId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Opportunities_UserId",
+                table: "Opportunities",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Sinistres_UserId",
                 table: "Sinistres",
                 column: "UserId");
@@ -314,6 +399,9 @@ namespace User.Gestion.Data.Migrations
                 name: "Contracts");
 
             migrationBuilder.DropTable(
+                name: "Opportunities");
+
+            migrationBuilder.DropTable(
                 name: "Sinistres");
 
             migrationBuilder.DropTable(
@@ -321,6 +409,9 @@ namespace User.Gestion.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Devis");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

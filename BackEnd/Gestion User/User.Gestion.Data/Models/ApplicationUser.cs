@@ -16,6 +16,7 @@ namespace User.Gestion.Data.Models
 
         public ICollection<Devis> Devis { get; set; }
 
+        public ICollection<Opportunity> Opportunities { get; set; }
 
 
     }

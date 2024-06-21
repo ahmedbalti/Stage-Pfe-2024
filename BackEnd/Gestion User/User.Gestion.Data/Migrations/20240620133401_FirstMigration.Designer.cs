@@ -12,8 +12,8 @@ using User.Gestion.Data.Models;
 namespace User.Gestion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240618150524_fourthMigration")]
-    partial class fourthMigration
+    [Migration("20240620133401_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,14 +53,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5e7c5004-84e2-4498-9d91-aacb5731416e",
+                            Id = "98df41d5-b203-4bb6-aec9-62f4cb36455e",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "03f9c33b-a238-4608-9607-da577b641fcf",
+                            Id = "56555bc6-32db-46c7-89ed-24fe033376c3",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -276,6 +276,88 @@ namespace User.Gestion.Data.Migrations
                     b.ToTable("Contracts");
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.Devis", b =>
+                {
+                    b.Property<int>("IdDevis")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDevis"), 1L, 1);
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Montant")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("OwnerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("TypeAssurance")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdDevis");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("Devis");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Devis");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.Opportunity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AssuranceType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Couverture")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DevisId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DureeContrat")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Montant")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PrimeAnnuelle")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DevisId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Opportunities");
+                });
+
             modelBuilder.Entity("User.Gestion.Data.Models.Sinistre", b =>
                 {
                     b.Property<int>("Id")
@@ -353,6 +435,86 @@ namespace User.Gestion.Data.Migrations
                     b.ToTable("Tickets");
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.DevisAuto", b =>
+                {
+                    b.HasBaseType("User.Gestion.Data.Models.Devis");
+
+                    b.Property<int>("AgeVoiture")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Carburant")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NombreDeChevaux")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NumeroImmatriculation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("DevisAuto");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.DevisHabitation", b =>
+                {
+                    b.HasBaseType("User.Gestion.Data.Models.Devis");
+
+                    b.Property<string>("Adresse")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InformationsHabitation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NombreDePieces")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Surface")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("DevisHabitation");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.DevisSante", b =>
+                {
+                    b.HasBaseType("User.Gestion.Data.Models.Devis");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Fumeur")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NumeroSecuriteSociale")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sexe")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("DevisSante");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.DevisVie", b =>
+                {
+                    b.HasBaseType("User.Gestion.Data.Models.Devis");
+
+                    b.Property<string>("Beneficiaire")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Capital")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Duree")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("DevisVie");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -415,6 +577,36 @@ namespace User.Gestion.Data.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.Devis", b =>
+                {
+                    b.HasOne("User.Gestion.Data.Models.ApplicationUser", "Owner")
+                        .WithMany("Devis")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.Opportunity", b =>
+                {
+                    b.HasOne("User.Gestion.Data.Models.Devis", "Devis")
+                        .WithMany("Opportunities")
+                        .HasForeignKey("DevisId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("User.Gestion.Data.Models.ApplicationUser", "User")
+                        .WithMany("Opportunities")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Devis");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("User.Gestion.Data.Models.Sinistre", b =>
                 {
                     b.HasOne("User.Gestion.Data.Models.ApplicationUser", "ApplicationUser")
@@ -441,9 +633,18 @@ namespace User.Gestion.Data.Migrations
                 {
                     b.Navigation("Contracts");
 
+                    b.Navigation("Devis");
+
+                    b.Navigation("Opportunities");
+
                     b.Navigation("Sinistres");
 
                     b.Navigation("Tickets");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.Devis", b =>
+                {
+                    b.Navigation("Opportunities");
                 });
 #pragma warning restore 612, 618
         }

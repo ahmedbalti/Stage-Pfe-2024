@@ -11,10 +11,13 @@ namespace User.Gestion.Service.Services
     public class DevisService : IDevisService
     {
         private readonly ApplicationDbContext _context;
+        private readonly IOpportunityService _opportunityService;
 
-        public DevisService(ApplicationDbContext context)
+
+        public DevisService(ApplicationDbContext context, IOpportunityService opportunityService)
         {
             _context = context;
+            _opportunityService = opportunityService;
         }
 
         public async Task<IEnumerable<Devis>> GetDevisByOwnerId(string ownerId)
@@ -31,6 +34,8 @@ namespace User.Gestion.Service.Services
         {
             _context.Devis.Add(devis);
             await _context.SaveChangesAsync();
+
+            await _opportunityService.CreateOpportunitiesForDevis(devis);
             return devis;
         }
 

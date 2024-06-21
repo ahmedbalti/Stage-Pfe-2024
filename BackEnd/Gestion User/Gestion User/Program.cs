@@ -49,6 +49,9 @@ builder.Services.AddScoped<ISinistreService, SinistreService>();
 
 builder.Services.AddScoped<IDevisService, DevisService>();
 
+builder.Services.AddScoped<IOpportunityService, OpportunityService>();
+
+
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
