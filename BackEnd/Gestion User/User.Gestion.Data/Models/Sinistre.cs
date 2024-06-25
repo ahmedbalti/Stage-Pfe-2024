@@ -1,6 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using User.Gestion.Data.Models;
 
 namespace User.Gestion.Data.Models
 {
@@ -18,17 +18,17 @@ namespace User.Gestion.Data.Models
         public string Description { get; set; }
 
         [Required]
-        public string Statut { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public SinistreStatut Statut { get; set; }
 
         [Required]
-        public decimal MontantEstime { get; set; }
+        public decimal MontantEstime { get; set; }  //L'utilisateur estime combien le sinistre pourrait coûter. Ce montant est sa meilleure estimation avant que l'assurance ne prenne une décision.
 
-        public decimal MontantPaye { get; set; }
+        public decimal MontantPaye { get; set; } //C'est le montant effectivement payé par l'assurance. Initialement, il peut être 0 et sera mis à jour une fois que l'assurance aura déterminé et payé le montant final du sinistre.
 
-        [JsonIgnore]
+        [Required]
         public string UserId { get; set; }
 
-        [JsonIgnore]
-        public ApplicationUser ApplicationUser { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

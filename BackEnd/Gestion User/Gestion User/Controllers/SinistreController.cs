@@ -1,89 +1,124 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using User.Gestion.Service.Services;
+using Microsoft.Extensions.Logging;
+using Org.BouncyCastle.Crypto;
 using User.Gestion.Data.Models;
-using Microsoft.EntityFrameworkCore;
+using User.Gestion.Service.Services;
+using AutoMapper;
 
-namespace Gestion_User.Controllers
+namespace User.Gestion.Api.Controllers
 {
-    [Authorize]
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    [Authorize]
     public class SinistresController : ControllerBase
     {
         private readonly ISinistreService _sinistreService;
+        private readonly ILogger<SinistresController> _logger;
+        private readonly IMapper _mapper;
 
-        public SinistresController(ISinistreService sinistreService)
+        public SinistresController(ISinistreService sinistreService, ILogger<SinistresController> logger, IMapper mapper)
         {
             _sinistreService = sinistreService;
+            _logger = logger;
+            _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Sinistre>>> GetSinistres()
+        [HttpPost]
+        public async Task<IActionResult> CreateSinistre([FromBody] SinistreDto sinistreDto)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return Ok(await _sinistreService.GetSinistresByUserIdAsync(userId));
+            var userId = GetUserId();
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            var sinistre = _mapper.Map<Sinistre>(sinistreDto);
+            sinistre.UserId = userId;
+            sinistre.DateDeclaration = DateTime.UtcNow; // Date actuelle
+            sinistre.Statut = SinistreStatut.Ouverte; // Statut initial
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var createdSinistre = await _sinistreService.CreateSinistre(sinistre);
+            var createdSinistreDto = _mapper.Map<SinistreDto>(createdSinistre);
+
+            return CreatedAtAction(nameof(GetSinistreById), new { id = createdSinistre.Id }, createdSinistreDto);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Sinistre>> GetSinistre(int id)
+        private string GetUserId()
         {
-            var sinistre = await _sinistreService.GetSinistreByIdAsync(id);
-            if (sinistre == null)
+            var userId = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            _logger.LogInformation($"User ID from token: {userId}");
+            return userId;
+        }
+
+      
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateSinistre(int id, [FromBody] Sinistre sinistre)
+        {
+            var userId = GetUserId();
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            var existingSinistre = await _sinistreService.GetSinistreById(id, userId);
+            if (existingSinistre == null)
             {
                 return NotFound();
             }
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (sinistre.UserId != userId)
+            _logger.LogInformation($"Updating sinistre ID: {id} for user ID: {userId}");
+
+            // Mise à jour des propriétés
+            existingSinistre.NumeroDossier = sinistre.NumeroDossier;
+            existingSinistre.DateDeclaration = sinistre.DateDeclaration;
+            existingSinistre.Description = sinistre.Description;
+            existingSinistre.Statut = sinistre.Statut;
+            existingSinistre.MontantEstime = sinistre.MontantEstime;
+            existingSinistre.MontantPaye = sinistre.MontantPaye;
+
+            await _sinistreService.UpdateSinistre(existingSinistre);
+            return NoContent();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSinistreById(int id)
+        {
+            var userId = GetUserId();
+            if (userId == null)
             {
-                return Forbid();
+                return Unauthorized();
             }
 
+            var sinistre = await _sinistreService.GetSinistreById(id, userId);
+            if (sinistre == null)
+            {
+                return NotFound();
+            }
             return Ok(sinistre);
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Sinistre>> PostSinistre(Sinistre sinistre)
+        [HttpGet]
+        public async Task<IActionResult> GetSinistresByUser()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            sinistre.UserId = userId;
-
-            await _sinistreService.AddSinistreAsync(sinistre);
-            return CreatedAtAction(nameof(GetSinistre), new { id = sinistre.Id }, sinistre);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSinistre(int id, Sinistre sinistre)
-        {
-            if (id != sinistre.Id)
+            var userId = GetUserId();
+            if (userId == null)
             {
-                return BadRequest();
+                return Unauthorized();
             }
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            sinistre.UserId = userId;
-
-            try
-            {
-                await _sinistreService.UpdateSinistreAsync(sinistre);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!await _sinistreService.SinistreExistsAsync(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            var sinistres = await _sinistreService.GetSinistresByUser(userId);
+            return Ok(sinistres);
         }
     }
 }

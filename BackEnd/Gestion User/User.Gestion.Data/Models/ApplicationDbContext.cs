@@ -118,7 +118,7 @@ namespace User.Gestion.Data.Models
                 .HasForeignKey(c => c.UserId);
 
             builder.Entity<Sinistre>()
-                .HasOne(s => s.ApplicationUser)
+                .HasOne(s => s.User)
                 .WithMany(u => u.Sinistres)
                 .HasForeignKey(s => s.UserId);
 

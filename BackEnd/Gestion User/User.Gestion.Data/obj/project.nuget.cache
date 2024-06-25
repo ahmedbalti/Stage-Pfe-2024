@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "YbYVg8UggyduwOu2AFRQmD02sHMGKJpDuYJSMzphPsg2o4RM8VPI5ElukAQO/i110CdQ5KwvSldFYDlct2xQAA==",
+  "dgSpecHash": "ZYrieErVPiFd+EW277x4aRE+ZaZQZJnhciZALiPPZMAT1pzrojaK9Nf0C2MRsMQU9p/PYjBDJpITvgTjYn1nxQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Data\\User.Gestion.Data.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ahmed\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.10\\microsoft.aspnetcore.cryptography.internal.6.0.10.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.10\\microsoft.aspnetcore.cryptography.keyderivation.6.0.10.nupkg.sha512",

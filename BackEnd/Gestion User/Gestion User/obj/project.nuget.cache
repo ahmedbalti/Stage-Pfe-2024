@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8ljJfwc00KXFCkWK7eNW2RUM1Ll+nxBoK3GnCw06yHP+xCv0wMFKc1VLnOWzDaqQYN/I9473Q6JllUKSTdfY1A==",
+  "dgSpecHash": "RtSOa6TIuy4JNA1oCtRQmUKFEZab0oeDia6iDgzF9s6P6lmtUTOWPXpNhDB+naoBkrt64/ccHJq/irebBUFCUg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\Gestion User.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ahmed\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\mailkit\\3.2.0\\mailkit.3.2.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.10\\microsoft.aspnetcore.authentication.jwtbearer.6.0.10.nupkg.sha512",

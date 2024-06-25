@@ -6,10 +6,9 @@ namespace User.Gestion.Service.Services
 {
     public interface ISinistreService
     {
-        Task<IEnumerable<Sinistre>> GetSinistresByUserIdAsync(string userId);
-        Task<Sinistre> GetSinistreByIdAsync(int id);
-        Task AddSinistreAsync(Sinistre sinistre);
-        Task UpdateSinistreAsync(Sinistre sinistre);
-        Task<bool> SinistreExistsAsync(int id);
+        Task<Sinistre> CreateSinistre(Sinistre sinistre);
+        Task<Sinistre> UpdateSinistre(Sinistre sinistre);
+        Task<Sinistre> GetSinistreById(int id, string userId);
+        Task<List<Sinistre>> GetSinistresByUser(string userId);
     }
 }
