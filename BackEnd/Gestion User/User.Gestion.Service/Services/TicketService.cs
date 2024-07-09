@@ -76,6 +76,13 @@ namespace User.Gestion.Service.Services
 
             return existingTicket;
         }
+        public async Task<IEnumerable<Ticket>> GetTicketsByTitleAndUserIdAsync(TicketTitle title, string userId)
+        {
+            return await _context.Tickets
+                .Where(t => t.OwnerId == userId && t.Titre == title)
+                .ToListAsync();
+        }
     }
+
 }
 

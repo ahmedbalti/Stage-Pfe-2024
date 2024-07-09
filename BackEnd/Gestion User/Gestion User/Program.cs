@@ -30,14 +30,25 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowOrigin", builder =>
-    {
-        builder
-            .WithOrigins("http://localhost:4200")
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
 });
+
+
+//{
+//    options.AddPolicy("AllowOrigin", builder =>
+//    {
+//        builder
+//            .WithOrigins("http://localhost:4200")
+//            .AllowAnyHeader()
+//            .AllowAnyMethod();
+//    });
+//});
 
 
 // Register ITicketService
@@ -152,7 +163,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowOrigin");
+//app.UseCors("AllowOrigin");
+
+app.UseCors("AllowAllOrigins");
 
 app.UseAuthentication();
 

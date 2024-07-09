@@ -1,8 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using User.Gestion.Data.Models;
+using static System.Net.Mime.MediaTypeNames;
+
+
 
 namespace User.Gestion.Service.Services
 {
@@ -40,5 +45,8 @@ namespace User.Gestion.Service.Services
 
             return true;
         }
+
+       
+        }
     }
-}
+    

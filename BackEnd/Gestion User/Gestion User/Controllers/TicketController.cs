@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using User.Gestion.Data.Models;
 using User.Gestion.Service.Models;
 using User.Gestion.Service.Services;
+using System.Linq; // Ajoutez cette ligne pour l'utilisation de LINQ
 
 namespace Gestion_User.Controllers
 {
@@ -116,5 +117,21 @@ namespace Gestion_User.Controllers
             var updatedTicket = await _ticketService.UpdateTicketAsync(id, existingTicket);
             return Ok(updatedTicket);
         }
+
+        [HttpGet("filterByTitle/{title}")]
+        public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsByTitle(string title)
+        {
+            if (!Enum.TryParse(typeof(TicketTitle), title, true, out var parsedTitle))
+            {
+                return BadRequest("Invalid title value");
+            }
+
+            var userId = GetUserId(); // Assurez-vous que cette méthode renvoie l'ID de l'utilisateur correctement
+            var tickets = await _ticketService.GetTicketsByTitleAndUserIdAsync((TicketTitle)parsedTitle, userId);
+            return Ok(tickets);
+        }
+
     }
+
+
 }

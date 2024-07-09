@@ -198,28 +198,45 @@ namespace User.Gestion.Service.Services
         }
 
 
+        //public async Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(string otp, string userName)
+        //{
+        //    var user = await _userManager.FindByNameAsync(userName);
+        //    var signIn = await _signInManager.TwoFactorSignInAsync("Email", otp, false, false);
+        //    if (signIn.Succeeded)
+        //    {
+        //        if (user != null)
+        //        {
+        //            return await GetJwtTokenAsync(user);
+        //        }
+        //    }
+        //    return new ApiResponse<LoginResponse>()
+        //    {
+
+        //        Response = new LoginResponse()
+        //        {
+
+        //        },
+        //        IsSuccess = false,
+        //        StatusCode = 400,
+        //        Message = $"Invalid Otp"
+        //    };
+        //}
+
         public async Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(string otp, string userName)
         {
             var user = await _userManager.FindByNameAsync(userName);
-            var signIn = await _signInManager.TwoFactorSignInAsync("Email", otp, false, false);
-            if (signIn.Succeeded)
+            if (user == null)
             {
-                if (user != null)
-                {
-                    return await GetJwtTokenAsync(user);
-                }
+                return new ApiResponse<LoginResponse> { IsSuccess = false, StatusCode = 404, Message = "User not found" };
             }
-            return new ApiResponse<LoginResponse>()
+
+            var signInResult = await _signInManager.TwoFactorSignInAsync("Email", otp, false, false);
+            if (signInResult.Succeeded)
             {
+                return await GetJwtTokenAsync(user);
+            }
 
-                Response = new LoginResponse()
-                {
-
-                },
-                IsSuccess = false,
-                StatusCode = 400,
-                Message = $"Invalid Otp"
-            };
+            return new ApiResponse<LoginResponse> { IsSuccess = false, StatusCode = 400, Message = "Invalid OTP" };
         }
 
         public async Task<ApiResponse<LoginResponse>> RenewAccessTokenAsync(LoginResponse tokens)

@@ -14,6 +14,10 @@ namespace User.Gestion.Service.Services
         Task<IEnumerable<Ticket>> GetTicketsByUserIdAsync(string userId);
         Task<Ticket> GetTicketByIdAsync(Guid id);
         Task<Ticket> UpdateTicketAsync(Guid id, Ticket ticket);
+
+        Task<IEnumerable<Ticket>> GetTicketsByTitleAndUserIdAsync(TicketTitle title, string userId);
+
+
     }
 }
 

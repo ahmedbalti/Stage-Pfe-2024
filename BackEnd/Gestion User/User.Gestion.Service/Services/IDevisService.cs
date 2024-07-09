@@ -17,3 +17,4 @@ namespace User.Gestion.Service.Services
         decimal CalculerMontant(Devis devis);
     }
 }
+

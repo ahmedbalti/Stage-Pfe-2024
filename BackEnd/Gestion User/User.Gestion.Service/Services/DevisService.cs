@@ -30,8 +30,34 @@ namespace User.Gestion.Service.Services
             return await _context.Devis.FirstOrDefaultAsync(d => d.IdDevis == id && d.OwnerId == ownerId);
         }
 
+        //public async Task<Devis> CreateDevis(Devis devis)
+        //{
+        //    _context.Devis.Add(devis);
+        //    await _context.SaveChangesAsync();
+
+        //    await _opportunityService.CreateOpportunitiesForDevis(devis);
+        //    return devis;
+        //}
+
         public async Task<Devis> CreateDevis(Devis devis)
         {
+            if (devis is DevisSante devisSante)
+            {
+                var existingSante = await _context.Devis.OfType<DevisSante>().FirstOrDefaultAsync(d => d.NumeroSecuriteSociale == devisSante.NumeroSecuriteSociale);
+                if (existingSante != null)
+                {
+                    throw new Exception("Numéro de sécurité sociale déjà existant.");
+                }
+            }
+            else if (devis is DevisHabitation devisHabitation)
+            {
+                var existingHabitation = await _context.Devis.OfType<DevisHabitation>().FirstOrDefaultAsync(d => d.Adresse == devisHabitation.Adresse);
+                if (existingHabitation != null)
+                {
+                    throw new Exception("Adresse déjà existante.");
+                }
+            }
+
             _context.Devis.Add(devis);
             await _context.SaveChangesAsync();
 

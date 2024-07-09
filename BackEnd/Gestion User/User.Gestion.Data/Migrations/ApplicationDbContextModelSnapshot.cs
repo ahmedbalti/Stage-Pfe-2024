@@ -51,14 +51,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4601e007-7f8d-40cd-9ffa-e5a1392ae8b2",
+                            Id = "44852428-df40-42ab-adb2-bf5fd3ac7ee5",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "d2549331-948c-48a0-a1f8-340501d2f996",
+                            Id = "b3de444d-5a1f-4ecf-ae45-e4b2e7777adb",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -253,15 +253,15 @@ namespace User.Gestion.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<string>("PolicyNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .IsRequired()

@@ -37,6 +37,13 @@ namespace User.Gestion.Api.Controllers
                 return Unauthorized();
             }
 
+
+            // Convertir le statut de chaîne de caractères à l'énumération
+            if (!Enum.TryParse<SinistreStatut>(sinistreDto.Statut.ToString(), true, out var statut))
+            {
+                return BadRequest("Invalid status value");
+            }
+
             var sinistre = _mapper.Map<Sinistre>(sinistreDto);
             sinistre.UserId = userId;
             sinistre.DateDeclaration = DateTime.UtcNow; // Date actuelle
