@@ -1,0 +1,239 @@
+<main>
+    <div class="position-relative">
+        <!-- shape Hero -->
+        <section class="section section-shaped section-lg">
+            <div class="shape shape-style-1 bg-gradient-default">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="container mt-5">
+                <h2 class="mb-4 text-white">Cher client, Bienvenue dans votre espace des Devis</h2>
+
+                <h3 class="mt-5 text-white">Créer un Devis</h3>
+                <select class="form-control mb-3" [(ngModel)]="selectedType" (change)="onTypeChange($event)">
+                    <option value="">Sélectionnez un type d'assurance</option>
+                    <option value="Auto">Auto</option>
+                    <option value="Sante">Santé</option>
+                    <option value="Habitation">Habitation</option>
+                    <option value="Vie">Vie</option>
+                </select>
+
+                <h3 class="mt-5 text-white">Votre liste des Devis</h3>
+
+                <div class="card-deck">
+                    <div *ngFor="let devis of devisList" class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fa fa-file-alt card-icon"></i>{{ getTypeAssurance(devis.typeAssurance) }}</h5>
+                            <p class="card-text"><i class="fa fa-id-badge card-icon"></i>ID: {{ devis.idDevis }}</p>
+                            <p class="card-text"><i class="fa fa-money-bill-alt card-icon"></i>Montant: {{ devis.montant | currency }}</p>
+                            <p *ngIf="devis.numeroImmatriculation" class="card-text"><i class="fa fa-car card-icon"></i>Numéro Immatriculation: {{ devis.numeroImmatriculation }}</p>
+                            <p *ngIf="devis.nombreDeChevaux" class="card-text"><i class="fa fa-horse card-icon"></i>Nombre de Chevaux: {{ devis.nombreDeChevaux }}</p>
+                            <p *ngIf="devis.ageVoiture" class="card-text"><i class="fa fa-calendar-alt card-icon"></i>Âge Voiture: {{ devis.ageVoiture }}</p>
+                            <p *ngIf="devis.carburant" class="card-text"><i class="fa fa-gas-pump card-icon"></i>Carburant: {{ devis.carburant }}</p>
+                            <p *ngIf="devis.numeroSecuriteSociale" class="card-text"><i class="fa fa-id-card card-icon"></i>Numéro Sécurité Sociale: {{ devis.numeroSecuriteSociale }}</p>
+                            <p *ngIf="devis.age" class="card-text"><i class="fa fa-birthday-cake card-icon"></i>Âge: {{ devis.age }}</p>
+                            <p *ngIf="devis.sexe" class="card-text"><i class="fa fa-venus-mars card-icon"></i>Sexe: {{ devis.sexe }}</p>
+                            <p *ngIf="devis.fumeur" class="card-text"><i class="fa fa-smoking card-icon"></i>Fumeur: {{ devis.fumeur ? 'Oui' : 'Non' }}</p>
+                            <p *ngIf="devis.adresse" class="card-text"><i class="fa fa-map-marker-alt card-icon"></i>Adresse: {{ devis.adresse }}</p>
+                            <p *ngIf="devis.surface" class="card-text"><i class="fa fa-ruler card-icon"></i>Surface: {{ devis.surface }} m²</p>
+                            <p *ngIf="devis.nombreDePieces" class="card-text"><i class="fa fa-door-open card-icon"></i>Nombre de Pièces: {{ devis.nombreDePieces }}</p>
+                            <p *ngIf="devis.beneficiaire" class="card-text"><i class="fa fa-user-friends card-icon"></i>Bénéficiaire: {{ devis.beneficiaire }}</p>
+                            <p *ngIf="devis.duree" class="card-text"><i class="fa fa-hourglass-half card-icon"></i>Durée: {{ devis.duree }} ans</p>
+                            <p *ngIf="devis.capital" class="card-text"><i class="fa fa-dollar-sign card-icon"></i>Capital: {{ devis.capital | currency }}</p>
+                            <button class="btn btn-info btn-sm mr-2" (click)="viewDevis(devis.idDevis)">Voir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal pour la création de devis -->
+                <div class="modal" tabindex="-1" [ngClass]="{'show': isFormVisible}" [ngStyle]="{'display': isFormVisible ? 'block' : 'none'}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Créer un Devis {{ selectedType }}</h5>
+                                <button type="button" class="btn-close" (click)="closeForm()"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form [formGroup]="devisForm" (ngSubmit)="onSubmit()">
+                                    <div *ngIf="selectedType === 'Auto'">
+                                        <div class="mb-3 form-group">
+                                            <label for="numeroImmatriculation" class="form-label">Numéro d'immatriculation</label>
+                                            <input type="text" class="form-control" id="numeroImmatriculation" formControlName="numeroImmatriculation">
+                                            <div *ngIf="devisForm.controls['numeroImmatriculation'].invalid && (devisForm.controls['numeroImmatriculation'].dirty || devisForm.controls['numeroImmatriculation'].touched)" class="text-danger">
+                                                Numéro d'immatriculation invalide. Format attendu: 184TU7682.
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 form-group">
+                                            <label for="nombreDeChevaux" class="form-label">Nombre de chevaux</label>
+                                            <input type="number" class="form-control" id="nombreDeChevaux" formControlName="nombreDeChevaux">
+                                            <div *ngIf="devisForm.controls['nombreDeChevaux'].invalid && (devisForm.controls['nombreDeChevaux'].dirty || devisForm.controls['nombreDeChevaux'].touched)" class="text-danger">
+                                                Nombre de chevaux doit être entre 4 et 30.
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 form-group">
+                                            <label for="ageVoiture" class="form-label">Âge de la voiture</label>
+                                            <input type="number" class="form-control" id="ageVoiture" formControlName="ageVoiture">
+                                            <div *ngIf="devisForm.controls['ageVoiture'].invalid && (devisForm.controls['ageVoiture'].dirty || devisForm.controls['ageVoiture'].touched)" class="text-danger">
+                                                Âge de la voiture doit être entre 0 et 30.
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 form-group">
+                                            <label for="carburant" class="form-label">Carburant</label>
+                                            <select class="form-control" id="carburant" formControlName="carburant">
+                                                <option value="Essence">Essence</option>
+                                                <option value="Diesel">Diesel</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="selectedType === 'Sante'">
+                                        <div class="mb-3 form-group">
+                                            <label for="numeroSecuriteSociale" class="form-label">Numéro de sécurité sociale</label>
+                                            <input type="text" class="form-control" id="numeroSecuriteSociale" formControlName="numeroSecuriteSociale">
+                                            <div *ngIf="devisForm.controls['numeroSecuriteSociale'].invalid && (devisForm.controls['numeroSecuriteSociale'].dirty || devisForm.controls['numeroSecuriteSociale'].touched)" class="text-danger">
+                                                Numéro de sécurité sociale invalide. Maximum 8 chiffres.
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 form-group">
+                                            <label for="age" class="form-label">Âge</label>
+                                            <input type="number" class="form-control" id="age" formControlName="age">
+                                            <div *ngIf="devisForm.controls['age'].invalid && (devisForm.controls['age'].dirty || devisForm.controls['age'].touched)" class="text-danger">
+                                                Âge doit être entre 0 et 100.
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 form-group">
+                                            <label for="sexe" class="form-label">Sexe</label>
+                                            <select class="form-control" id="sexe" formControlName="sexe">
+                                                <option value="Masculin">Masculin</option>
+                                                <option value="Feminin">Feminin</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3 form-group">
+                                            <label for="fumeur" class="form-label">Fumeur</label>
+                                            <div>
+                                                <input type="radio" id="fumeurOui" formControlName="fumeur" value="true">
+                                                <label for="fumeurOui">Oui</label>
+                                                <input type="radio" id="fumeurNon" formControlName="fumeur" value="false">
+                                                <label for="fumeurNon">Non</label>
+                                            </div>
+                                            <div *ngIf="devisForm.controls['fumeur'].invalid && (devisForm.controls['fumeur'].dirty || devisForm.controls['fumeur'].touched)" class="text-danger">
+                                                Veuillez sélectionner une option.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="selectedType === 'Habitation'">
+                                        <div class="mb-3 form-group">
+                                            <label for="adresse" class="form-label">Adresse</label>
+                                            <input type="text" class="form-control" id="adresse" formControlName="adresse">
+                                            <div *ngIf="devisForm.controls['adresse'].invalid && (devisForm.controls['adresse'].dirty || devisForm.controls['adresse'].touched)" class="text-danger">
+                                                Adresse invalide. Format attendu: numéro, rue, Gouvernorat.
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 form-group">
+                                            <label for="surface" class="form-label">Surface</label>
+                                            <input type="number" class="form-control" id="surface" formControlName="surface">
+                                            <div *ngIf="devisForm.controls['surface'].invalid && (devisForm.controls['surface'].dirty || devisForm.controls['surface'].touched)" class="text-danger">
+                                                Surface doit être entre 1 et 10000 m².
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 form-group">
+                                            <label for="nombreDePieces" class="form-label">Nombre de pièces</label>
+                                            <input type="number" class="form-control" id="nombreDePieces" formControlName="nombreDePieces">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="selectedType === 'Vie'">
+                                        <div class="mb-3 form-group">
+                                            <label for="beneficiaire" class="form-label">Bénéficiaire</label>
+                                            <input type="text" class="form-control" id="beneficiaire" formControlName="beneficiaire">
+                                        </div>
+                                        <div class="mb-3 form-group">
+                                            <label for="duree" class="form-label">Durée</label>
+                                            <input type="number" class="form-control" id="duree" formControlName="duree">
+                                            <div *ngIf="devisForm.controls['duree'].invalid && (devisForm.controls['duree'].dirty || devisForm.controls['duree'].touched)" class="text-danger">
+                                                Durée doit être entre 1 et 10 ans.
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 form-group">
+                                            <label for="capital" class="form-label">Capital</label>
+                                            <input type="number" class="form-control" id="capital" formControlName="capital">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" (click)="closeForm()">Fermer</button>
+                                        <button type="submit" class="btn btn-primary" [disabled]="devisForm.invalid">Créer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal pour la visualisation de devis -->
+                <div class="modal" tabindex="-1" [ngClass]="{'show': isViewVisible}" [ngStyle]="{'display': isViewVisible ? 'block' : 'none'}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Détails du Devis</h5>
+                                <button type="button" class="btn-close" (click)="closeView()"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div *ngIf="selectedDevis">
+                                    <p><strong>Type Assurance:</strong> {{ getTypeAssurance(selectedDevis.typeAssurance) }}</p>
+                                    <p><strong>ID:</strong> {{ selectedDevis.idDevis }}</p>
+                                    <p><strong>Montant:</strong> {{ selectedDevis.montant | currency }}</p>
+                                    <p *ngIf="selectedDevis.numeroImmatriculation"><strong>Numéro Immatriculation:</strong> {{ selectedDevis.numeroImmatriculation }}</p>
+                                    <p *ngIf="selectedDevis.nombreDeChevaux"><strong>Nombre de Chevaux:</strong> {{ selectedDevis.nombreDeChevaux }}</p>
+                                    <p *ngIf="selectedDevis.ageVoiture"><strong>Âge Voiture:</strong> {{ selectedDevis.ageVoiture }}</p>
+                                    <p *ngIf="selectedDevis.carburant"><strong>Carburant:</strong> {{ selectedDevis.carburant }}</p>
+                                    <p *ngIf="selectedDevis.numeroSecuriteSociale"><strong>Numéro Sécurité Sociale:</strong> {{ selectedDevis.numeroSecuriteSociale }}</p>
+                                    <p *ngIf="selectedDevis.age"><strong>Âge:</strong> {{ selectedDevis.age }}</p>
+                                    <p *ngIf="selectedDevis.sexe"><strong>Sexe:</strong> {{ selectedDevis.sexe }}</p>
+                                    <p *ngIf="selectedDevis.fumeur"><strong>Fumeur:</strong> {{ selectedDevis.fumeur ? 'Oui' : 'Non' }}</p>
+                                    <p *ngIf="selectedDevis.adresse"><strong>Adresse:</strong> {{ selectedDevis.adresse }}</p>
+                                    <p *ngIf="selectedDevis.surface"><strong>Surface:</strong> {{ selectedDevis.surface }} m²</p>
+                                    <p *ngIf="selectedDevis.nombreDePieces"><strong>Nombre de Pièces:</strong> {{ selectedDevis.nombreDePieces }}</p>
+                                    <p *ngIf="selectedDevis.beneficiaire"><strong>Bénéficiaire:</strong> {{ selectedDevis.beneficiaire }}</p>
+                                    <p *ngIf="selectedDevis.duree"><strong>Durée:</strong> {{ selectedDevis.duree }} ans</p>
+                                    <p *ngIf="selectedDevis.capital"><strong>Capital:</strong> {{ selectedDevis.capital | currency }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+           <!-- Modal pour la confirmation de redirection vers l'espace des opportunités -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': isOpportunityConfirmVisible}" [ngStyle]="{'display': isOpportunityConfirmVisible ? 'block' : 'none'}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Redirection</h5>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <p>Voulez-vous voir les opportunités concernant votre devis ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Non</button>
+                <button type="button" class="btn btn-primary" (click)="navigateToOpportunity()">Oui</button>
+            </div>
+        </div>
+    </div>
+</div>
+              
+
+            <div class="separator separator-bottom separator-skew">
+                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+        </section>
+    </div>
+</main>

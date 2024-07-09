@@ -1,0 +1,118 @@
+<main>
+  <div class="position-relative">
+      <!-- shape Hero -->
+      <section class="section section-lg section-shaped pb-100">
+          <div class="shape shape-style-1 shape-default">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+
+          <div class="container mt-5">
+              <h2 class="mb-4 text-white">Cher client, bienvenue dans votre espace sinistre</h2>
+
+              <h3 class="mt-5 text-white">Liste des Sinistres</h3>
+             
+            
+
+              <div class="card-deck">
+                  <div *ngFor="let sinistre of filteredSinistres" class="card mb-4 shadow-sm">
+                      <div class="card-body">
+                          <h5 class="card-title"><i class="fa fa-folder-open card-icon"></i>{{ sinistre.numeroDossier }}</h5>
+                          <p class="card-text"><i class="fa fa-align-left card-icon"></i>Description: {{ sinistre.description }}</p>
+                          <p class="card-text"><i class="fa fa-flag card-icon"></i>Statut: {{ getStatutLabel(sinistre.statut) }}</p>
+                          <p class="card-text"><i class="fa fa-calendar-alt card-icon"></i>Date de Déclaration: {{ sinistre.dateDeclaration | date:'short' }}</p>
+                          <p class="card-text"><i class="fa fa-money-bill card-icon"></i>Montant Estimé: {{ sinistre.montantEstime }}</p>
+                          <p class="card-text"><i class="fa fa-money-bill card-icon"></i>Montant Payé: {{ sinistre.montantPaye }}</p>
+                      </div>
+                  </div>
+              </div>
+
+              <h3 class="mt-5 text-white">Voulez-vous déclarer un nouveau sinistre ?</h3>
+
+              <button class="btn btn-primary mb-3" (click)="openCreateForm()">Ajouter Sinistre</button>
+
+              <!-- Modal -->
+              <div class="modal" tabindex="-1" [ngClass]="{'show': isFormVisible}" [ngStyle]="{'display': isFormVisible ? 'block' : 'none'}">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title">{{ isEditMode ? 'Modifier Sinistre' : 'Ajouter Sinistre' }}</h5>
+                              <button type="button" class="btn-close" (click)="closeForm()"></button>
+                          </div>
+                          <div class="modal-body">
+                              <form [formGroup]="sinistreForm" (ngSubmit)="onSubmit()">
+                                  <div class="mb-3 form-group">
+                                      <label for="numeroDossier" class="form-label">Numéro de Dossier</label>
+                                      <input type="text" class="form-control" id="numeroDossier" formControlName="numeroDossier">
+                                      <div *ngIf="sinistreForm.get('numeroDossier').hasError('required') && sinistreForm.get('numeroDossier').touched" class="text-danger">
+                                          Le numéro de dossier est requis.
+                                      </div>
+                                      <div *ngIf="sinistreForm.get('numeroDossier').hasError('pattern') && sinistreForm.get('numeroDossier').touched" class="text-danger">
+                                          Le numéro de dossier doit débuter avec DS suivi de 4 chiffres.
+                                      </div>
+                                      <div *ngIf="sinistreForm.get('numeroDossier').hasError('numeroDossierTaken') && sinistreForm.get('numeroDossier').touched" class="text-danger">
+                                          Ce numéro de dossier est déjà utilisé.
+                                      </div>
+                                  </div>
+
+                                  <div class="mb-3 form-group">
+                                      <label for="description" class="form-label">Description</label>
+                                      <textarea class="form-control large-textarea" id="description" formControlName="description" rows="5"></textarea>
+                                      <div *ngIf="sinistreForm.get('description').hasError('required') && sinistreForm.get('description').touched" class="text-danger">
+                                          La description est requise.
+                                      </div>
+                                  </div>
+
+                                  <div class="mb-3 form-group">
+                                      <label for="montantEstime" class="form-label">Montant Estimé</label>
+                                      <input type="number" class="form-control" id="montantEstime" formControlName="montantEstime">
+                                      <div *ngIf="sinistreForm.get('montantEstime').hasError('required') && sinistreForm.get('montantEstime').touched" class="text-danger">
+                                          Le montant estimé est requis.
+                                      </div>
+                                      <div *ngIf="sinistreForm.get('montantEstime').hasError('min') && sinistreForm.get('montantEstime').touched" class="text-danger">
+                                          Le montant estimé doit être au moins de 100.
+                                      </div>
+                                      <div *ngIf="sinistreForm.get('montantEstime').hasError('max') && sinistreForm.get('montantEstime').touched" class="text-danger">
+                                          Le montant estimé doit être au maximum de 50000.
+                                      </div>
+                                  </div>
+
+                                  <div class="mb-3 form-group">
+                                      <label for="montantPaye" class="form-label">Montant Payé</label>
+                                      <input type="number" class="form-control" id="montantPaye" formControlName="montantPaye">
+                                      <div *ngIf="sinistreForm.get('montantPaye').hasError('required') && sinistreForm.get('montantPaye').touched" class="text-danger">
+                                          Le montant payé est requis.
+                                      </div>
+                                      <div *ngIf="sinistreForm.get('montantPaye').hasError('min') && sinistreForm.get('montantPaye').touched" class="text-danger">
+                                          Le montant payé doit être au moins de 100.
+                                      </div>
+                                      <div *ngIf="sinistreForm.get('montantPaye').hasError('max') && sinistreForm.get('montantPaye').touched" class="text-danger">
+                                          Le montant payé doit être au maximum de 50000.
+                                      </div>
+                                  </div>
+
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" (click)="closeForm()">Fermer</button>
+                                      <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier' : 'Ajouter' }}</button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="separator separator-bottom separator-skew">
+              <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                  <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+              </svg>
+          </div>
+      </section>
+  </div>
+</main>

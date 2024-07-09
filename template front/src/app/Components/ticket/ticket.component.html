@@ -1,0 +1,96 @@
+<main>
+    <div class="position-relative">
+        <!-- shape Hero -->
+        <section class="section section-lg section-shaped pb-100">
+            <div class="shape shape-style-1 shape-default">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="container mt-5">
+                <h2 class="mb-4 text-white">Cher client, bienvenue dans votre espace ticket</h2>
+
+                <h3 class="mt-5 text-white">Liste des Tickets</h3>
+               
+                     <!-- Titre et liste déroulante pour le filtrage -->
+        <div class="row">
+            <div class="col-md-6 mb-4">
+           <!--   <label for="selectTitle" class="form-label text-white">Filtrer par titre :</label>   -->
+              <select class="form-control" id="selectTitle" [(ngModel)]="selectedTitle" (ngModelChange)="filterTickets()">
+                <option value="">Tous les tickets</option> <!-- Option ajoutée -->
+                <option *ngFor="let title of ticketTitles" [value]="title">{{ title }}</option>
+              </select>
+            </div>
+          </div>
+
+                <div class="card-deck">
+                    <div *ngFor="let ticket of filteredTickets" class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fa fa-ticket-alt card-icon"></i>{{ ticket.titre }}</h5>
+                            <p class="card-text"><i class="fa fa-align-left card-icon"></i>Description: {{ ticket.description }}</p>
+                            <p class="card-text"><i class="fa fa-flag card-icon"></i>Priorité: {{ ticket.priority }}</p>
+                            <p class="card-text"><i class="fa fa-info-circle card-icon"></i>Statut: {{ ticket.statut }}</p>
+                            <p class="card-text"><i class="fa fa-calendar-alt card-icon"></i>Créé le: {{ ticket.createdOn | date:'short' }}</p>
+                            <button class="btn btn-info btn-sm mr-2" (click)="openEditForm(ticket)">Modifier</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-5 text-white">Voulez-vous une aide, une information ou même passer une réclamation ?</h3>
+
+                <button class="btn btn-primary mb-3" (click)="openCreateForm()">Ajouter Ticket</button>
+
+                <!-- Modal -->
+                <div class="modal" tabindex="-1" [ngClass]="{'show': isFormVisible}" [ngStyle]="{'display': isFormVisible ? 'block' : 'none'}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">{{ isEditMode ? 'Modifier Ticket' : 'Ajouter Ticket' }}</h5>
+                                <button type="button" class="btn-close" (click)="closeForm()"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+                                    <div class="mb-3 form-group">
+                                        <label for="titre" class="form-label">Titre</label>
+                                        <select class="form-control" id="titre" formControlName="titre">
+                                            <option *ngFor="let title of ticketTitles" [value]="title">{{ title }}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3 form-group">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea class="form-control large-textarea" id="description" formControlName="description" rows="5"></textarea>
+                                    </div>
+
+                                    <div class="mb-3 form-group">
+                                        <label for="priority" class="form-label">Priorité</label>
+                                        <select class="form-control" id="priority" formControlName="priority">
+                                            <option *ngFor="let priority of ticketPriorities" [value]="priority">{{ priority }}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" (click)="closeForm()">Fermer</button>
+                                        <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier' : 'Ajouter' }}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="separator separator-bottom separator-skew">
+                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+        </section>
+    </div>
+</main>

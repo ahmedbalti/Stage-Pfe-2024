@@ -28,6 +28,38 @@ namespace User.Gestion.Api.Controllers
             _mapper = mapper;
         }
 
+        //[HttpPost]
+        //public async Task<IActionResult> CreateSinistre([FromBody] SinistreDto sinistreDto)
+        //{
+        //    var userId = GetUserId();
+        //    if (userId == null)
+        //    {
+        //        return Unauthorized();
+        //    }
+
+
+        //    // Convertir le statut de chaîne de caractères à l'énumération
+        //    if (!Enum.TryParse<SinistreStatut>(sinistreDto.Statut.ToString(), true, out var statut))
+        //    {
+        //        return BadRequest("Invalid status value");
+        //    }
+
+        //    var sinistre = _mapper.Map<Sinistre>(sinistreDto);
+        //    sinistre.UserId = userId;
+        //    sinistre.DateDeclaration = DateTime.UtcNow; // Date actuelle
+        //    sinistre.Statut = SinistreStatut.Ouverte; // Statut initial
+
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    var createdSinistre = await _sinistreService.CreateSinistre(sinistre);
+        //    var createdSinistreDto = _mapper.Map<SinistreDto>(createdSinistre);
+
+        //    return CreatedAtAction(nameof(GetSinistreById), new { id = createdSinistre.Id }, createdSinistreDto);
+        //}
+
         [HttpPost]
         public async Task<IActionResult> CreateSinistre([FromBody] SinistreDto sinistreDto)
         {
@@ -37,8 +69,6 @@ namespace User.Gestion.Api.Controllers
                 return Unauthorized();
             }
 
-
-            // Convertir le statut de chaîne de caractères à l'énumération
             if (!Enum.TryParse<SinistreStatut>(sinistreDto.Statut.ToString(), true, out var statut))
             {
                 return BadRequest("Invalid status value");
@@ -67,10 +97,40 @@ namespace User.Gestion.Api.Controllers
             return userId;
         }
 
-      
+
+
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> UpdateSinistre(int id, [FromBody] Sinistre sinistre)
+        //{
+        //    var userId = GetUserId();
+        //    if (userId == null)
+        //    {
+        //        return Unauthorized();
+        //    }
+
+        //    var existingSinistre = await _sinistreService.GetSinistreById(id, userId);
+        //    if (existingSinistre == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    _logger.LogInformation($"Updating sinistre ID: {id} for user ID: {userId}");
+
+        //    // Mise à jour des propriétés
+        //    existingSinistre.NumeroDossier = sinistre.NumeroDossier;
+        //    existingSinistre.DateDeclaration = sinistre.DateDeclaration;
+        //    existingSinistre.Description = sinistre.Description;
+        //    existingSinistre.Statut = sinistre.Statut;
+        //    existingSinistre.MontantEstime = sinistre.MontantEstime;
+        //    existingSinistre.MontantPaye = sinistre.MontantPaye;
+
+        //    await _sinistreService.UpdateSinistre(existingSinistre);
+        //    return NoContent();
+        //}
+
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateSinistre(int id, [FromBody] Sinistre sinistre)
+        public async Task<IActionResult> UpdateSinistre(int id, [FromBody] SinistreDto sinistreDto)
         {
             var userId = GetUserId();
             if (userId == null)
@@ -86,13 +146,18 @@ namespace User.Gestion.Api.Controllers
 
             _logger.LogInformation($"Updating sinistre ID: {id} for user ID: {userId}");
 
-            // Mise à jour des propriétés
-            existingSinistre.NumeroDossier = sinistre.NumeroDossier;
-            existingSinistre.DateDeclaration = sinistre.DateDeclaration;
-            existingSinistre.Description = sinistre.Description;
-            existingSinistre.Statut = sinistre.Statut;
-            existingSinistre.MontantEstime = sinistre.MontantEstime;
-            existingSinistre.MontantPaye = sinistre.MontantPaye;
+            // Mise à jour des propriétés avec les valeurs de sinistreDto
+            existingSinistre.NumeroDossier = sinistreDto.NumeroDossier;
+            existingSinistre.DateDeclaration = sinistreDto.DateDeclaration;
+            existingSinistre.Description = sinistreDto.Description;
+            existingSinistre.Statut = sinistreDto.Statut;
+            existingSinistre.MontantEstime = sinistreDto.MontantEstime;
+            existingSinistre.MontantPaye = sinistreDto.MontantPaye;
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             await _sinistreService.UpdateSinistre(existingSinistre);
             return NoContent();

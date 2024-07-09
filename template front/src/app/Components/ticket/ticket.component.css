@@ -1,0 +1,193 @@
+/* General adjustments */
+body {
+    font-family: 'Arial', sans-serif; /* You can change this to a more readable font if needed */
+}
+
+/* Container adjustments */
+.container {
+    max-width: 900px;
+}
+
+.btn {
+    margin-right: 5px;
+}
+
+.large-textarea {
+    height: 150px;
+}
+
+/* Styles for the modal */
+.modal-dialog {
+    max-width: 90%; /* Adjust as needed */
+    width: 500px; /* Adjust as needed */
+    margin: 1.75rem auto;
+}
+
+.modal-content {
+    max-height: 80vh; /* Limit height to 80% of the viewport height */
+    overflow-y: auto; /* Add vertical scroll */
+}
+
+.modal-body {
+    max-height: 60vh; /* Adjust as needed */
+    overflow-y: auto; /* Add vertical scroll */
+}
+
+/* Optional: to improve the form layout */
+.modal-body .form-group {
+    margin-bottom: 15px;
+}
+
+.modal-body .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal-body .form-group input,
+.modal-body .form-group textarea,
+.modal-body .form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+/* Card adjustments */
+.card {
+    flex: 1 1 calc(50% - 2rem); /* Adjusted spacing */
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    font-family: 'Roboto', sans-serif; /* Changed font for better readability */
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Button styling */
+.btn-info {
+    background-color: #007bff; /* Adjust to fit your theme */
+    border-color: #007bff;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Same color as .btn-info */
+    border-color: #007bff;
+    display: block;
+    margin: 0 auto; /* Center the button */
+}
+
+/* Shape styling and animations */
+.shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.shape span {
+    display: inline-block;
+    width: 100px; /* Increased size */
+    height: 100px; /* Increased size */
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    margin: 20px; /* Increased margin */
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .card-text {
+        font-size: 0.875rem;
+    }
+
+    .col-md-6 {
+        width: 100%; /* Adjust to single column on smaller screens */
+        max-width: 100%;
+    }
+
+    .card {
+        max-width: 100%; /* Ensure cards take up full width on small screens */
+    }
+}
+
+/* Text styling */
+.text-white {
+    color: white;
+    font-size: 2rem; /* Adjust size as needed */
+    margin-bottom: 1rem; /* Adjust bottom margin */
+}
+
+/* Center title */
+.text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Icon styling */
+.card-icon {
+    font-size: 0.9rem;
+    margin-right: 1rem;
+}
+
+
+/* Right align specific elements */
+.row.justify-content-end {
+    justify-content: flex-end;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.form-label.text-white.small {
+    font-size: 0.75rem; /* Adjust smaller label font size */
+    text-align: right; /* Right align label text */
+}
+
+.form-control.form-control-sm {
+    width: auto; /* Adjust width of smaller form controls */
+    max-width: 150px; /* Limit maximum width of form control */
+    margin-left: 10px; /* Add some margin for spacing */
+}
+
+.card-deck {
+    margin-top: 20px; /* Add margin to card deck */
+}

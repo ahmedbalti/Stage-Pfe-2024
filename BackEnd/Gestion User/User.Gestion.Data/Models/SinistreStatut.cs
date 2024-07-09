@@ -8,9 +8,9 @@ namespace User.Gestion.Data.Models
 {
     public enum SinistreStatut
     {
-        Ouverte = 0,
-        EnCours = 1,
-        Fermee = 2
+        Ouverte ,
+        EnCours ,
+        Fermee 
     }
 
 }
