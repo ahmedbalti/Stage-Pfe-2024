@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 using User.Gestion.Data.Models;
 using User.Gestion.Service.Models;
 using User.Gestion.Service.Services;
-using System.Linq; // Ajoutez cette ligne pour l'utilisation de LINQ
+using System.Linq;
+using Microsoft.AspNetCore.Identity;
 
 namespace Gestion_User.Controllers
 {
@@ -18,16 +19,29 @@ namespace Gestion_User.Controllers
     public class TicketController : ControllerBase
     {
         private readonly ITicketService _ticketService;
+        private readonly IEmailService _emailService;
 
-        public TicketController(ITicketService ticketService)
+        public TicketController(ITicketService ticketService, IEmailService emailService)
         {
             _ticketService = ticketService;
+            _emailService = emailService;
+
         }
 
-        //private string GetUserId()
-        //{
-        //    return User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //}
+        private string GetUserId()
+        {
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                throw new Exception("User ID not found in claims");
+            }
+            return userIdClaim.Value;
+        }
+
+        private bool IsUserInRole(string role)
+        {
+            return User.IsInRole(role);
+        }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets()
@@ -49,18 +63,7 @@ namespace Gestion_User.Controllers
             return Ok(ticket);
         }
 
-
-      
-        private string GetUserId()
-        {
-            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                throw new Exception("User ID not found in claims");
-            }
-            return userIdClaim.Value;
-        }
-
+       
 
         [HttpPost]
         public async Task<ActionResult<Ticket>> AddTicket([FromBody] TicketDTO ticketDTO)
@@ -90,8 +93,6 @@ namespace Gestion_User.Controllers
             return CreatedAtAction(nameof(GetTicketById), new { id = newTicket.IdTicket }, newTicket);
         }
 
-
-
         [HttpPut("{id}")]
         public async Task<ActionResult<Ticket>> UpdateTicket(Guid id, [FromBody] TicketDTO ticketDTO)
         {
@@ -118,6 +119,52 @@ namespace Gestion_User.Controllers
             return Ok(updatedTicket);
         }
 
+        [Authorize(Roles = "User")]
+        [HttpGet("all")]
+        public async Task<ActionResult<IEnumerable<Ticket>>> GetAllTickets()
+        {
+            var tickets = await _ticketService.GetAllTicketsAsync();
+            return Ok(tickets);
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpGet("filter")]
+        public async Task<ActionResult<IEnumerable<Ticket>>> FilterTickets([FromQuery] TicketFilterDTO filter)
+        {
+            var tickets = await _ticketService.FilterTicketsAsync(filter);
+            return Ok(tickets);
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpPut("{id}/respond")]
+        public async Task<IActionResult> RespondToTicket(Guid id, [FromBody] TicketResponseDTO responseDTO)
+        {
+            var updatedTicket = await _ticketService.RespondToTicketAsync(id, responseDTO);
+            if (updatedTicket == null)
+            {
+                return NotFound();
+            }
+            return Ok(updatedTicket);
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> UpdateTicketStatus(Guid id, [FromBody] TicketStatusUpdateDTO statusUpdateDTO)
+        {
+            var updatedTicket = await _ticketService.UpdateTicketStatusAsync(id, statusUpdateDTO);
+            if (updatedTicket == null)
+            {
+                return NotFound();
+            }
+            // Mettre à jour la date de résolution avec la date actuelle
+            updatedTicket.ResolutionDate = DateTime.UtcNow;
+
+
+            return Ok(updatedTicket);
+        }
+
+      
+
         [HttpGet("filterByTitle/{title}")]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsByTitle(string title)
         {
@@ -126,12 +173,18 @@ namespace Gestion_User.Controllers
                 return BadRequest("Invalid title value");
             }
 
-            var userId = GetUserId(); // Assurez-vous que cette méthode renvoie l'ID de l'utilisateur correctement
+            var userId = GetUserId();
             var tickets = await _ticketService.GetTicketsByTitleAndUserIdAsync((TicketTitle)parsedTitle, userId);
             return Ok(tickets);
         }
 
+        [HttpGet("{ticketId}/responses")]
+        public async Task<ActionResult<IEnumerable<TicketResponse>>> GetAllTicketResponses(Guid ticketId)
+        {
+            var responses = await _ticketService.GetAllTicketResponsesAsync(ticketId);
+            return Ok(responses);
+        }
+
+       
     }
-
-
 }

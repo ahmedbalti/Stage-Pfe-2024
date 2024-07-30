@@ -51,14 +51,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "44852428-df40-42ab-adb2-bf5fd3ac7ee5",
+                            Id = "3d410e21-8b3b-4961-96e5-71030ca91b66",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "b3de444d-5a1f-4ecf-ae45-e4b2e7777adb",
+                            Id = "a914551e-b531-4c8d-8bef-ab02529517c5",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -253,15 +253,15 @@ namespace User.Gestion.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("PolicyNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -430,6 +430,29 @@ namespace User.Gestion.Data.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Tickets");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.TicketResponse", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Response")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ResponseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("TicketId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("TicketResponses");
                 });
 
             modelBuilder.Entity("User.Gestion.Data.Models.DevisAuto", b =>
@@ -626,6 +649,17 @@ namespace User.Gestion.Data.Migrations
                     b.Navigation("Owner");
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.TicketResponse", b =>
+                {
+                    b.HasOne("User.Gestion.Data.Models.Ticket", "Ticket")
+                        .WithMany("Responses")
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ticket");
+                });
+
             modelBuilder.Entity("User.Gestion.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Contracts");
@@ -642,6 +676,11 @@ namespace User.Gestion.Data.Migrations
             modelBuilder.Entity("User.Gestion.Data.Models.Devis", b =>
                 {
                     b.Navigation("Opportunities");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.Ticket", b =>
+                {
+                    b.Navigation("Responses");
                 });
 #pragma warning restore 612, 618
         }

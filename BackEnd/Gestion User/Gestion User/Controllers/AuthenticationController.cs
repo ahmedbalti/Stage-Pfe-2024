@@ -145,16 +145,16 @@ namespace Gestion_User.Controllers
         //}
 
 
-         [HttpPost]
+        [HttpPost]
         [Route("login-2FA")]
         public async Task<IActionResult> LoginWithOTP([FromBody] LoginF2AModel loginF2AModel)
         {
-            var jwt =await _user.LoginUserWithJWTokenAsync(loginF2AModel.code, loginF2AModel.userName);
+            var jwt = await _user.LoginUserWithJWTokenAsync(loginF2AModel.code, loginF2AModel.userName);
             if (jwt.IsSuccess)
             {
                 return Ok(jwt);
             }
-            return StatusCode(StatusCodes.Status404NotFound,new Response { Status = "Success", Message = $"Invalid Code" });
+            return StatusCode(StatusCodes.Status404NotFound, new Response { Status = "Success", Message = $"Invalid Code" });
         }
 
 

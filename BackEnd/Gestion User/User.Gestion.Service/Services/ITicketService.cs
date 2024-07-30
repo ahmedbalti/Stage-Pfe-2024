@@ -16,8 +16,15 @@ namespace User.Gestion.Service.Services
         Task<Ticket> UpdateTicketAsync(Guid id, Ticket ticket);
 
         Task<IEnumerable<Ticket>> GetTicketsByTitleAndUserIdAsync(TicketTitle title, string userId);
+        Task<IEnumerable<Ticket>> GetAllTicketsAsync();
+        Task<IEnumerable<Ticket>> FilterTicketsAsync(TicketFilterDTO filter);
+        Task<Ticket> RespondToTicketAsync(Guid id, TicketResponseDTO responseDTO);
+        Task<Ticket> UpdateTicketStatusAsync(Guid id, TicketStatusUpdateDTO statusUpdateDTO);
 
+        Task<IEnumerable<TicketResponse>> GetResponsesByTicketIdAsync(Guid ticketId);
+
+        Task<IEnumerable<TicketResponse>> GetAllTicketResponsesAsync(Guid ticketId);
+        Task<IEnumerable<TicketResponse>> GetClientTicketResponsesAsync(Guid ticketId, string userId);
 
     }
 }
-

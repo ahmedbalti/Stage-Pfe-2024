@@ -89,49 +89,6 @@ namespace Gestion_User.Controllers
         }
 
 
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<DevisDto>> GetDevisById(int id)
-        //{
-        //    var ownerId = GetOwnerIdFromToken();
-        //    if (string.IsNullOrEmpty(ownerId))
-        //    {
-        //        return Unauthorized();
-        //    }
-
-        //    var devis = await _devisService.GetDevisByIdAndOwnerId(id, ownerId);
-
-        //    if (devis == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(MapDevisToDto(devis));
-        //}
-
-        //[HttpPost("auto")]
-        //public async Task<ActionResult> CreateDevisAuto([FromBody] DevisAutoDto devisAutoDto)
-        //{
-        //    var ownerId = GetOwnerIdFromToken();
-        //    if (string.IsNullOrEmpty(ownerId))
-        //    {
-        //        return Unauthorized();
-        //    }
-
-        //    var devisAuto = new DevisAuto
-        //    {
-        //        TypeAssurance = TypeAssurance.Auto,
-        //        NumeroImmatriculation = devisAutoDto.NumeroImmatriculation,
-        //        NombreDeChevaux = devisAutoDto.NombreDeChevaux,
-        //        AgeVoiture = devisAutoDto.AgeVoiture,
-        //        Carburant = devisAutoDto.Carburant,
-        //        OwnerId = ownerId // Assigner l'OwnerId ici
-        //    };
-
-        //    devisAuto.Montant = _devisService.CalculerMontant(devisAuto);
-
-        //    var createdDevis = await _devisService.CreateDevis(devisAuto);
-        //    return CreatedAtAction(nameof(GetDevisById), new { id = createdDevis.IdDevis }, MapDevisToDto(createdDevis));
-        //}
 
         [HttpPost("sante")]
         public async Task<ActionResult> CreateDevisSante([FromBody] DevisSanteDto devisSanteDto)

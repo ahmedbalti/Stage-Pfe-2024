@@ -32,5 +32,9 @@ namespace User.Gestion.Data.Models
 
         [ForeignKey("OwnerId")]
         public ApplicationUser Owner { get; set; } // Propriété de navigation vers l'utilisateur propriétaire
+
+        [JsonIgnore]
+        public List<TicketResponse> Responses { get; set; } = new List<TicketResponse>();
+
     }
 }

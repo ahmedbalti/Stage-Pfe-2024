@@ -225,7 +225,7 @@ namespace User.Gestion.Data.Migrations
                     NumeroDossier = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateDeclaration = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Statut = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Statut = table.Column<int>(type: "int", nullable: false),
                     MontantEstime = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     MontantPaye = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
@@ -298,15 +298,35 @@ namespace User.Gestion.Data.Migrations
                         principalColumn: "IdDevis");
                 });
 
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "56555bc6-32db-46c7-89ed-24fe033376c3", "2", "Client", "Client" });
+            migrationBuilder.CreateTable(
+                name: "TicketResponses",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Response = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ResponseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TicketId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TicketResponses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TicketResponses_Tickets_TicketId",
+                        column: x => x.TicketId,
+                        principalTable: "Tickets",
+                        principalColumn: "IdTicket",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "98df41d5-b203-4bb6-aec9-62f4cb36455e", "1", "User", "User" });
+                values: new object[] { "3d410e21-8b3b-4961-96e5-71030ca91b66", "1", "User", "User" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "a914551e-b531-4c8d-8bef-ab02529517c5", "2", "Client", "Client" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -373,6 +393,11 @@ namespace User.Gestion.Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TicketResponses_TicketId",
+                table: "TicketResponses",
+                column: "TicketId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tickets_OwnerId",
                 table: "Tickets",
                 column: "OwnerId");
@@ -405,13 +430,16 @@ namespace User.Gestion.Data.Migrations
                 name: "Sinistres");
 
             migrationBuilder.DropTable(
-                name: "Tickets");
+                name: "TicketResponses");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Devis");
+
+            migrationBuilder.DropTable(
+                name: "Tickets");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

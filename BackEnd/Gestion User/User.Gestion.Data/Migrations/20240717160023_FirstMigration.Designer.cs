@@ -12,8 +12,8 @@ using User.Gestion.Data.Models;
 namespace User.Gestion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240624102433_FourthMigration")]
-    partial class FourthMigration
+    [Migration("20240717160023_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,14 +53,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4601e007-7f8d-40cd-9ffa-e5a1392ae8b2",
+                            Id = "3d410e21-8b3b-4961-96e5-71030ca91b66",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "d2549331-948c-48a0-a1f8-340501d2f996",
+                            Id = "a914551e-b531-4c8d-8bef-ab02529517c5",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -434,6 +434,29 @@ namespace User.Gestion.Data.Migrations
                     b.ToTable("Tickets");
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.TicketResponse", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Response")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ResponseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("TicketId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("TicketResponses");
+                });
+
             modelBuilder.Entity("User.Gestion.Data.Models.DevisAuto", b =>
                 {
                     b.HasBaseType("User.Gestion.Data.Models.Devis");
@@ -628,6 +651,17 @@ namespace User.Gestion.Data.Migrations
                     b.Navigation("Owner");
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.TicketResponse", b =>
+                {
+                    b.HasOne("User.Gestion.Data.Models.Ticket", "Ticket")
+                        .WithMany("Responses")
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ticket");
+                });
+
             modelBuilder.Entity("User.Gestion.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Contracts");
@@ -644,6 +678,11 @@ namespace User.Gestion.Data.Migrations
             modelBuilder.Entity("User.Gestion.Data.Models.Devis", b =>
                 {
                     b.Navigation("Opportunities");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.Ticket", b =>
+                {
+                    b.Navigation("Responses");
                 });
 #pragma warning restore 612, 618
         }

@@ -64,12 +64,19 @@ builder.Services.AddScoped<IOpportunityService, OpportunityService>();
 
 
 
+//builder.Services.AddControllers()
+//    .AddJsonOptions(options =>
+//    {
+//        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+//    });
+
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     // Other identity options
     options.Tokens.ProviderMap["Email"] = new TokenProviderDescriptor(typeof(EmailTokenProvider<ApplicationUser>));
 }).AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+
 
 
 builder.Services.Configure<DataProtectionTokenProviderOptions>(options =>
@@ -119,6 +126,8 @@ builder.Services.AddScoped<IUserManagement, UserManagement>();
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+
+
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -151,7 +160,10 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
-
+//builder.Services.AddControllers().AddJsonOptions(options =>
+//{
+//    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+//});
 
 var app = builder.Build();
 
