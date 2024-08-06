@@ -63,9 +63,15 @@ namespace User.Gestion.Service.Services
             _context.Opportunities.AddRange(opportunities);
             await _context.SaveChangesAsync();
         }
-    
 
-    public async Task ApproveOpportunity(int id, string userId)
+        public async Task<IEnumerable<Opportunity>> GetAllOpportunities()
+        {
+            return await _context.Opportunities.ToListAsync();
+        }
+
+
+
+        public async Task ApproveOpportunity(int id, string userId)
         {
             var opportunity = await _context.Opportunities
                                             .Where(o => o.Id == id && o.UserId == userId)

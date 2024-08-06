@@ -321,12 +321,12 @@ namespace User.Gestion.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "3d410e21-8b3b-4961-96e5-71030ca91b66", "1", "User", "User" });
+                values: new object[] { "10696b01-e3f3-4f9f-a4d3-5fe3e3a17236", "1", "User", "User" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "a914551e-b531-4c8d-8bef-ab02529517c5", "2", "Client", "Client" });
+                values: new object[] { "99ddfbe5-c93a-49df-95fa-5d76d588a36b", "2", "Client", "Client" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

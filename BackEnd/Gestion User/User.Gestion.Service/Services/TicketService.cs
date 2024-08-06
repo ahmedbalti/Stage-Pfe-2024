@@ -113,19 +113,45 @@ namespace User.Gestion.Service.Services
             return ticket;
         }
 
-        public async Task<Ticket> UpdateTicketStatusAsync(Guid id, TicketStatusUpdateDTO statusUpdateDTO)
+        //public async Task<Ticket> UpdateTicketStatusAsync(Guid id, TicketStatut statut)
+        //{
+        //    var existingTicket = await _context.Tickets.FindAsync(id);
+        //    if (existingTicket == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    existingTicket.Statut = statut;
+
+        //    // Si le statut est changé à "Resolu", mettre à jour la date de résolution avec la date actuelle
+        //    if (statut == TicketStatut.Resolu)
+        //    {
+        //        existingTicket.ResolutionDate = DateTime.UtcNow;
+        //    }
+
+        //    _context.Tickets.Update(existingTicket);
+        //    await _context.SaveChangesAsync();
+
+        //    return existingTicket;
+        //}
+
+
+        public async Task<bool> UpdateTicketStatus(Guid ticketId, TicketStatut statut)
         {
-            var ticket = await _context.Tickets.FindAsync(id);
+            var ticket = await _context.Tickets.FindAsync(ticketId);
             if (ticket == null)
             {
-                return null;
+                return false;
             }
 
-            ticket.Statut = statusUpdateDTO.Statut;
-            _context.Tickets.Update(ticket);
-            await _context.SaveChangesAsync();
+            ticket.Statut = statut;
 
-            return ticket;
+            if (statut == TicketStatut.Resolu)
+            {
+                ticket.ResolutionDate = DateTime.UtcNow;
+            }
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<IEnumerable<TicketResponse>> GetResponsesByTicketIdAsync(Guid ticketId)
@@ -147,6 +173,27 @@ namespace User.Gestion.Service.Services
             }
 
             return await _context.TicketResponses.Where(tr => tr.TicketId == ticketId).ToListAsync();
+        }
+
+        public async Task<TicketStatisticsDTO> GetTicketStatisticsAsync(string userId)
+        {
+            var tickets = await _context.Tickets.Where(t => t.OwnerId == userId).ToListAsync();
+
+            var totalTickets = tickets.Count;
+            var resolvedTickets = tickets.Count(t => t.Statut == TicketStatut.Resolu);
+            var unresolvedTickets = totalTickets - resolvedTickets;
+
+            var priorities = tickets.GroupBy(t => t.Priority)
+                                    .Select(g => new { Priority = g.Key, Count = g.Count() })
+                                    .ToDictionary(x => x.Priority.ToString(), x => x.Count);
+
+            return new TicketStatisticsDTO
+            {
+                TotalTickets = totalTickets,
+                ResolvedTickets = resolvedTickets,
+                UnresolvedTickets = unresolvedTickets,
+                PriorityDistribution = priorities
+            };
         }
 
 

@@ -23,6 +23,7 @@ namespace Gestion_User.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
+        [Authorize(Roles = "Client")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DevisDto>>> GetDevis()
         {
@@ -63,6 +64,7 @@ namespace Gestion_User.Controllers
             return Ok(MapDevisToDto(devis));
         }
 
+        [Authorize(Roles = "Client")]
         [HttpPost("auto")]
         public async Task<ActionResult> CreateDevisAuto([FromBody] DevisAutoDto devisAutoDto)
         {
@@ -89,7 +91,7 @@ namespace Gestion_User.Controllers
         }
 
 
-
+        [Authorize(Roles = "Client")]
         [HttpPost("sante")]
         public async Task<ActionResult> CreateDevisSante([FromBody] DevisSanteDto devisSanteDto)
         {
@@ -115,6 +117,7 @@ namespace Gestion_User.Controllers
             return CreatedAtAction(nameof(GetDevisById), new { id = createdDevis.IdDevis }, MapDevisToDto(createdDevis));
         }
 
+        [Authorize(Roles = "Client")]
         [HttpPost("habitation")]
         public async Task<ActionResult> CreateDevisHabitation([FromBody] DevisHabitationDto devisHabitationDto)
         {
@@ -139,6 +142,7 @@ namespace Gestion_User.Controllers
             return CreatedAtAction(nameof(GetDevisById), new { id = createdDevis.IdDevis }, MapDevisToDto(createdDevis));
         }
 
+        [Authorize(Roles = "Client")]
         [HttpPost("vie")]
         public async Task<ActionResult> CreateDevisVie([FromBody] DevisVieDto devisVieDto)
         {

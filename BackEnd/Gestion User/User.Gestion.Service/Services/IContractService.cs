@@ -8,5 +8,15 @@ namespace User.Gestion.Service.Services
     {
         Task<IEnumerable<Contract>> GetContractsByUserIdAsync(string userId);
         Task<bool> RenewContractAsync(int contractId);
+
+        Task<Contract> AddContractAsync(Contract newContract);
+
+
+        Task<bool> UpdateContractAsync(Contract contract);
+        Task<Contract> GetContractByIdAsync(int id);
+
+        Task<IEnumerable<Contract>> GetAllContractsAsync();
+
+
     }
 }

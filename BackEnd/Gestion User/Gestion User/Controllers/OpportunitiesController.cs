@@ -25,6 +25,8 @@ namespace Gestion_User.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
+        [Authorize(Roles = "Client")]
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Opportunity>>> GetOpportunities()
         {
@@ -38,6 +40,8 @@ namespace Gestion_User.Controllers
             return Ok(opportunities);
         }
 
+        [Authorize(Roles = "User")]
+
         [HttpPost("approve/{id}")]
         public async Task<ActionResult> ApproveOpportunity(int id)
         {
@@ -50,6 +54,15 @@ namespace Gestion_User.Controllers
             await _opportunityService.ApproveOpportunity(id, userId);
             return NoContent();
         }
+
+        [Authorize(Roles = "User")]
+        [HttpGet("all")]
+        public async Task<ActionResult<IEnumerable<Opportunity>>> GetAllOpportunities()
+        {
+            var opportunities = await _opportunityService.GetAllOpportunities();
+            return Ok(opportunities);
+        }
+
 
         private string GetUserIdFromToken()
         {

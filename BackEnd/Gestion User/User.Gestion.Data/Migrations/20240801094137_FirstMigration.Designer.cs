@@ -12,7 +12,7 @@ using User.Gestion.Data.Models;
 namespace User.Gestion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240717160023_FirstMigration")]
+    [Migration("20240801094137_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,14 +53,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3d410e21-8b3b-4961-96e5-71030ca91b66",
+                            Id = "10696b01-e3f3-4f9f-a4d3-5fe3e3a17236",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "a914551e-b531-4c8d-8bef-ab02529517c5",
+                            Id = "99ddfbe5-c93a-49df-95fa-5d76d588a36b",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"

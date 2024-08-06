@@ -8,9 +8,9 @@ namespace User.Gestion.Data.Models
 {
     public enum TicketStatut
     {
-        Nouveau,
-        EnCours,
-        Resolu
+        Nouveau = 0,
+        EnCours = 1,
+        Resolu = 2
     }
 }
 

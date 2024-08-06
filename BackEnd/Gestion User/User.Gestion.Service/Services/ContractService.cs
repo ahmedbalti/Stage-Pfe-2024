@@ -27,6 +27,31 @@ namespace User.Gestion.Service.Services
                                  .ToListAsync();
         }
 
+        public async Task<Contract> AddContractAsync(Contract newContract)
+        {
+            _context.Contracts.Add(newContract);
+            await _context.SaveChangesAsync();
+            return newContract;
+        }
+
+
+
+        public async Task<bool> UpdateContractAsync(Contract contract)
+        {
+            _context.Contracts.Update(contract);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<Contract> GetContractByIdAsync(int id)
+        {
+            return await _context.Contracts.FindAsync(id);
+        }
+        public async Task<IEnumerable<Contract>> GetAllContractsAsync()
+        {
+            return await _context.Contracts.ToListAsync();
+        }
+
         public async Task<bool> RenewContractAsync(int contractId)
         {
             var contract = await _context.Contracts.FindAsync(contractId);

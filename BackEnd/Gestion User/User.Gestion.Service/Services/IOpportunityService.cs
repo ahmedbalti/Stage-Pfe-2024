@@ -10,5 +10,7 @@ namespace User.Gestion.Service.Services
         Task<Opportunity> GetOpportunityById(int id);
         Task CreateOpportunitiesForDevis(Devis devis);
         Task ApproveOpportunity(int id, string userId);
+        Task<IEnumerable<Opportunity>> GetAllOpportunities();
+
     }
 }

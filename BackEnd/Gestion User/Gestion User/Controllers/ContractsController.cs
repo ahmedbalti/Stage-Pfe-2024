@@ -37,6 +37,7 @@ namespace Gestion_User.Controllers
             return userIdClaim?.Value;
         }
 
+        [Authorize(Roles = "Client")]
         [HttpGet]
         public async Task<IActionResult> GetContracts()
         {
@@ -51,6 +52,7 @@ namespace Gestion_User.Controllers
             return Ok(contracts);
         }
 
+        [Authorize(Roles = "User")]
         [HttpPost("renew")]
         public async Task<IActionResult> RenewContract([FromBody] RenewalRequest request)
         {
@@ -69,57 +71,81 @@ namespace Gestion_User.Controllers
             return Ok("Contract renewed successfully.");
         }
 
-        //[HttpGet("pdf/all")]
-        //public async Task<IActionResult> GenerateAllContractsPdf()
-        //{
-        //    string userId = GetUserId();
+        [Authorize(Roles = "User")]
+        [HttpPost]
+        public async Task<IActionResult> AddContract([FromBody] ContractCreateDto newContractDto)
+        {
+            string userId = GetUserId();
 
-        //    if (string.IsNullOrEmpty(userId))
-        //    {
-        //        return Unauthorized("User ID not found or empty.");
-        //    }
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found or empty.");
+            }
 
-        //    var contracts = await _contractService.GetContractsByUserIdAsync(userId);
+            var newContract = new Contract
+            {
+                PolicyNumber = newContractDto.PolicyNumber,
+                StartDate = newContractDto.StartDate,
+                EndDate = newContractDto.EndDate,
+                IsActive = newContractDto.IsActive,
+                UserId = userId  // Set the UserId from the token
+            };
 
-        //    if (contracts == null || !contracts.Any())
-        //    {
-        //        return NotFound("No contracts found.");
-        //    }
+            var addedContract = await _contractService.AddContractAsync(newContract);
 
-        //    using (var stream = new MemoryStream())
-        //    {
-        //        var writer = new PdfWriter(stream);
-        //        var pdf = new PdfDocument(writer);
-        //        var document = new Document(pdf);
+            if (addedContract == null)
+            {
+                return BadRequest("Failed to add contract.");
+            }
 
-        //        // Ajouter le logo
-        //        var logo = ImageDataFactory.Create("C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User/inetum.jpg");
-        //        var logoImage = new Image(logo).ScaleAbsolute(100, 50).SetHorizontalAlignment(HorizontalAlignment.CENTER);
-        //        document.Add(logoImage);
+            return Ok(addedContract);
+        }
 
-        //        // Ajouter le titre
-        //        document.Add(new Paragraph("Tous les contrats d'assurance")
-        //            .SetTextAlignment(TextAlignment.CENTER)
-        //            .SetFontSize(24)
-        //            .SetBold());
 
-        //        // Ajouter les détails des contrats
-        //        foreach (var contract in contracts)
-        //        {
-        //            document.Add(new Paragraph($"Numéro de police: {contract.PolicyNumber}")
-        //                .SetFontSize(18)
-        //                .SetBold());
-        //            document.Add(new Paragraph($"Date de début: {contract.StartDate:dd/MM/yyyy}"));
-        //            document.Add(new Paragraph($"Date de fin: {contract.EndDate:dd/MM/yyyy}"));
-        //            document.Add(new Paragraph($"Statut: {(contract.IsActive ? "Actif" : "Inactif")}")
-        //                .SetMarginBottom(20));
-        //        }
 
-        //        document.Close();
 
-        //        var content = stream.ToArray();
-        //        return File(content, "application/pdf", "AllContracts.pdf");
-        //    }
+        [Authorize(Roles = "User")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateContract(int id, [FromBody] ContractCreateDto updatedContractDto)
+        {
+            string userId = GetUserId();
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found or empty.");
+            }
+
+            var existingContract = await _contractService.GetContractByIdAsync(id);
+
+            if (existingContract == null || existingContract.UserId != userId)
+            {
+                return NotFound("Contract not found or user not authorized.");
+            }
+
+            // Update contract properties
+            existingContract.PolicyNumber = updatedContractDto.PolicyNumber;
+            existingContract.StartDate = updatedContractDto.StartDate;
+            existingContract.EndDate = updatedContractDto.EndDate;
+            existingContract.IsActive = updatedContractDto.IsActive;
+
+            var success = await _contractService.UpdateContractAsync(existingContract);
+
+            if (!success)
+            {
+                return BadRequest("Failed to update contract.");
+            }
+
+            return Ok("Contract updated successfully.");
+        }
+
+
+        [Authorize(Roles = "User")]
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllContracts()
+        {
+            var contracts = await _contractService.GetAllContractsAsync();
+            return Ok(contracts);
+        }
 
 
         [HttpGet("pdf/all")]

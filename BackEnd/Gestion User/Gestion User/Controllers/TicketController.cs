@@ -43,6 +43,8 @@ namespace Gestion_User.Controllers
             return User.IsInRole(role);
         }
 
+
+        [Authorize(Roles = "Client")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets()
         {
@@ -63,8 +65,8 @@ namespace Gestion_User.Controllers
             return Ok(ticket);
         }
 
-       
 
+        [Authorize(Roles = "Client")]
         [HttpPost]
         public async Task<ActionResult<Ticket>> AddTicket([FromBody] TicketDTO ticketDTO)
         {
@@ -93,6 +95,8 @@ namespace Gestion_User.Controllers
             return CreatedAtAction(nameof(GetTicketById), new { id = newTicket.IdTicket }, newTicket);
         }
 
+
+        [Authorize(Roles = "Client")]
         [HttpPut("{id}")]
         public async Task<ActionResult<Ticket>> UpdateTicket(Guid id, [FromBody] TicketDTO ticketDTO)
         {
@@ -147,23 +151,27 @@ namespace Gestion_User.Controllers
             return Ok(updatedTicket);
         }
 
+
         [Authorize(Roles = "User")]
-        [HttpPut("{id}/status")]
-        public async Task<IActionResult> UpdateTicketStatus(Guid id, [FromBody] TicketStatusUpdateDTO statusUpdateDTO)
+        [HttpPut("{ticketId}/status")]
+        public async Task<IActionResult> UpdateTicketStatus(Guid ticketId, [FromBody] TicketStatusUpdateDTO statusUpdateDTO)
         {
-            var updatedTicket = await _ticketService.UpdateTicketStatusAsync(id, statusUpdateDTO);
-            if (updatedTicket == null)
+            if (!Enum.TryParse<TicketStatut>(statusUpdateDTO.Statut, true, out var statut))
+            {
+                return BadRequest("Invalid status value.");
+            }
+
+            var success = await _ticketService.UpdateTicketStatus(ticketId, statut);
+            if (!success)
             {
                 return NotFound();
             }
-            // Mettre à jour la date de résolution avec la date actuelle
-            updatedTicket.ResolutionDate = DateTime.UtcNow;
 
-
-            return Ok(updatedTicket);
+            return NoContent();
         }
 
-      
+
+
 
         [HttpGet("filterByTitle/{title}")]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsByTitle(string title)
@@ -185,6 +193,16 @@ namespace Gestion_User.Controllers
             return Ok(responses);
         }
 
-       
+
+        [Authorize(Roles = "User")]
+        [HttpGet("statistics")]
+        public async Task<ActionResult<TicketStatisticsDTO>> GetTicketStatistics()
+        {
+            var userId = GetUserId();
+            var statistics = await _ticketService.GetTicketStatisticsAsync(userId);
+            return Ok(statistics);
+        }
+
+
     }
 }

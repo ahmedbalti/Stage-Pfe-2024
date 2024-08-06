@@ -8,6 +8,6 @@ namespace User.Gestion.Data.Models
 {
     public class TicketStatusUpdateDTO
     {
-        public TicketStatut Statut { get; set; }
+        public string Statut { get; set; } // Utilisez une chaîne pour les statuts
     }
 }
