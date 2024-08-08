@@ -10,5 +10,8 @@ namespace User.Gestion.Service.Services
         Task<Sinistre> UpdateSinistre(Sinistre sinistre);
         Task<Sinistre> GetSinistreById(int id, string userId);
         Task<List<Sinistre>> GetSinistresByUser(string userId);
+
+        Task<List<Sinistre>> GetAllSinistres();
+
     }
 }

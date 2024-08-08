@@ -27,7 +27,7 @@ namespace User.Gestion.Service.Services
         Task<IEnumerable<TicketResponse>> GetAllTicketResponsesAsync(Guid ticketId);
         Task<IEnumerable<TicketResponse>> GetClientTicketResponsesAsync(Guid ticketId, string userId);
 
-        Task<TicketStatisticsDTO> GetTicketStatisticsAsync(string userId);
+        Task<TicketStatisticsDTO> GetTicketStatisticsAsync();
 
 
     }

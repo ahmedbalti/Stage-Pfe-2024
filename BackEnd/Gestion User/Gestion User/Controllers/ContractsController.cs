@@ -104,7 +104,6 @@ namespace Gestion_User.Controllers
 
 
 
-        [Authorize(Roles = "User")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateContract(int id, [FromBody] ContractCreateDto updatedContractDto)
         {

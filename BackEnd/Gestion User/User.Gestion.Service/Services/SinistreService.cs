@@ -42,5 +42,9 @@ namespace User.Gestion.Service.Services
                 .Where(s => s.UserId == userId)
                 .ToListAsync();
         }
+        public async Task<List<Sinistre>> GetAllSinistres()
+        {
+            return await _context.Sinistres.ToListAsync();
+        }
     }
 }

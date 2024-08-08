@@ -11,6 +11,8 @@ namespace User.Gestion.Data.Models
         public int TotalTickets { get; set; }
         public int ResolvedTickets { get; set; }
         public int UnresolvedTickets { get; set; }
-        public Dictionary<string, int> PriorityDistribution { get; set; }
+        public int LowPriorityTickets { get; set; }
+        public int MediumPriorityTickets { get; set; }
+        public int HighPriorityTickets { get; set; }
     }
 }

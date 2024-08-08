@@ -132,5 +132,13 @@ namespace User.Gestion.Api.Controllers
             var sinistres = await _sinistreService.GetSinistresByUser(userId);
             return Ok(sinistres);
         }
+
+        [Authorize(Roles = "User")]
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllSinistres()
+        {
+            var sinistres = await _sinistreService.GetAllSinistres();
+            return Ok(sinistres);
+        }
     }
 }

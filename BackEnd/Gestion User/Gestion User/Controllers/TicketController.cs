@@ -193,15 +193,14 @@ namespace Gestion_User.Controllers
             return Ok(responses);
         }
 
-
         [Authorize(Roles = "User")]
         [HttpGet("statistics")]
         public async Task<ActionResult<TicketStatisticsDTO>> GetTicketStatistics()
         {
-            var userId = GetUserId();
-            var statistics = await _ticketService.GetTicketStatisticsAsync(userId);
+            var statistics = await _ticketService.GetTicketStatisticsAsync();
             return Ok(statistics);
         }
+
 
 
     }
