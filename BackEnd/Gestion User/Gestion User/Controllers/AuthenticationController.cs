@@ -126,27 +126,191 @@ namespace Gestion_User.Controllers
             return Unauthorized(new { message = "Invalid credentials" });
         }
 
+        [HttpPost]
+        [Route("login-otp")]
+        public async Task<IActionResult> LoginOTP([FromBody] LoginOTPModel model)
+        {
+            var user = await _userManager.FindByNameAsync(model.Username);
+            if (user == null)
+            {
+                return StatusCode(StatusCodes.Status404NotFound,
+                    new Response { Status = "Error", Message = "User not found!" });
+            }
+
+            var result = await _userManager.VerifyTwoFactorTokenAsync(user, "Email", model.OTP);
+            if (result)
+            {
+                var jwtResponse = await _user.GetJwtTokenAsync(user);
+                if (jwtResponse.IsSuccess)
+                {
+                    return Ok(jwtResponse.Response);
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError,
+                        new Response { Status = "Error", Message = "Failed to generate JWT token." });
+                }
+            }
+
+            return StatusCode(StatusCodes.Status400BadRequest,
+                new Response { Status = "Error", Message = "Invalid OTP." });
+        }
+
+        [HttpPost]
+        [Route("verify-otp")]
+        public async Task<IActionResult> VerifyOtp([FromBody] LoginOTPModel model)
+        {
+            var user = await _userManager.FindByNameAsync(model.Username);
+            if (user == null)
+            {
+                return StatusCode(StatusCodes.Status404NotFound,
+                    new Response { Status = "Error", Message = "User not found!" });
+            }
+
+            var result = await _userManager.VerifyTwoFactorTokenAsync(user, "Email", model.OTP);
+            if (result)
+            {
+                var jwtResponse = await _user.GetJwtTokenAsync(user);
+                if (jwtResponse.IsSuccess)
+                {
+                    // Obtenir le rôle de l'utilisateur
+                    var userRoles = await _userManager.GetRolesAsync(user);
+                    string redirectUrl;
+
+                    if (userRoles.Contains("Client"))
+                    {
+                        // Rediriger vers /ticket si le rôle est Client
+                        redirectUrl = $"http://localhost:4200/#/ticket?token={jwtResponse.Response.AccessToken.Token}";
+                    }
+                    else
+                    {
+                        // Rediriger vers /ticketManagement pour tous les autres rôles
+                        redirectUrl = $"http://localhost:4200/#/ticketManagement?token={jwtResponse.Response.AccessToken.Token}";
+                    }
+
+                    var message = new Message(new string[] { user.Email! }, "Login Link", redirectUrl);
+                    _emailService.SendEmail(message);
+
+                    return Ok(new Response { Status = "Success", Message = "Login link sent to your email." });
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError,
+                        new Response { Status = "Error", Message = "Failed to generate JWT token." });
+                }
+            }
+
+            return StatusCode(StatusCodes.Status400BadRequest,
+                new Response { Status = "Error", Message = "Invalid OTP." });
+        }
+
+        [HttpGet("LoginWithToken")]
+        public async Task<IActionResult> LoginWithToken(string token)
+        {
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized(new { message = "Token is missing" });
+            }
+
+            var principal = GetClaimsPrincipal(token);
+            if (principal == null)
+            {
+                return Unauthorized(new { message = "Invalid token" });
+            }
+
+            var userId = principal.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return Unauthorized(new { message = "User not found" });
+            }
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+            string redirectUrl;
+
+            if (userRoles.Contains("Client"))
+            {
+                redirectUrl = $"http://localhost:4200/#/ticket?token={token}";
+            }
+            else
+            {
+                redirectUrl = $"http://localhost:4200/#/ticketManagement?token={token}";
+            }
+
+            return Redirect(redirectUrl);
+        }
+
+        private ClaimsPrincipal GetClaimsPrincipal(string accessToken)
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])),
+                ValidateLifetime = false
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var principal = tokenHandler.ValidateToken(accessToken, tokenValidationParameters, out SecurityToken securityToken);
+
+            return principal;
+        }
+
+
         //[HttpPost]
-        //[Route("login-2FA")]
-        //public async Task<IActionResult> LoginWithOTP([FromQuery] string userName,[FromQuery] string code )
+        //[Route("verify-otp")]
+        //public async Task<IActionResult> VerifyOtp([FromBody] LoginOTPModel model)
         //{
-        //    if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(userName))
+        //    var user = await _userManager.FindByNameAsync(model.Username);
+        //    if (user == null)
         //    {
-        //        return BadRequest("Code and userName are required.");
+        //        return StatusCode(StatusCodes.Status404NotFound,
+        //            new Response { Status = "Error", Message = "User not found!" });
         //    }
 
-        //    var jwt = await _user.LoginUserWithJWTokenAsync(userName, code);
-        //    if (jwt.IsSuccess)
+        //    var result = await _userManager.VerifyTwoFactorTokenAsync(user, "Email", model.OTP);
+        //    if (result)
         //    {
-        //        return Ok(jwt);
+        //        var jwtResponse = await _user.GetJwtTokenAsync(user);
+        //        if (jwtResponse.IsSuccess)
+        //        {
+        //            // Générer l'URL avec le token JWT pour le frontend Angular
+        //            var frontendUrl = $"http://localhost:4200/#/ticket?token={jwtResponse.Response.AccessToken.Token}";
+        //            var message = new Message(new string[] { user.Email! }, "Login Link", frontendUrl);
+        //            _emailService.SendEmail(message);
+
+        //            return Ok(new Response { Status = "Success", Message = "Login link sent to your email." });
+        //        }
+        //        else
+        //        {
+        //            return StatusCode(StatusCodes.Status500InternalServerError,
+        //                new Response { Status = "Error", Message = "Failed to generate JWT token." });
+        //        }
         //    }
-        //    return StatusCode(StatusCodes.Status404NotFound,
-        //        new Response { Status = "Error", Message = $"Invalid Code" });
+
+        //    return StatusCode(StatusCodes.Status400BadRequest,
+        //        new Response { Status = "Error", Message = "Invalid OTP." });
+        //}
+
+        //[HttpGet("LoginWithToken")]
+        //public async Task<IActionResult> LoginWithToken(string token)
+        //{
+        //    if (string.IsNullOrEmpty(token))
+        //    {
+        //        return Unauthorized(new { message = "Token is missing" });
+        //    }
+
+        //    // Redirige vers l'application Angular avec le token dans le fragment de l'URL
+        //    var redirectUrl = $"http://localhost:4200/#/ticket?token={token}";
+        //    return Redirect(redirectUrl);
         //}
 
 
+
         [HttpPost]
-        [Route("login-2FA")]
+        [Route("loginOTP1")]
         public async Task<IActionResult> LoginWithOTP([FromBody] LoginF2AModel loginF2AModel)
         {
             var jwt = await _user.LoginUserWithJWTokenAsync(loginF2AModel.code, loginF2AModel.userName);
