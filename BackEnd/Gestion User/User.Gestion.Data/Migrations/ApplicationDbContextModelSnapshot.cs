@@ -51,14 +51,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "10696b01-e3f3-4f9f-a4d3-5fe3e3a17236",
+                            Id = "4de40741-b7d8-4219-bed8-84956d5045c0",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "99ddfbe5-c93a-49df-95fa-5d76d588a36b",
+                            Id = "1b4ea5cd-0115-4d3a-9ef3-58ed79e3a95d",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -179,6 +179,9 @@ namespace User.Gestion.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -212,6 +215,9 @@ namespace User.Gestion.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ProfileImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");

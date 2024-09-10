@@ -80,245 +80,145 @@ namespace Gestion_User.Controllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
-            var loginOtpResponse = await _user.GetOtpByLoginAsync(loginModel);
+            var user = await _userManager.FindByNameAsync(loginModel.Username);
 
-            if (loginOtpResponse.Response != null)
+            if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
             {
-                var user = loginOtpResponse.Response.User;
+                var authClaims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, user.UserName),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.NameIdentifier, user.Id) // Ajoutez l'ID utilisateur ici
+        };
 
-                // Assurez-vous que le mot de passe est correct avant d'envoyer l'OTP
-                if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
+                var userRoles = await _userManager.GetRolesAsync(user);
+                foreach (var role in userRoles)
                 {
-                    if (user.TwoFactorEnabled)
-                    {
-                        var token = loginOtpResponse.Response.Token;
-                        var message = new Message(new string[] { user.Email! }, "OTP Confirmation", token);
-                        _emailService.SendEmail(message);
-
-                        return StatusCode(StatusCodes.Status200OK,
-                            new Response { IsSuccess = loginOtpResponse.IsSuccess, Message = $"We have sent an OTP to your Email {user.Email}" });
-                    }
-
-                    var authClaims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id) // Ajoutez cette ligne
-
-            };
-
-                    var userRoles = await _userManager.GetRolesAsync(user);
-                    foreach (var role in userRoles)
-                    {
-                        authClaims.Add(new Claim(ClaimTypes.Role, role));
-                    }
-
-                    var jwtToken = GetToken(authClaims);
-
-                    return Ok(new
-                    {
-                        token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
-                        expiration = jwtToken.ValidTo
-                    });
+                    authClaims.Add(new Claim(ClaimTypes.Role, role));
                 }
+
+                var jwtToken = GetToken(authClaims);
+
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
+                    expiration = jwtToken.ValidTo
+                });
             }
 
             return Unauthorized(new { message = "Invalid credentials" });
         }
 
-        [HttpPost]
-        [Route("login-otp")]
-        public async Task<IActionResult> LoginOTP([FromBody] LoginOTPModel model)
+
+
+        //[HttpPost]
+        //[Route("loginOTP")]
+        //public async Task<IActionResult> LoginWithOTP([FromBody] LoginF2AModel loginF2AModel)
+        //{
+        //    var jwt = await _user.LoginUserWithJWTokenAsync(loginF2AModel.code, loginF2AModel.userName);
+        //    if (jwt.IsSuccess)
+        //    {
+        //        return Ok(jwt);
+        //    }
+        //    return StatusCode(StatusCodes.Status404NotFound, new Response { Status = "Success", Message = $"Invalid Code" });
+        //}
+
+        [Authorize]
+        [HttpGet("profile")]
+        public async Task<IActionResult> GetProfile()
         {
-            var user = await _userManager.FindByNameAsync(model.Username);
-            if (user == null)
-            {
-                return StatusCode(StatusCodes.Status404NotFound,
-                    new Response { Status = "Error", Message = "User not found!" });
-            }
-
-            var result = await _userManager.VerifyTwoFactorTokenAsync(user, "Email", model.OTP);
-            if (result)
-            {
-                var jwtResponse = await _user.GetJwtTokenAsync(user);
-                if (jwtResponse.IsSuccess)
-                {
-                    return Ok(jwtResponse.Response);
-                }
-                else
-                {
-                    return StatusCode(StatusCodes.Status500InternalServerError,
-                        new Response { Status = "Error", Message = "Failed to generate JWT token." });
-                }
-            }
-
-            return StatusCode(StatusCodes.Status400BadRequest,
-                new Response { Status = "Error", Message = "Invalid OTP." });
-        }
-
-        [HttpPost]
-        [Route("verify-otp")]
-        public async Task<IActionResult> VerifyOtp([FromBody] LoginOTPModel model)
-        {
-            var user = await _userManager.FindByNameAsync(model.Username);
-            if (user == null)
-            {
-                return StatusCode(StatusCodes.Status404NotFound,
-                    new Response { Status = "Error", Message = "User not found!" });
-            }
-
-            var result = await _userManager.VerifyTwoFactorTokenAsync(user, "Email", model.OTP);
-            if (result)
-            {
-                var jwtResponse = await _user.GetJwtTokenAsync(user);
-                if (jwtResponse.IsSuccess)
-                {
-                    // Obtenir le rôle de l'utilisateur
-                    var userRoles = await _userManager.GetRolesAsync(user);
-                    string redirectUrl;
-
-                    if (userRoles.Contains("Client"))
-                    {
-                        // Rediriger vers /ticket si le rôle est Client
-                        redirectUrl = $"http://localhost:4200/#/ticket?token={jwtResponse.Response.AccessToken.Token}";
-                    }
-                    else
-                    {
-                        // Rediriger vers /ticketManagement pour tous les autres rôles
-                        redirectUrl = $"http://localhost:4200/#/ticketManagement?token={jwtResponse.Response.AccessToken.Token}";
-                    }
-
-                    var message = new Message(new string[] { user.Email! }, "Login Link", redirectUrl);
-                    _emailService.SendEmail(message);
-
-                    return Ok(new Response { Status = "Success", Message = "Login link sent to your email." });
-                }
-                else
-                {
-                    return StatusCode(StatusCodes.Status500InternalServerError,
-                        new Response { Status = "Error", Message = "Failed to generate JWT token." });
-                }
-            }
-
-            return StatusCode(StatusCodes.Status400BadRequest,
-                new Response { Status = "Error", Message = "Invalid OTP." });
-        }
-
-        [HttpGet("LoginWithToken")]
-        public async Task<IActionResult> LoginWithToken(string token)
-        {
-            if (string.IsNullOrEmpty(token))
-            {
-                return Unauthorized(new { message = "Token is missing" });
-            }
-
-            var principal = GetClaimsPrincipal(token);
-            if (principal == null)
-            {
-                return Unauthorized(new { message = "Invalid token" });
-            }
-
-            var userId = principal.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = await _userManager.FindByIdAsync(userId);
 
             if (user == null)
             {
-                return Unauthorized(new { message = "User not found" });
+                return NotFound(new { message = "User not found" });
             }
 
-            var userRoles = await _userManager.GetRolesAsync(user);
-            string redirectUrl;
-
-            if (userRoles.Contains("Client"))
+            var userProfile = new
             {
-                redirectUrl = $"http://localhost:4200/#/ticket?token={token}";
-            }
-            else
-            {
-                redirectUrl = $"http://localhost:4200/#/ticketManagement?token={token}";
-            }
-
-            return Redirect(redirectUrl);
-        }
-
-        private ClaimsPrincipal GetClaimsPrincipal(string accessToken)
-        {
-            var tokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateAudience = false,
-                ValidateIssuer = false,
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])),
-                ValidateLifetime = false
+                user.UserName,
+                user.Email,
+                user.PhoneNumber,
+                user.Address, // Assuming 'Address' exists in ApplicationUser
+                user.ProfileImage,  // Inclure l'image de profil
+                Roles = await _userManager.GetRolesAsync(user) // Correction pour obtenir les rôles
             };
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var principal = tokenHandler.ValidateToken(accessToken, tokenValidationParameters, out SecurityToken securityToken);
+            return Ok(userProfile);
+        }
+        [Authorize]
+        [HttpPut("profile")]
+        public async Task<IActionResult> UpdateProfile([FromForm] UpdateProfileModel model, [FromForm] IFormFile? profileImage)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
 
-            return principal;
+            if (user == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
+
+            user.UserName = model.UserName;
+            user.Email = model.Email;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Address = model.Address;
+
+            // Si une nouvelle image est téléchargée
+            if (profileImage != null && profileImage.Length > 0)
+            {
+                var imagePath = Path.Combine("wwwroot/images/profiles", $"{userId}_{profileImage.FileName}");
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    await profileImage.CopyToAsync(stream);
+                }
+                user.ProfileImage = $"/images/profiles/{userId}_{profileImage.FileName}";
+            }
+
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return Ok(new { message = "Profile updated successfully" });
+            }
+
+            return BadRequest(new { message = "Profile update failed" });
         }
 
 
-        //[HttpPost]
-        //[Route("verify-otp")]
-        //public async Task<IActionResult> VerifyOtp([FromBody] LoginOTPModel model)
-        //{
-        //    var user = await _userManager.FindByNameAsync(model.Username);
-        //    if (user == null)
-        //    {
-        //        return StatusCode(StatusCodes.Status404NotFound,
-        //            new Response { Status = "Error", Message = "User not found!" });
-        //    }
-
-        //    var result = await _userManager.VerifyTwoFactorTokenAsync(user, "Email", model.OTP);
-        //    if (result)
-        //    {
-        //        var jwtResponse = await _user.GetJwtTokenAsync(user);
-        //        if (jwtResponse.IsSuccess)
-        //        {
-        //            // Générer l'URL avec le token JWT pour le frontend Angular
-        //            var frontendUrl = $"http://localhost:4200/#/ticket?token={jwtResponse.Response.AccessToken.Token}";
-        //            var message = new Message(new string[] { user.Email! }, "Login Link", frontendUrl);
-        //            _emailService.SendEmail(message);
-
-        //            return Ok(new Response { Status = "Success", Message = "Login link sent to your email." });
-        //        }
-        //        else
-        //        {
-        //            return StatusCode(StatusCodes.Status500InternalServerError,
-        //                new Response { Status = "Error", Message = "Failed to generate JWT token." });
-        //        }
-        //    }
-
-        //    return StatusCode(StatusCodes.Status400BadRequest,
-        //        new Response { Status = "Error", Message = "Invalid OTP." });
-        //}
-
-        //[HttpGet("LoginWithToken")]
-        //public async Task<IActionResult> LoginWithToken(string token)
-        //{
-        //    if (string.IsNullOrEmpty(token))
-        //    {
-        //        return Unauthorized(new { message = "Token is missing" });
-        //    }
-
-        //    // Redirige vers l'application Angular avec le token dans le fragment de l'URL
-        //    var redirectUrl = $"http://localhost:4200/#/ticket?token={token}";
-        //    return Redirect(redirectUrl);
-        //}
-
-
-
-        [HttpPost]
-        [Route("loginOTP1")]
-        public async Task<IActionResult> LoginWithOTP([FromBody] LoginF2AModel loginF2AModel)
+        [Authorize]
+        [HttpPut("profile/upload-image")]
+        public async Task<IActionResult> UploadProfileImage([FromForm] IFormFile profileImage)
         {
-            var jwt = await _user.LoginUserWithJWTokenAsync(loginF2AModel.code, loginF2AModel.userName);
-            if (jwt.IsSuccess)
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
             {
-                return Ok(jwt);
+                return NotFound(new { message = "User not found" });
             }
-            return StatusCode(StatusCodes.Status404NotFound, new Response { Status = "Success", Message = $"Invalid Code" });
+
+            if (profileImage == null || profileImage.Length == 0)
+            {
+                return BadRequest(new { message = "No image uploaded" });
+            }
+
+            // Sauvegarder l'image sur le serveur
+            var imagePath = Path.Combine("wwwroot/images/profiles", $"{userId}_{profileImage.FileName}");
+            using (var stream = new FileStream(imagePath, FileMode.Create))
+            {
+                await profileImage.CopyToAsync(stream);
+            }
+
+            // Mettre à jour le chemin de l'image de profil dans l'utilisateur
+            user.ProfileImage = $"/images/profiles/{userId}_{profileImage.FileName}";
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return Ok(new { message = "Profile image uploaded successfully", imagePath = user.ProfileImage });
+            }
+
+            return BadRequest(new { message = "Failed to upload profile image" });
         }
 
 
@@ -350,38 +250,17 @@ namespace Gestion_User.Controllers
             return token;
         }
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[Route("forgot-password")]
-
-        //public async Task<IActionResult> ForgotPassword(string email)
-        //{
-        //    var user = await _userManager.FindByEmailAsync(email);
-        //    if (user != null)
-        //    {
-        //        var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-        //        var forgotPasswordLink = Url.Action(nameof(ResetPassword), "Authentication", new { token, email = user.Email }, Request.Scheme);
-        //        var message = new Message(new string[] { user.Email! }, "Forgot Password link", forgotPasswordLink!);
-        //        _emailService.SendEmail(message);
-        //        return StatusCode(StatusCodes.Status200OK,
-        //            new Response { Status = "Success", Message = $"Password changed request is sent on Email {user.Email}. Please open your email" });
-
-        //    }
-        //    return StatusCode(StatusCodes.Status400BadRequest,
-        //        new Response { Status = "Error ", Message = $"Could not send link to email , please try again." });
-
-        //}
-
         [HttpPost]
         [AllowAnonymous]
         [Route("forgot-password")]
+
         public async Task<IActionResult> ForgotPassword(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
             if (user != null)
             {
                 var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var forgotPasswordLink = $"http://localhost:4200/#/resetPassword?token={token}&email={user.Email}";
+                var forgotPasswordLink = Url.Action(nameof(ResetPassword), "Authentication", new { token, email = user.Email }, Request.Scheme);
                 var message = new Message(new string[] { user.Email! }, "Forgot Password link", forgotPasswordLink!);
                 _emailService.SendEmail(message);
                 return StatusCode(StatusCodes.Status200OK,
@@ -390,8 +269,8 @@ namespace Gestion_User.Controllers
             }
             return StatusCode(StatusCodes.Status400BadRequest,
                 new Response { Status = "Error ", Message = $"Could not send link to email , please try again." });
-        }
 
+        }
 
 
         [HttpGet("reset-password")]
@@ -407,6 +286,7 @@ namespace Gestion_User.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("reset-password")]
+
         public async Task<IActionResult> ResetPassword(ResetPassword resetPassword)
         {
             var user = await _userManager.FindByEmailAsync(resetPassword.Email);
@@ -418,8 +298,6 @@ namespace Gestion_User.Controllers
                     foreach (var error in resetPassResult.Errors)
                     {
                         ModelState.AddModelError(error.Code, error.Description);
-                        // Log the errors for debugging
-                        Console.WriteLine($"Error Code: {error.Code}, Description: {error.Description}");
                     }
                     return Ok(ModelState);
                 }
@@ -427,34 +305,8 @@ namespace Gestion_User.Controllers
                     new Response { Status = "Success", Message = $"Password has been changed" });
             }
             return StatusCode(StatusCodes.Status400BadRequest,
-                new Response { Status = "Error", Message = $"Could not send link to email, please try again." });
+                new Response { Status = "Error", Message = $"Could not send link to email , please try again ." });
         }
-
-
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[Route("reset-password")]
-
-        //public async Task<IActionResult> ResetPassword(ResetPassword resetPassword)
-        //{
-        //    var user = await _userManager.FindByEmailAsync(resetPassword.Email);
-        //    if (user != null)
-        //    {
-        //        var resetPassResult = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Password);
-        //        if (!resetPassResult.Succeeded)
-        //        {
-        //            foreach (var error in resetPassResult.Errors)
-        //            {
-        //                ModelState.AddModelError(error.Code, error.Description);
-        //            }
-        //            return Ok(ModelState);
-        //        }
-        //        return StatusCode(StatusCodes.Status200OK,
-        //            new Response { Status = "Success", Message = $"Password has been changed" });
-        //    }
-        //    return StatusCode(StatusCodes.Status400BadRequest,
-        //        new Response { Status = "Error", Message = $"Could not send link to email , please try again ." });
-        //}
 
 
 
@@ -477,12 +329,5 @@ namespace Gestion_User.Controllers
                 UserName = user.UserName
             });
         }
-
-
-
-
-
     }
-
-
 }

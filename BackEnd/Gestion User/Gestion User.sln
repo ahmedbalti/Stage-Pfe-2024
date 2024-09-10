@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gestion User", "Gestion Use
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User.Gestion.Service", "User.Gestion.Service\User.Gestion.Service.csproj", "{E608540F-F11C-4767-902A-B18C0F8CD944}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Gestion.Data", "User.Gestion.Data\User.Gestion.Data.csproj", "{CF2F3478-3A9C-489B-9ABD-53E41D387D57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User.Gestion.Data", "User.Gestion.Data\User.Gestion.Data.csproj", "{CF2F3478-3A9C-489B-9ABD-53E41D387D57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

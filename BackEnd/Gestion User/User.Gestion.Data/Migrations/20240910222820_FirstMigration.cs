@@ -28,6 +28,8 @@ namespace User.Gestion.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProfileImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RefreshTokenExpiry = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -321,12 +323,12 @@ namespace User.Gestion.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "10696b01-e3f3-4f9f-a4d3-5fe3e3a17236", "1", "User", "User" });
+                values: new object[] { "1b4ea5cd-0115-4d3a-9ef3-58ed79e3a95d", "2", "Client", "Client" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "99ddfbe5-c93a-49df-95fa-5d76d588a36b", "2", "Client", "Client" });
+                values: new object[] { "4de40741-b7d8-4219-bed8-84956d5045c0", "1", "User", "User" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

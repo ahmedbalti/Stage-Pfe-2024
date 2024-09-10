@@ -5,6 +5,10 @@ namespace User.Gestion.Data.Models
 {
     public class ApplicationUser: IdentityUser
     {
+
+        public string? Address { get; set; }  // Ajoutez cette ligne pour l'adresse
+        public string? ProfileImage { get; set; }  // Propriété pour l'image de profil
+
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenExpiry { get; set; }
 

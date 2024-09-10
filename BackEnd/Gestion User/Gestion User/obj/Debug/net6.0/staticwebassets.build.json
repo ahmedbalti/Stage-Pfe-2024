@@ -1,11 +1,58 @@
 {
   "Version": 1,
-  "Hash": "2vuw7fysCvYYlep6tW4ADlbAn0aTLOFIjtteKS5xFxI=",
+  "Hash": "kFLGVHLrd1AhyM/AUC4BCmecjel7LQx1r4Cq7KJss+w=",
   "Source": "Gestion User",
   "BasePath": "_content/Gestion User",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Gestion User\\wwwroot",
+      "Source": "Gestion User",
+      "ContentRoot": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\",
+      "BasePath": "_content/Gestion User",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\a06b64d5-0090-4303-9bc6-935587022cf1_32087143_791715701022973_2903359817210920960_n.jpg",
+      "SourceId": "Gestion User",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\",
+      "BasePath": "_content/Gestion User",
+      "RelativePath": "images/profiles/a06b64d5-0090-4303-9bc6-935587022cf1_32087143_791715701022973_2903359817210920960_n.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\profiles\\a06b64d5-0090-4303-9bc6-935587022cf1_32087143_791715701022973_2903359817210920960_n.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\a06b64d5-0090-4303-9bc6-935587022cf1_IMG-20231015-WA0014.jpg",
+      "SourceId": "Gestion User",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\",
+      "BasePath": "_content/Gestion User",
+      "RelativePath": "images/profiles/a06b64d5-0090-4303-9bc6-935587022cf1_IMG-20231015-WA0014.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\profiles\\a06b64d5-0090-4303-9bc6-935587022cf1_IMG-20231015-WA0014.jpg"
+    }
+  ]
 }
