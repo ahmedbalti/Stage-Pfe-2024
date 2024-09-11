@@ -174,6 +174,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles();  // Permet de servir des fichiers statiques comme les images.
+
+
 app.UseHttpsRedirection();
 //app.UseCors("AllowOrigin");
 
