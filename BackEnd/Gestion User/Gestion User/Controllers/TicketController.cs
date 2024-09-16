@@ -161,11 +161,25 @@ namespace Gestion_User.Controllers
                 return BadRequest("Invalid status value.");
             }
 
+            var ticket = await _ticketService.GetTicketByIdAsync(ticketId);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
             var success = await _ticketService.UpdateTicketStatus(ticketId, statut);
             if (!success)
             {
                 return NotFound();
             }
+
+            // Envoi de l'email au propriétaire du ticket pour l'informer du changement de statut
+            var emailMessage = new Message(
+                new string[] { ticket.Owner.Email }, // Remplacez `Owner.Email` par le champ email correct
+                "Mise à jour du statut de votre ticket",
+                $"Votre ticket avec le titre '{ticket.Titre}' a changé de statut en {statut}."
+            );
+            _emailService.SendEmail(emailMessage);
 
             return NoContent();
         }

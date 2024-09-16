@@ -1,0 +1,57 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\bin\\Release\\net6.0\\87ce83b1-fdb6-42fc-a11e-58fc277f4e79\\obj\\Release\\net6.0/staticwebassets\\msbuild.Gestion User.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\bin\\Release\\net6.0\\87ce83b1-fdb6-42fc-a11e-58fc277f4e79\\obj\\Release\\net6.0/staticwebassets\\msbuild.build.Gestion User.props",
+      "PackagePath": "build\\Gestion User.props"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\bin\\Release\\net6.0\\87ce83b1-fdb6-42fc-a11e-58fc277f4e79\\obj\\Release\\net6.0/staticwebassets\\msbuild.buildMultiTargeting.Gestion User.props",
+      "PackagePath": "buildMultiTargeting\\Gestion User.props"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\bin\\Release\\net6.0\\87ce83b1-fdb6-42fc-a11e-58fc277f4e79\\obj\\Release\\net6.0/staticwebassets\\msbuild.buildTransitive.Gestion User.props",
+      "PackagePath": "buildTransitive\\Gestion User.props"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\45cc0213-32f3-4b35-8823-d64ba9fcb35f_IMG-20231015-WA0014.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\45cc0213-32f3-4b35-8823-d64ba9fcb35f_IMG-20231015-WA0014.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\45cc0213-32f3-4b35-8823-d64ba9fcb35f_ahmed.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\45cc0213-32f3-4b35-8823-d64ba9fcb35f_ahmed.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\45cc0213-32f3-4b35-8823-d64ba9fcb35f_ahmed1.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\45cc0213-32f3-4b35-8823-d64ba9fcb35f_ahmed1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\45cc0213-32f3-4b35-8823-d64ba9fcb35f_hamza.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\45cc0213-32f3-4b35-8823-d64ba9fcb35f_hamza.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\a06b64d5-0090-4303-9bc6-935587022cf1_32087143_791715701022973_2903359817210920960_n.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\a06b64d5-0090-4303-9bc6-935587022cf1_32087143_791715701022973_2903359817210920960_n.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\a06b64d5-0090-4303-9bc6-935587022cf1_IMG-20231015-WA0014.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\a06b64d5-0090-4303-9bc6-935587022cf1_IMG-20231015-WA0014.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\a6e7cfc8-3ba6-4103-8d5b-4234198819a9_ahmed.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\a6e7cfc8-3ba6-4103-8d5b-4234198819a9_ahmed.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\a6e7cfc8-3ba6-4103-8d5b-4234198819a9_anis.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\a6e7cfc8-3ba6-4103-8d5b-4234198819a9_anis.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\a6e7cfc8-3ba6-4103-8d5b-4234198819a9_hamza.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\a6e7cfc8-3ba6-4103-8d5b-4234198819a9_hamza.jpg"
+    }
+  ],
+  "ElementsToRemove": []
+}

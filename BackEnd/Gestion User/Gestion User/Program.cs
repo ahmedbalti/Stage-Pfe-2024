@@ -1,4 +1,6 @@
+using BenchmarkDotNet.Running;
 using Gestion_User.Models;
+using Gestion_User.Tests;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -173,6 +175,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+var summary = BenchmarkRunner.Run<TicketBenchmark>();
+
 
 app.UseStaticFiles();  // Permet de servir des fichiers statiques comme les images.
 

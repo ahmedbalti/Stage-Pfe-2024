@@ -1,0 +1,16 @@
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\bin\Release\net6.0\User.Gestion.Service.deps.json
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\bin\Release\net6.0\User.Gestion.Service.runtimeconfig.json
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\bin\Release\net6.0\User.Gestion.Service.dll
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\bin\Release\net6.0\User.Gestion.Service.pdb
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\User.Gestion.Service.csproj.AssemblyReference.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\User.Gestion.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\User.Gestion.Service.AssemblyInfoInputs.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\User.Gestion.Service.AssemblyInfo.cs
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\User.Gestion.Service.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\User.Gestion.Service.sourcelink.json
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\User.Ges.D06299EB.Up2Date
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\User.Gestion.Service.dll
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\refint\User.Gestion.Service.dll
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\User.Gestion.Service.pdb
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\User.Gestion.Service.genruntimeconfig.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Release\net6.0\bcaf1738-7573-4fc0-8416-718670d9f72d\obj\Release\net6.0\ref\User.Gestion.Service.dll

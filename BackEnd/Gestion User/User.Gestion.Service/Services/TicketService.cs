@@ -16,11 +16,30 @@ namespace User.Gestion.Service.Services
             _context = context;
         }
 
+        //public async Task<Ticket> AddTicketAsync(Ticket ticket)
+        //{
+        //    if (ticket == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(ticket));
+        //    }
+
+        //    _context.Tickets.Add(ticket);
+        //    await _context.SaveChangesAsync();
+        //    return ticket;
+        //}
+
+
         public async Task<Ticket> AddTicketAsync(Ticket ticket)
         {
             if (ticket == null)
             {
                 throw new ArgumentNullException(nameof(ticket));
+            }
+
+            // Vérifiez que l'ID du propriétaire est bien défini
+            if (string.IsNullOrEmpty(ticket.OwnerId))
+            {
+                throw new InvalidOperationException("OwnerId must be set.");
             }
 
             _context.Tickets.Add(ticket);
@@ -33,17 +52,32 @@ namespace User.Gestion.Service.Services
             return await _context.Tickets.Where(t => t.OwnerId == userId).ToListAsync();
         }
 
+        //public async Task<Ticket> GetTicketByIdAsync(Guid id)
+        //{
+        //    var ticket = await _context.Tickets
+        //        .Include(t => t.Owner) // Inclure le propriétaire du ticket
+        //        .FirstOrDefaultAsync(t => t.IdTicket == id);
+        //    if (ticket == null)
+        //    {
+        //        throw new NullReferenceException("Ticket not found");
+        //    }
+        //    return ticket;
+        //}
+
         public async Task<Ticket> GetTicketByIdAsync(Guid id)
         {
             var ticket = await _context.Tickets
                 .Include(t => t.Owner) // Inclure le propriétaire du ticket
                 .FirstOrDefaultAsync(t => t.IdTicket == id);
+
             if (ticket == null)
             {
                 throw new NullReferenceException("Ticket not found");
             }
+
             return ticket;
         }
+
 
         public async Task<Ticket> UpdateTicketAsync(Guid id, Ticket ticket)
         {
