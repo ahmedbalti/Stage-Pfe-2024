@@ -13,7 +13,7 @@ jobs:
   - task: UseDotNet@2
     inputs:
       packageType: 'sdk'
-      version: '6.0.1'
+      version: '6.x'
       installationPath: $(Agent.ToolsDirectory)/dotnet
 
   - script: |
