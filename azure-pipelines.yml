@@ -2,13 +2,13 @@ trigger:
 - Gestion_user_front
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'Default'  # Pool avec agent privé (self-hosted)
 
 jobs:
 - job: Backend
   displayName: 'Build .NET 6 Backend'
   pool:
-    vmImage: 'windows-latest'
+    name: 'Default'  # Pool avec agent privé (self-hosted)
   steps:
   - task: UseDotNet@2
     inputs:
@@ -31,7 +31,7 @@ jobs:
 - job: Frontend
   displayName: 'Build Angular 16 Frontend'
   pool:
-    vmImage: 'ubuntu-latest'
+    name: 'Default'  # Pool avec agent privé (self-hosted)
   steps:
   - task: NodeTool@0
     inputs:
