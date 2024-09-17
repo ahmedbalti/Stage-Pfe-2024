@@ -1,0 +1,51 @@
+trigger:
+- Gestion_user_front
+
+pool:
+  name: 'Default'  # Pool avec agent privé (self-hosted)
+
+jobs:
+- job: Backend
+  displayName: 'Build .NET 6 Backend'
+  pool:
+    name: 'Default'  # Pool avec agent privé (self-hosted)
+  steps:
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '6.x'
+      installationPath: $(Agent.ToolsDirectory)/dotnet
+
+  - script: |
+      cd <C:/Users/Ahmed/Desktop/Stage PFE 2024/Projet .net/BackEnd/Gestion User/Gestion User.sln>  # Remplace par le chemin vers ton projet/sln
+      dotnet restore
+      dotnet build --configuration Release
+      dotnet test --configuration Release
+    displayName: 'Build and Test .NET Backend'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: 'dotnet-backend'
+      publishLocation: 'Container'
+
+- job: Frontend
+  displayName: 'Build Angular 16 Frontend'
+  pool:
+    name: 'Default'  # Pool avec agent privé (self-hosted)
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18.x'
+      checkLatest: true
+
+  - script: |
+      npm install
+      npm run build --prod
+    displayName: 'Install and Build Angular'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: 'dist'
+      artifactName: 'angular-frontend'
+      publishLocation: 'Container'
