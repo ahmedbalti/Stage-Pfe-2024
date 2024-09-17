@@ -1,5 +1,5 @@
 trigger:
-- main
+- Gestion_user_front
 
 pool:
   vmImage: 'ubuntu-latest'
