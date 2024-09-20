@@ -22,6 +22,6 @@ namespace User.Gestion.Data.Models
 
         public ICollection<Opportunity> Opportunities { get; set; }
 
-
+        public ICollection<Feedback> Feedbacks { get; set; }
     }
 }

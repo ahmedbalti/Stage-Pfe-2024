@@ -22,6 +22,7 @@ namespace User.Gestion.Data.Models
         public DbSet<DevisHabitation> DevisHabitation { get; set; }
         public DbSet<DevisVie> DevisVie { get; set; }
         public DbSet<TicketResponse> TicketResponses { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -89,6 +90,14 @@ namespace User.Gestion.Data.Models
             builder.Entity<Opportunity>()
                 .Property(o => o.PrimeAnnuelle)
                 .HasColumnType("decimal(18,2)");
+
+
+            builder.Entity<Feedback>()
+               .HasOne(f => f.User)
+               .WithMany(u => u.Feedbacks)
+               .HasForeignKey(f => f.UserId)
+               .IsRequired();
+
 
             SeedRoles(builder);
         }

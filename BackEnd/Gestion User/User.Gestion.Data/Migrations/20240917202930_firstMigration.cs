@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace User.Gestion.Data.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class firstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -219,6 +219,27 @@ namespace User.Gestion.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Feedbacks",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Feedbacks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Feedbacks_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sinistres",
                 columns: table => new
                 {
@@ -323,12 +344,12 @@ namespace User.Gestion.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1b4ea5cd-0115-4d3a-9ef3-58ed79e3a95d", "2", "Client", "Client" });
+                values: new object[] { "10a79217-9e03-44e3-94b5-e3762e5b1c08", "1", "User", "User" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "4de40741-b7d8-4219-bed8-84956d5045c0", "1", "User", "User" });
+                values: new object[] { "71e24219-25d1-424c-a130-b27b90011b6f", "2", "Client", "Client" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -380,6 +401,11 @@ namespace User.Gestion.Data.Migrations
                 column: "OwnerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Feedbacks_UserId",
+                table: "Feedbacks",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Opportunities_DevisId",
                 table: "Opportunities",
                 column: "DevisId");
@@ -424,6 +450,9 @@ namespace User.Gestion.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Contracts");
+
+            migrationBuilder.DropTable(
+                name: "Feedbacks");
 
             migrationBuilder.DropTable(
                 name: "Opportunities");

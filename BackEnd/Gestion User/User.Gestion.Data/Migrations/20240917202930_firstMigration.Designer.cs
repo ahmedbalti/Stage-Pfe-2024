@@ -12,8 +12,8 @@ using User.Gestion.Data.Models;
 namespace User.Gestion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240910222820_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20240917202930_firstMigration")]
+    partial class firstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,14 +53,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4de40741-b7d8-4219-bed8-84956d5045c0",
+                            Id = "10a79217-9e03-44e3-94b5-e3762e5b1c08",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "1b4ea5cd-0115-4d3a-9ef3-58ed79e3a95d",
+                            Id = "71e24219-25d1-424c-a130-b27b90011b6f",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -311,6 +311,32 @@ namespace User.Gestion.Data.Migrations
                     b.ToTable("Devis");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Devis");
+                });
+
+            modelBuilder.Entity("User.Gestion.Data.Models.Feedback", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Feedbacks");
                 });
 
             modelBuilder.Entity("User.Gestion.Data.Models.Opportunity", b =>
@@ -616,6 +642,17 @@ namespace User.Gestion.Data.Migrations
                     b.Navigation("Owner");
                 });
 
+            modelBuilder.Entity("User.Gestion.Data.Models.Feedback", b =>
+                {
+                    b.HasOne("User.Gestion.Data.Models.ApplicationUser", "User")
+                        .WithMany("Feedbacks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("User.Gestion.Data.Models.Opportunity", b =>
                 {
                     b.HasOne("User.Gestion.Data.Models.Devis", "Devis")
@@ -673,6 +710,8 @@ namespace User.Gestion.Data.Migrations
                     b.Navigation("Contracts");
 
                     b.Navigation("Devis");
+
+                    b.Navigation("Feedbacks");
 
                     b.Navigation("Opportunities");
 

@@ -64,6 +64,7 @@ builder.Services.AddScoped<IDevisService, DevisService>();
 
 builder.Services.AddScoped<IOpportunityService, OpportunityService>();
 
+builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 
 
 //builder.Services.AddControllers()
