@@ -40,7 +40,7 @@ namespace Gestion_User.Controllers
             return Ok(opportunities);
         }
 
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Client")]
 
         [HttpPost("approve/{id}")]
         public async Task<ActionResult> ApproveOpportunity(int id)

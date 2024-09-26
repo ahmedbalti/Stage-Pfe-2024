@@ -30,6 +30,7 @@ namespace User.Gestion.Data.Models
         [Required]
         public string OwnerId { get; set; } // Identifiant de l'utilisateur propriétaire du ticket
 
+        [JsonIgnore] // Ignorer la propriété Owner pour éviter les cycles
         [ForeignKey("OwnerId")]
         public ApplicationUser Owner { get; set; } // Propriété de navigation vers l'utilisateur propriétaire
 

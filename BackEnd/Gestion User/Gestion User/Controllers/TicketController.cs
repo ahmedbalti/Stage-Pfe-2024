@@ -116,8 +116,8 @@ namespace Gestion_User.Controllers
             existingTicket.Titre = ticketDTO.Titre;
             existingTicket.Description = ticketDTO.Description;
             existingTicket.Priority = ticketDTO.Priority;
-            existingTicket.Statut = ticketDTO.Statut;
-            existingTicket.ResolutionDate = ticketDTO.ResolutionDate;
+          //  existingTicket.Statut = ticketDTO.Statut;
+           // existingTicket.ResolutionDate = ticketDTO.ResolutionDate;
 
             var updatedTicket = await _ticketService.UpdateTicketAsync(id, existingTicket);
             return Ok(updatedTicket);
