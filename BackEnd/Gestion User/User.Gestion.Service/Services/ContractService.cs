@@ -47,10 +47,30 @@ namespace User.Gestion.Service.Services
         {
             return await _context.Contracts.FindAsync(id);
         }
+        //public async Task<IEnumerable<Contract>> GetAllContractsAsync()
+        //{
+        //    return await _context.Contracts.ToListAsync();
+        //}
+
         public async Task<IEnumerable<Contract>> GetAllContractsAsync()
         {
-            return await _context.Contracts.ToListAsync();
+            return await _context.Contracts
+                .Include(c => c.ApplicationUser)  // Include the User (Client)
+                .Include(c => c.Client)  // Include the client using the ClientId
+                .Select(c => new Contract
+                {
+                    Id = c.Id,
+                    PolicyNumber = c.PolicyNumber,
+                    StartDate = c.StartDate,
+                    EndDate = c.EndDate,
+                    IsActive = c.IsActive,
+                    UserId = c.UserId,
+                    ClientId = c.ClientId,
+                    ClientName = c.Client.UserName  // Use the client's username
+                })
+                .ToListAsync();
         }
+
 
         public async Task<bool> RenewContractAsync(int contractId)
         {

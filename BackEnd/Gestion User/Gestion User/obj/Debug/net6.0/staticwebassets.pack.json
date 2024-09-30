@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\2179a727-ac34-48bc-abf1-5c38ccb60110_anis.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\2179a727-ac34-48bc-abf1-5c38ccb60110_anis.jpg"
+    },
+    {
       "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\45cc0213-32f3-4b35-8823-d64ba9fcb35f_IMG-20231015-WA0014.jpg",
       "PackagePath": "staticwebassets\\images\\profiles\\45cc0213-32f3-4b35-8823-d64ba9fcb35f_IMG-20231015-WA0014.jpg"
     },
@@ -23,6 +27,10 @@
     {
       "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\622d3774-f086-4dcb-a367-658a1216aca6_ahmed1.jpg",
       "PackagePath": "staticwebassets\\images\\profiles\\622d3774-f086-4dcb-a367-658a1216aca6_ahmed1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\6e991c28-760c-44ab-95cd-e48153d2353d_ahmed1.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\6e991c28-760c-44ab-95cd-e48153d2353d_ahmed1.jpg"
     },
     {
       "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\6e991c28-760c-44ab-95cd-e48153d2353d_hamza.jpg",

@@ -12,6 +12,8 @@ namespace User.Gestion.Data.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool IsActive { get; set; }
+        public string ClientId { get; set; }  // Add ClientId property
+
     }
 
 }

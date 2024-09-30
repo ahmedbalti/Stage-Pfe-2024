@@ -40,7 +40,18 @@ namespace User.Gestion.Data.Models
             builder.Entity<Contract>()
                 .HasOne(c => c.ApplicationUser)
                 .WithMany(u => u.Contracts)
-                .HasForeignKey(c => c.UserId);
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.NoAction); // Prevent cascading delete
+
+
+            builder.Entity<Contract>()
+                .HasOne(c => c.Client)
+                .WithMany()
+                .HasForeignKey(c => c.ClientId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.NoAction); // Prevent cascading delete
+
+
 
             builder.Entity<Sinistre>()
                 .HasOne(s => s.User)

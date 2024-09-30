@@ -25,10 +25,14 @@ namespace Gestion_User.Controllers
     public class ContractsController : ControllerBase
     {
         private readonly IContractService _contractService;
+        private readonly IUserManagement _userManagement;
 
-        public ContractsController(IContractService contractService)
+
+        public ContractsController(IContractService contractService, IUserManagement userManagement)
         {
             _contractService = contractService;
+            _userManagement = userManagement;
+
         }
 
         private string GetUserId()
@@ -70,7 +74,6 @@ namespace Gestion_User.Controllers
             }
             return Ok("Contract renewed successfully.");
         }
-
         [Authorize(Roles = "User")]
         [HttpPost]
         public async Task<IActionResult> AddContract([FromBody] ContractCreateDto newContractDto)
@@ -82,13 +85,19 @@ namespace Gestion_User.Controllers
                 return Unauthorized("User ID not found or empty.");
             }
 
+            if (string.IsNullOrEmpty(newContractDto.ClientId))
+            {
+                return BadRequest("Client ID is required.");
+            }
+
             var newContract = new Contract
             {
                 PolicyNumber = newContractDto.PolicyNumber,
                 StartDate = newContractDto.StartDate,
                 EndDate = newContractDto.EndDate,
                 IsActive = newContractDto.IsActive,
-                UserId = userId  // Set the UserId from the token
+                UserId = userId,           // Set the UserId from the token
+                ClientId = newContractDto.ClientId  // Set the ClientId from the DTO
             };
 
             var addedContract = await _contractService.AddContractAsync(newContract);
@@ -102,8 +111,7 @@ namespace Gestion_User.Controllers
         }
 
 
-
-
+        [Authorize(Roles = "User")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateContract(int id, [FromBody] ContractCreateDto updatedContractDto)
         {
@@ -116,9 +124,9 @@ namespace Gestion_User.Controllers
 
             var existingContract = await _contractService.GetContractByIdAsync(id);
 
-            if (existingContract == null || existingContract.UserId != userId)
+            if (existingContract == null)
             {
-                return NotFound("Contract not found or user not authorized.");
+                return NotFound("Contract not found.");
             }
 
             // Update contract properties
@@ -126,6 +134,20 @@ namespace Gestion_User.Controllers
             existingContract.StartDate = updatedContractDto.StartDate;
             existingContract.EndDate = updatedContractDto.EndDate;
             existingContract.IsActive = updatedContractDto.IsActive;
+
+            // Update the ClientId if it's provided in the request
+            if (!string.IsNullOrEmpty(updatedContractDto.ClientId))
+            {
+                var clientExists = await _userManagement.GetClientsAsync();
+                if (clientExists.Any(c => c.Id == updatedContractDto.ClientId))
+                {
+                    existingContract.ClientId = updatedContractDto.ClientId;
+                }
+                else
+                {
+                    return BadRequest("Invalid Client ID.");
+                }
+            }
 
             var success = await _contractService.UpdateContractAsync(existingContract);
 
@@ -138,6 +160,7 @@ namespace Gestion_User.Controllers
         }
 
 
+
         [Authorize(Roles = "User")]
         [HttpGet("all")]
         public async Task<IActionResult> GetAllContracts()
@@ -146,6 +169,14 @@ namespace Gestion_User.Controllers
             return Ok(contracts);
         }
 
+        [Authorize(Roles = "User")]
+        [HttpGet("clients")]
+        public async Task<IActionResult> GetClients()
+        {
+            var clients = await _userManagement.GetClientsAsync();
+            var clientList = clients.Select(c => new { c.Id, c.UserName }).ToList();
+            return Ok(clientList); // This should now work correctly
+        }
 
         [HttpGet("pdf/all")]
         public async Task<IActionResult> GenerateAllContractsPdf()
@@ -217,6 +248,9 @@ namespace Gestion_User.Controllers
             }
         }
     }
+
+  
+
 
     public class PageBorderEvent : IEventHandler
     {

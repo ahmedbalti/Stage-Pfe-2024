@@ -306,6 +306,13 @@ namespace User.Gestion.Service.Services
             return response;
         }
 
+        public async Task<List<ApplicationUser>> GetClientsAsync()
+        {
+            var clients = await _userManager.GetUsersInRoleAsync("Client");
+            return clients.ToList();
+        }
+
+
         #region PrivateMethods
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {

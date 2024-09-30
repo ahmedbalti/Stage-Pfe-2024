@@ -12,8 +12,8 @@ using User.Gestion.Data.Models;
 namespace User.Gestion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240917202930_firstMigration")]
-    partial class firstMigration
+    [Migration("20240929141039_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,14 +53,14 @@ namespace User.Gestion.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "10a79217-9e03-44e3-94b5-e3762e5b1c08",
+                            Id = "10ae8185-645d-436a-99cc-303af836c8b7",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "71e24219-25d1-424c-a130-b27b90011b6f",
+                            Id = "6e86ef4e-869a-4048-961e-6d2d9415340f",
                             ConcurrencyStamp = "2",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -258,6 +258,10 @@ namespace User.Gestion.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("ClientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -276,6 +280,8 @@ namespace User.Gestion.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("UserId");
 
@@ -622,13 +628,21 @@ namespace User.Gestion.Data.Migrations
 
             modelBuilder.Entity("User.Gestion.Data.Models.Contract", b =>
                 {
+                    b.HasOne("User.Gestion.Data.Models.ApplicationUser", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("User.Gestion.Data.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Contracts")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("ApplicationUser");
+
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("User.Gestion.Data.Models.Devis", b =>

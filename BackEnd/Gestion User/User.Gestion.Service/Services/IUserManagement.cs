@@ -24,6 +24,7 @@ namespace User.Gestion.Service.Services
         Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(string otp, string userName);
         Task<ApiResponse<LoginResponse>> RenewAccessTokenAsync(LoginResponse tokens);
 
+        Task<List<ApplicationUser>> GetClientsAsync();
 
     }
 }
