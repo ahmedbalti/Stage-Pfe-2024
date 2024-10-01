@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\images\\profiles\\a6e7cfc8-3ba6-4103-8d5b-4234198819a9_hamza.jpg"
     },
     {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\wwwroot\\images\\profiles\\c6d42fff-ae84-40b5-be88-3e4feb0648c9_anis.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\c6d42fff-ae84-40b5-be88-3e4feb0648c9_anis.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Gestion User.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

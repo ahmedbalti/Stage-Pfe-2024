@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8jvb2Zhem8zBM8lYTcuQYKr8eSQCWBBLVRGnxTIPGT1FRjKcUFh6OuL4amx4DazSDFBUMl69G/A1Nt3G2LDeUQ==",
+  "dgSpecHash": "gdosLXKAo4hwWDRPI1CfNJYq6oj+hy00pKVWwtXIgyk8J7Pizl8bDBoqD3mvYIsXyMIi8FhXikCY6vZC4SuOLQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Service\\User.Gestion.Service.csproj",
   "expectedPackageFiles": [
@@ -86,6 +86,10 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\serilog\\4.0.2\\serilog.4.0.2.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\serilog.extensions.logging\\8.0.0\\serilog.extensions.logging.8.0.0.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\serilog.sinks.console\\6.0.0\\serilog.sinks.console.6.0.0.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\serilog.sinks.file\\6.0.0\\serilog.sinks.file.6.0.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

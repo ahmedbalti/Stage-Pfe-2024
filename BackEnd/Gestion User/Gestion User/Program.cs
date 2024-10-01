@@ -10,6 +10,8 @@ using System.Text;
 using User.Gestion.Data.Models;
 using User.Gestion.Service.Models;
 using User.Gestion.Service.Services;
+using Serilog;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -163,10 +165,15 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
-//builder.Services.AddControllers().AddJsonOptions(options =>
-//{
-//    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-//});
+
+// Add logging configuration
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog();
 
 var app = builder.Build();
 

@@ -17,7 +17,11 @@ using iText.Kernel.Pdf.Canvas;
 using iText.Kernel.Colors;
 using iText.Kernel.Geom;
 using iText.Layout.Borders;
+using Serilog; // Import Serilog
+
+
 namespace Gestion_User.Controllers
+
 {
     [Authorize]
     [ApiController]
@@ -26,12 +30,14 @@ namespace Gestion_User.Controllers
     {
         private readonly IContractService _contractService;
         private readonly IUserManagement _userManagement;
+        private readonly ILogger<ContractsController> _logger; // Add logger
 
 
-        public ContractsController(IContractService contractService, IUserManagement userManagement)
+        public ContractsController(IContractService contractService, IUserManagement userManagement, ILogger<ContractsController> logger)
         {
             _contractService = contractService;
             _userManagement = userManagement;
+            _logger = logger; // Initialize logger
 
         }
 
@@ -49,10 +55,14 @@ namespace Gestion_User.Controllers
 
             if (string.IsNullOrEmpty(userId))
             {
+                _logger.LogWarning("User ID not found or empty."); // Log a warning
+
                 return Unauthorized("User ID not found or empty.");
             }
 
             var contracts = await _contractService.GetContractsByUserIdAsync(userId);
+            _logger.LogInformation("Retrieved contracts for user ID: {UserId}", userId);
+
             return Ok(contracts);
         }
 
@@ -64,14 +74,20 @@ namespace Gestion_User.Controllers
 
             if (string.IsNullOrEmpty(userId))
             {
+                _logger.LogWarning("User ID not found or empty.");
+
                 return Unauthorized("User ID not found or empty.");
             }
 
             var success = await _contractService.RenewContractAsync(request.ContractId);
             if (!success)
             {
+                _logger.LogWarning("Unable to renew contract with ID: {ContractId}", request.ContractId);
+
                 return BadRequest("Unable to renew contract.");
             }
+            _logger.LogInformation("Contract with ID: {ContractId} renewed successfully", request.ContractId);
+
             return Ok("Contract renewed successfully.");
         }
         [Authorize(Roles = "User")]
