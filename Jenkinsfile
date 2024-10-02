@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools {
-        // Use the .NET SDK
-        dotnet 'dotnet-sdk-6.0'
+        // Use the .NET SDK with the configured name
+        io.jenkins.plugins.dotnet.DotNetSDK 'dotnet-sdk-6.0'
     }
 
     environment {
