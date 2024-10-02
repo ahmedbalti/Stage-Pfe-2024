@@ -73,10 +73,6 @@
               "target": "Package",
               "version": "[2.1.38, )"
             },
-            "Microsoft.CrmSdk.CoreAssemblies": {
-              "target": "Package",
-              "version": "[9.0.2.52, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.10, )"
@@ -226,14 +222,6 @@
               "target": "Package",
               "version": "[6.0.10, )"
             },
-            "Microsoft.CrmSdk.CoreAssemblies": {
-              "target": "Package",
-              "version": "[9.0.2.52, )"
-            },
-            "Microsoft.CrmSdk.XrmTooling.CoreAssembly": {
-              "target": "Package",
-              "version": "[9.1.1.45, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.10, )"
@@ -371,14 +359,6 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.10, )"
-            },
-            "Microsoft.CrmSdk.CoreAssemblies": {
-              "target": "Package",
-              "version": "[9.0.2.52, )"
-            },
-            "Microsoft.CrmSdk.XrmTooling.CoreAssembly": {
-              "target": "Package",
-              "version": "[9.1.1.65, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

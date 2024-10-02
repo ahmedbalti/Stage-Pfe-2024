@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "v5cSeZKgnl4cZY2Kj6hM+eQh1hbVKcNjF/rqSPqSTQlinO6yMjtQq/2/88MFXH3HE0xPL+in1Kf5Xzq4aYGrBg==",
+  "dgSpecHash": "whZefRrjC2fTqnKifVphJIVZO9CMEzQlRdXD3trE3+mkzEmnTjPuy0GMjP8YL5Vhvf4XKEZ8Em+j8lLy4HSDrg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Test\\User.Gestion.Test.csproj",
   "expectedPackageFiles": [
@@ -45,10 +45,6 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.codeanalysis.common\\4.1.0\\microsoft.codeanalysis.common.4.1.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.1.0\\microsoft.codeanalysis.csharp.4.1.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.crmsdk.coreassemblies\\9.0.2.52\\microsoft.crmsdk.coreassemblies.9.0.2.52.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.crmsdk.deployment\\9.0.2.34\\microsoft.crmsdk.deployment.9.0.2.34.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.crmsdk.workflow\\9.0.2.42\\microsoft.crmsdk.workflow.9.0.2.42.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.crmsdk.xrmtooling.coreassembly\\9.1.1.65\\microsoft.crmsdk.xrmtooling.coreassembly.9.1.1.65.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
@@ -80,7 +76,6 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.identity.client\\4.21.1\\microsoft.identity.client.4.21.1.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.identitymodel.clients.activedirectory\\3.19.8\\microsoft.identitymodel.clients.activedirectory.3.19.8.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.10.0\\microsoft.identitymodel.jsonwebtokens.6.10.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.identitymodel.logging\\6.10.0\\microsoft.identitymodel.logging.6.10.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.10.0\\microsoft.identitymodel.protocols.6.10.0.nupkg.sha512",
@@ -91,7 +86,6 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.rest.clientruntime\\2.3.24\\microsoft.rest.clientruntime.2.3.24.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.1.0\\microsoft.testplatform.objectmodel.17.1.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.testplatform.testhost\\17.1.0\\microsoft.testplatform.testhost.17.1.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\microsoft.visualstudio.azure.containers.tools.targets.1.19.6.nupkg.sha512",
@@ -169,7 +163,6 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.net.sockets\\4.3.0\\system.net.sockets.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.private.servicemodel\\4.8.1\\system.private.servicemodel.4.8.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.reflection.dispatchproxy\\4.7.1\\system.reflection.dispatchproxy.4.7.1.nupkg.sha512",
@@ -191,7 +184,6 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.runtime.loader\\4.3.0\\system.runtime.loader.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.runtime.numerics\\4.3.0\\system.runtime.numerics.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.runtime.serialization.formatters\\4.3.0\\system.runtime.serialization.formatters.4.3.0.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\system.runtime.serialization.json\\4.3.0\\system.runtime.serialization.json.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.runtime.serialization.primitives\\4.3.0\\system.runtime.serialization.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.security.cryptography.algorithms\\4.3.0\\system.security.cryptography.algorithms.4.3.0.nupkg.sha512",
@@ -224,7 +216,6 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\xunit\\2.4.1\\xunit.2.4.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\xunit.analyzers\\0.10.0\\xunit.analyzers.0.10.0.nupkg.sha512",
@@ -237,46 +228,5 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Le package 'Microsoft.CrmSdk.CoreAssemblies 9.0.2.52' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net6.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "libraryId": "Microsoft.CrmSdk.CoreAssemblies",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Le package 'Microsoft.CrmSdk.Deployment 9.0.2.34' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net6.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "libraryId": "Microsoft.CrmSdk.Deployment",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Le package 'Microsoft.CrmSdk.Workflow 9.0.2.42' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net6.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "libraryId": "Microsoft.CrmSdk.Workflow",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Le package 'Microsoft.CrmSdk.XrmTooling.CoreAssembly 9.1.1.65' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net6.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "libraryId": "Microsoft.CrmSdk.XrmTooling.CoreAssembly",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

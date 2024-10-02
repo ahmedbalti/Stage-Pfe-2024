@@ -840,83 +840,6 @@
           "build/netstandard1.0/Microsoft.CodeCoverage.targets": {}
         }
       },
-      "Microsoft.CrmSdk.CoreAssemblies/9.0.2.52": {
-        "type": "package",
-        "dependencies": {
-          "System.Text.Json": "6.0.7"
-        },
-        "compile": {
-          "lib/net462/Microsoft.Crm.Sdk.Proxy.dll": {
-            "related": ".xml"
-          },
-          "lib/net462/Microsoft.Xrm.Sdk.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net462/Microsoft.Crm.Sdk.Proxy.dll": {
-            "related": ".xml"
-          },
-          "lib/net462/Microsoft.Xrm.Sdk.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Microsoft.CrmSdk.Deployment/9.0.2.34": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2"
-        },
-        "compile": {
-          "lib/net462/Microsoft.Xrm.Sdk.Deployment.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net462/Microsoft.Xrm.Sdk.Deployment.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Microsoft.CrmSdk.Workflow/9.0.2.42": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.42"
-        },
-        "compile": {
-          "lib/net462/Microsoft.Xrm.Sdk.Workflow.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net462/Microsoft.Xrm.Sdk.Workflow.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Microsoft.CrmSdk.XrmTooling.CoreAssembly/9.1.1.65": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.51",
-          "Microsoft.CrmSdk.Deployment": "9.0.2.34",
-          "Microsoft.CrmSdk.Workflow": "9.0.2.42",
-          "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.19.8",
-          "Microsoft.Rest.ClientRuntime": "2.3.24",
-          "Newtonsoft.Json": "13.0.1"
-        },
-        "compile": {
-          "lib/net462/Microsoft.Rest.ClientRuntime.dll": {},
-          "lib/net462/Microsoft.Xrm.Tooling.Connector.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net462/Microsoft.Rest.ClientRuntime.dll": {},
-          "lib/net462/Microsoft.Xrm.Tooling.Connector.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "compile": {
@@ -1471,30 +1394,6 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Clients.ActiveDirectory/3.19.8": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.0",
-          "System.Runtime.Serialization.Json": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll": {
-            "related": ".xml"
-          },
-          "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.dll": {
-            "related": ".Platform.xml;.xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll": {
-            "related": ".xml"
-          },
-          "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.dll": {
-            "related": ".Platform.xml;.xml"
-          }
-        }
-      },
       "Microsoft.IdentityModel.JsonWebTokens/6.10.0": {
         "type": "package",
         "dependencies": {
@@ -1641,22 +1540,6 @@
         "runtime": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
             "related": ".pdb;.xml"
-          }
-        }
-      },
-      "Microsoft.Rest.ClientRuntime/2.3.24": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "10.0.3"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.Rest.ClientRuntime.dll": {
-            "related": ".runtimeconfig.json"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Rest.ClientRuntime.dll": {
-            "related": ".runtimeconfig.json"
           }
         }
       },
@@ -3164,42 +3047,6 @@
           "lib/netstandard1.3/System.ObjectModel.dll": {}
         }
       },
-      "System.Private.DataContractSerialization/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Collections.Concurrent": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0",
-          "System.Xml.XDocument": "4.3.0",
-          "System.Xml.XmlDocument": "4.3.0",
-          "System.Xml.XmlSerializer": "4.3.0"
-        },
-        "compile": {
-          "ref/netstandard/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Private.DataContractSerialization.dll": {}
-        }
-      },
       "System.Private.ServiceModel/4.8.1": {
         "type": "package",
         "dependencies": {
@@ -3531,22 +3378,6 @@
         },
         "runtime": {
           "lib/netstandard1.4/System.Runtime.Serialization.Formatters.dll": {}
-        }
-      },
-      "System.Runtime.Serialization.Json/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "System.IO": "4.3.0",
-          "System.Private.DataContractSerialization": "4.3.0",
-          "System.Runtime": "4.3.0"
-        },
-        "compile": {
-          "ref/netstandard1.0/System.Runtime.Serialization.Json.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Runtime.Serialization.Json.dll": {}
         }
       },
       "System.Runtime.Serialization.Primitives/4.3.0": {
@@ -4213,36 +4044,6 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "System.Xml.XmlSerializer/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0",
-          "System.Xml.XmlDocument": "4.3.0"
-        },
-        "compile": {
-          "ref/netstandard1.3/_._": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
-        }
-      },
       "xunit/2.4.1": {
         "type": "package",
         "dependencies": {
@@ -4348,7 +4149,6 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
           "Microsoft.AspNetCore.Mvc.Core": "2.1.38",
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.52",
           "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
           "Microsoft.Extensions.Http": "8.0.0",
@@ -4380,8 +4180,6 @@
           "AutoMapper": "13.0.1",
           "BouncyCastle.NetCore": "2.2.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.52",
-          "Microsoft.CrmSdk.XrmTooling.CoreAssembly": "9.1.1.45",
           "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
           "Microsoft.Extensions.Http": "8.0.0",
@@ -4407,8 +4205,6 @@
           "BouncyCastle.NetCore": "2.2.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.52",
-          "Microsoft.CrmSdk.XrmTooling.CoreAssembly": "9.1.1.65",
           "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
           "Microsoft.Extensions.Http": "8.0.0",
@@ -5530,75 +5326,6 @@
         "microsoft.codecoverage.nuspec"
       ]
     },
-    "Microsoft.CrmSdk.CoreAssemblies/9.0.2.52": {
-      "sha512": "ZGykSTEinxOCERJ1j5mMJnXJ9x9LdSt0JW79bbSCXiRSfA01nEG2HcwWc9XN8f9mMamZ8jTtNM/xAfiPfu6V9Q==",
-      "type": "package",
-      "path": "microsoft.crmsdk.coreassemblies/9.0.2.52",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "images/Dataverse.128x128.png",
-        "lib/LicenseTerms.docx",
-        "lib/Other Redistributable.txt",
-        "lib/Third Party Notices for Dynamics 365 SDK.docx",
-        "lib/net462/Microsoft.Crm.Sdk.Proxy.dll",
-        "lib/net462/Microsoft.Crm.Sdk.Proxy.xml",
-        "lib/net462/Microsoft.Xrm.Sdk.dll",
-        "lib/net462/Microsoft.Xrm.Sdk.xml",
-        "microsoft.crmsdk.coreassemblies.9.0.2.52.nupkg.sha512",
-        "microsoft.crmsdk.coreassemblies.nuspec"
-      ]
-    },
-    "Microsoft.CrmSdk.Deployment/9.0.2.34": {
-      "sha512": "zh4XLqkTT5NEfdmilVSIgTez3oviWyXfgbNOf6H5tnO6xrebdtUWHT8PGaFY7Z4u64eY5Vge6Vcw9cB1NvIZJw==",
-      "type": "package",
-      "path": "microsoft.crmsdk.deployment/9.0.2.34",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net462/LicenseTerms.docx",
-        "lib/net462/Microsoft.Xrm.Sdk.Deployment.dll",
-        "lib/net462/Microsoft.Xrm.Sdk.Deployment.xml",
-        "lib/net462/Other Redistributable.txt",
-        "lib/net462/Third Party Notices for Dynamics 365 SDK.docx",
-        "microsoft.crmsdk.deployment.9.0.2.34.nupkg.sha512",
-        "microsoft.crmsdk.deployment.nuspec"
-      ]
-    },
-    "Microsoft.CrmSdk.Workflow/9.0.2.42": {
-      "sha512": "J/5yOLSOP7o+H3gl5i601m74+ug9KZnT8T/aNk0bcfXuxzSSQ/O1ZDfwzDqZVu0jXwVp8DJA7X7mtP6ZMZB6nA==",
-      "type": "package",
-      "path": "microsoft.crmsdk.workflow/9.0.2.42",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "images/Dataverse.128x128.png",
-        "lib/LicenseTerms.docx",
-        "lib/Other Redistributable.txt",
-        "lib/Third Party Notices for Dynamics 365 SDK.docx",
-        "lib/net462/Microsoft.Xrm.Sdk.Workflow.dll",
-        "lib/net462/Microsoft.Xrm.Sdk.Workflow.xml",
-        "microsoft.crmsdk.workflow.9.0.2.42.nupkg.sha512",
-        "microsoft.crmsdk.workflow.nuspec"
-      ]
-    },
-    "Microsoft.CrmSdk.XrmTooling.CoreAssembly/9.1.1.65": {
-      "sha512": "dHQMgZr/KuTpX2SZc6y32dAKf6xjFZMR7kBg11BKAnK9aVIf751LKC7L5fIazOKCPQ47/NMmQ0LqPg7H6Xmz6g==",
-      "type": "package",
-      "path": "microsoft.crmsdk.xrmtooling.coreassembly/9.1.1.65",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "images/Dataverse.128x128.png",
-        "lib/net462/Microsoft.Rest.ClientRuntime.dll",
-        "lib/net462/Microsoft.Xrm.Tooling.Connector.dll",
-        "lib/net462/Microsoft.Xrm.Tooling.Connector.xml",
-        "lib/net462/Other Redistributable.txt",
-        "lib/net462/Third Party Notices for Dynamics 365 SDK.docx",
-        "microsoft.crmsdk.xrmtooling.coreassembly.9.1.1.65.nupkg.sha512",
-        "microsoft.crmsdk.xrmtooling.coreassembly.nuspec"
-      ]
-    },
     "Microsoft.CSharp/4.5.0": {
       "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
       "type": "package",
@@ -6432,45 +6159,6 @@
         "ref/xamarinmac20/Microsoft.Identity.Client.xml"
       ]
     },
-    "Microsoft.IdentityModel.Clients.ActiveDirectory/3.19.8": {
-      "sha512": "PRTE+0vg/e+wNFDBEPdZlDVVwopyOZtGnbg0B4ANxR0eeZKoEwfumBoAIO6iC91jRLMTpCfYXTArmn8BpyLIIg==",
-      "type": "package",
-      "path": "microsoft.identitymodel.clients.activedirectory/3.19.8",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/MonoAndroid7/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/MonoAndroid7/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
-        "lib/MonoAndroid7/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/MonoAndroid7/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
-        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
-        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
-        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/netstandard1.1/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/netstandard1.1/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
-        "lib/netstandard1.1/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/netstandard1.1/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
-        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
-        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "microsoft.identitymodel.clients.activedirectory.3.19.8.nupkg.sha512",
-        "microsoft.identitymodel.clients.activedirectory.nuspec"
-      ]
-    },
     "Microsoft.IdentityModel.JsonWebTokens/6.10.0": {
       "sha512": "0qjS31rN1MQTc46tAYbzmMTSRfdV5ndZxSjYxIGqKSidd4wpNJfNII/pdhU5Fx8olarQoKL9lqqYw4yNOIwT0Q==",
       "type": "package",
@@ -6661,25 +6349,6 @@
         "lib/netstandard2.0/Microsoft.OpenApi.xml",
         "microsoft.openapi.1.2.3.nupkg.sha512",
         "microsoft.openapi.nuspec"
-      ]
-    },
-    "Microsoft.Rest.ClientRuntime/2.3.24": {
-      "sha512": "hZH7XgM3eV2jFrnq7Yf0nBD4WVXQzDrer2gEY7HMNiwio2hwDsTHO6LWuueNQAfRpNp4W7mKxcXpwXUiuVIlYw==",
-      "type": "package",
-      "path": "microsoft.rest.clientruntime/2.3.24",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net452/Microsoft.Rest.ClientRuntime.dll",
-        "lib/net452/Microsoft.Rest.ClientRuntime.runtimeconfig.json",
-        "lib/net461/Microsoft.Rest.ClientRuntime.dll",
-        "lib/net461/Microsoft.Rest.ClientRuntime.runtimeconfig.json",
-        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.dll",
-        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.runtimeconfig.json",
-        "lib/netstandard2.0/Microsoft.Rest.ClientRuntime.dll",
-        "lib/netstandard2.0/Microsoft.Rest.ClientRuntime.runtimeconfig.json",
-        "microsoft.rest.clientruntime.2.3.24.nupkg.sha512",
-        "microsoft.rest.clientruntime.nuspec"
       ]
     },
     "Microsoft.TestPlatform.ObjectModel/17.1.0": {
@@ -9751,22 +9420,6 @@
         "system.objectmodel.nuspec"
       ]
     },
-    "System.Private.DataContractSerialization/4.3.0": {
-      "sha512": "yDaJ2x3mMmjdZEDB4IbezSnCsnjQ4BxinKhRAaP6kEgL6Bb6jANWphs5SzyD8imqeC/3FxgsuXT6ykkiH1uUmA==",
-      "type": "package",
-      "path": "system.private.datacontractserialization/4.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/netstandard1.3/System.Private.DataContractSerialization.dll",
-        "ref/netstandard/_._",
-        "runtimes/aot/lib/netcore50/System.Private.DataContractSerialization.dll",
-        "system.private.datacontractserialization.4.3.0.nupkg.sha512",
-        "system.private.datacontractserialization.nuspec"
-      ]
-    },
     "System.Private.ServiceModel/4.8.1": {
       "sha512": "neXeXhKIlCUBCg5rxKpYnae4vQSiMWjhqeTgsMedHvKKUTsmP98je+G8oPmDdY9uZVruvxqRGjcljn1XYNhC+w==",
       "type": "package",
@@ -10811,65 +10464,6 @@
         "ref/xamarinwatchos10/_._",
         "system.runtime.serialization.formatters.4.3.0.nupkg.sha512",
         "system.runtime.serialization.formatters.nuspec"
-      ]
-    },
-    "System.Runtime.Serialization.Json/4.3.0": {
-      "sha512": "CpVfOH0M/uZ5PH+M9+Gu56K0j9lJw3M+PKRegTkcrY/stOIvRUeonggxNrfBYLA5WOHL2j15KNJuTuld3x4o9w==",
-      "type": "package",
-      "path": "system.runtime.serialization.json/4.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.Runtime.Serialization.Json.dll",
-        "lib/netstandard1.3/System.Runtime.Serialization.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/System.Runtime.Serialization.Json.dll",
-        "ref/netcore50/System.Runtime.Serialization.Json.xml",
-        "ref/netcore50/de/System.Runtime.Serialization.Json.xml",
-        "ref/netcore50/es/System.Runtime.Serialization.Json.xml",
-        "ref/netcore50/fr/System.Runtime.Serialization.Json.xml",
-        "ref/netcore50/it/System.Runtime.Serialization.Json.xml",
-        "ref/netcore50/ja/System.Runtime.Serialization.Json.xml",
-        "ref/netcore50/ko/System.Runtime.Serialization.Json.xml",
-        "ref/netcore50/ru/System.Runtime.Serialization.Json.xml",
-        "ref/netcore50/zh-hans/System.Runtime.Serialization.Json.xml",
-        "ref/netcore50/zh-hant/System.Runtime.Serialization.Json.xml",
-        "ref/netstandard1.0/System.Runtime.Serialization.Json.dll",
-        "ref/netstandard1.0/System.Runtime.Serialization.Json.xml",
-        "ref/netstandard1.0/de/System.Runtime.Serialization.Json.xml",
-        "ref/netstandard1.0/es/System.Runtime.Serialization.Json.xml",
-        "ref/netstandard1.0/fr/System.Runtime.Serialization.Json.xml",
-        "ref/netstandard1.0/it/System.Runtime.Serialization.Json.xml",
-        "ref/netstandard1.0/ja/System.Runtime.Serialization.Json.xml",
-        "ref/netstandard1.0/ko/System.Runtime.Serialization.Json.xml",
-        "ref/netstandard1.0/ru/System.Runtime.Serialization.Json.xml",
-        "ref/netstandard1.0/zh-hans/System.Runtime.Serialization.Json.xml",
-        "ref/netstandard1.0/zh-hant/System.Runtime.Serialization.Json.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.runtime.serialization.json.4.3.0.nupkg.sha512",
-        "system.runtime.serialization.json.nuspec"
       ]
     },
     "System.Runtime.Serialization.Primitives/4.3.0": {
@@ -12441,77 +12035,6 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
-    "System.Xml.XmlSerializer/4.3.0": {
-      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
-      "type": "package",
-      "path": "system.xml.xmlserializer/4.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.Xml.XmlSerializer.dll",
-        "lib/netstandard1.3/System.Xml.XmlSerializer.dll",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/System.Xml.XmlSerializer.dll",
-        "ref/netcore50/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/de/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/es/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/fr/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/it/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/ja/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/ko/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/ru/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/zh-hans/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/zh-hant/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/System.Xml.XmlSerializer.dll",
-        "ref/netstandard1.0/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/de/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/es/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/fr/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/it/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/ja/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/ko/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/ru/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/zh-hans/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/zh-hant/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/System.Xml.XmlSerializer.dll",
-        "ref/netstandard1.3/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/de/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/es/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/fr/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/it/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/ja/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/ko/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/ru/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/zh-hans/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/zh-hant/System.Xml.XmlSerializer.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll",
-        "system.xml.xmlserializer.4.3.0.nupkg.sha512",
-        "system.xml.xmlserializer.nuspec"
-      ]
-    },
     "xunit/2.4.1": {
       "sha512": "XNR3Yz9QTtec16O0aKcO6+baVNpXmOnPUxDkCY97J+8krUYxPvXT1szYYEUdKk4sB8GOI2YbAjRIOm8ZnXRfzQ==",
       "type": "package",
@@ -12792,47 +12315,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Le package 'Microsoft.CrmSdk.CoreAssemblies 9.0.2.52' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net6.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "libraryId": "Microsoft.CrmSdk.CoreAssemblies",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Le package 'Microsoft.CrmSdk.Deployment 9.0.2.34' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net6.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "libraryId": "Microsoft.CrmSdk.Deployment",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Le package 'Microsoft.CrmSdk.Workflow 9.0.2.42' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net6.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "libraryId": "Microsoft.CrmSdk.Workflow",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Le package 'Microsoft.CrmSdk.XrmTooling.CoreAssembly 9.1.1.65' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net6.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "libraryId": "Microsoft.CrmSdk.XrmTooling.CoreAssembly",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }
