@@ -14,8 +14,10 @@ pipeline {
     stages {
         stage('Restore Dependencies') {
             steps {
-                script {
-                    sh 'dotnet restore'
+                dir('BackEnd/Gestion User') { // Change to the directory containing the .csproj or .sln file
+                    script {
+                        sh 'dotnet restore'
+                    }
                 }
             }
         }
