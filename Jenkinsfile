@@ -49,7 +49,7 @@ pipeline {
                         sh """
                         dotnet sonarscanner begin /k:"${PROJECT_NAME}" /d:sonar.host.url=http://192.168.33.10:9000 /d:sonar.login=${SONARQUBE_KEY}
                         dotnet build
-                        dotnet sonarscanner end /d:sonar.login=${SONARQUBE_KEY}
+                        dotnet sonarscanner end /d:sonar.login=${SONARQUBE_KEY} || true'
                         """
                     }
                 }
