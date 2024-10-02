@@ -24,28 +24,34 @@ pipeline {
 
         stage('Build') {
             steps {
-                script {
-                    sh 'dotnet build --configuration Release'
+                dir('BackEnd/Gestion User') { // Change to the directory containing the .csproj or .sln file
+                    script {
+                        sh 'dotnet build --configuration Release'
+                    }
                 }
             }
         }
 
         stage('Run Tests') {
             steps {
-                script {
-                    sh 'dotnet test'
+                dir('BackEnd/Gestion User') { // Change to the directory containing the .csproj or .sln file
+                    script {
+                        sh 'dotnet test'
+                    }
                 }
             }
         }
 
         stage('Code Analysis with SonarQube') {
             steps {
-                script {
-                    sh """
-                    dotnet sonarscanner begin /k:"${PROJECT_NAME}" /d:sonar.host.url=http://192.168.33.10:9000 /d:sonar.login=${SONARQUBE_KEY}
-                    dotnet build
-                    dotnet sonarscanner end /d:sonar.login=${SONARQUBE_KEY}
-                    """
+                dir('BackEnd/Gestion User') { // Change to the directory containing the .csproj or .sln file
+                    script {
+                        sh """
+                        dotnet sonarscanner begin /k:"${PROJECT_NAME}" /d:sonar.host.url=http://192.168.33.10:9000 /d:sonar.login=${SONARQUBE_KEY}
+                        dotnet build
+                        dotnet sonarscanner end /d:sonar.login=${SONARQUBE_KEY}
+                        """
+                    }
                 }
             }
         }
