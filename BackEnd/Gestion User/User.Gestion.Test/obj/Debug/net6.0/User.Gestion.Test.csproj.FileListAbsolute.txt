@@ -1,4 +1,10 @@
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\CoverletSourceRootsMapping
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.csproj.AssemblyReference.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.AssemblyInfoInputs.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.AssemblyInfo.cs
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.sourcelink.json
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\testhost.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\TraceReloggerLib.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Dia2Lib.dll
@@ -54,12 +60,6 @@ C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gest
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Crm.Sdk.Proxy.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Xrm.Sdk.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Xrm.Sdk.Deployment.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Xrm.Sdk.Workflow.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Rest.ClientRuntime.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Xrm.Tooling.Connector.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Diagnostics.NETCore.Client.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Diagnostics.Runtime.dll
@@ -84,8 +84,6 @@ C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gest
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.Identity.Client.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
@@ -255,12 +253,6 @@ C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gest
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Gestion User.pdb
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\User.Gestion.Data.pdb
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\User.Gestion.Service.pdb
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.csproj.AssemblyReference.cache
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.AssemblyInfoInputs.cache
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.AssemblyInfo.cs
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.csproj.CoreCompileInputs.cache
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.sourcelink.json
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Ges.BBFDC6F1.Up2Date
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\User.Gestion.Test.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\obj\Debug\net6.0\refint\User.Gestion.Test.dll

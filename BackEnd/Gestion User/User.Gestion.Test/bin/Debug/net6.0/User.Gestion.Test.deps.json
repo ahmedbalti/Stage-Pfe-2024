@@ -547,63 +547,6 @@
           }
         }
       },
-      "Microsoft.CrmSdk.CoreAssemblies/9.0.2.52": {
-        "dependencies": {
-          "System.Text.Json": "8.0.4"
-        },
-        "runtime": {
-          "lib/net462/Microsoft.Crm.Sdk.Proxy.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.2.49.6961"
-          },
-          "lib/net462/Microsoft.Xrm.Sdk.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.2.49.6961"
-          }
-        }
-      },
-      "Microsoft.CrmSdk.Deployment/9.0.2.34": {
-        "dependencies": {
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.52"
-        },
-        "runtime": {
-          "lib/net462/Microsoft.Xrm.Sdk.Deployment.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.2.21044.126"
-          }
-        }
-      },
-      "Microsoft.CrmSdk.Workflow/9.0.2.42": {
-        "dependencies": {
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.52"
-        },
-        "runtime": {
-          "lib/net462/Microsoft.Xrm.Sdk.Workflow.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.2.46.5279"
-          }
-        }
-      },
-      "Microsoft.CrmSdk.XrmTooling.CoreAssembly/9.1.1.65": {
-        "dependencies": {
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.52",
-          "Microsoft.CrmSdk.Deployment": "9.0.2.34",
-          "Microsoft.CrmSdk.Workflow": "9.0.2.42",
-          "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.19.8",
-          "Microsoft.Rest.ClientRuntime": "2.3.24",
-          "Newtonsoft.Json": "13.0.1"
-        },
-        "runtime": {
-          "lib/net462/Microsoft.Rest.ClientRuntime.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.3.23.0"
-          },
-          "lib/net462/Microsoft.Xrm.Tooling.Connector.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.0.0.188"
-          }
-        }
-      },
       "Microsoft.CSharp/4.5.0": {},
       "Microsoft.Data.SqlClient/2.1.4": {
         "dependencies": {
@@ -957,23 +900,6 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Clients.ActiveDirectory/3.19.8": {
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "System.Runtime.Serialization.Json": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll": {
-            "assemblyVersion": "3.19.8.16603",
-            "fileVersion": "3.19.50615.2240"
-          },
-          "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.dll": {
-            "assemblyVersion": "3.19.8.16603",
-            "fileVersion": "3.19.50615.2240"
-          }
-        }
-      },
       "Microsoft.IdentityModel.JsonWebTokens/6.10.0": {
         "dependencies": {
           "Microsoft.IdentityModel.Tokens": "6.10.0"
@@ -1050,11 +976,6 @@
             "assemblyVersion": "1.2.3.0",
             "fileVersion": "1.2.3.0"
           }
-        }
-      },
-      "Microsoft.Rest.ClientRuntime/2.3.24": {
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.1"
         }
       },
       "Microsoft.TestPlatform.ObjectModel/17.1.0": {
@@ -1989,35 +1910,6 @@
           "System.Threading": "4.3.0"
         }
       },
-      "System.Private.DataContractSerialization/4.3.0": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Collections.Concurrent": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.1",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.1",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0",
-          "System.Xml.XDocument": "4.3.0",
-          "System.Xml.XmlDocument": "4.3.0",
-          "System.Xml.XmlSerializer": "4.3.0"
-        }
-      },
       "System.Private.ServiceModel/4.8.1": {
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0",
@@ -2180,13 +2072,6 @@
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.1",
           "System.Runtime.Serialization.Primitives": "4.3.0"
-        }
-      },
-      "System.Runtime.Serialization.Json/4.3.0": {
-        "dependencies": {
-          "System.IO": "4.3.0",
-          "System.Private.DataContractSerialization": "4.3.0",
-          "System.Runtime": "4.3.1"
         }
       },
       "System.Runtime.Serialization.Primitives/4.3.0": {
@@ -2533,27 +2418,6 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "System.Xml.XmlSerializer/4.3.0": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.1",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.1",
-          "System.Threading": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0",
-          "System.Xml.XmlDocument": "4.3.0"
-        }
-      },
       "xunit/2.4.1": {
         "dependencies": {
           "xunit.analyzers": "0.10.0",
@@ -2620,7 +2484,6 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
           "Microsoft.AspNetCore.Mvc.Core": "2.1.38",
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.52",
           "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
           "Microsoft.Extensions.Http": "8.0.0",
@@ -2644,8 +2507,6 @@
           "AutoMapper": "13.0.1",
           "BouncyCastle.NetCore": "2.2.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.52",
-          "Microsoft.CrmSdk.XrmTooling.CoreAssembly": "9.1.1.65",
           "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
           "Microsoft.Extensions.Http": "8.0.0",
@@ -2666,8 +2527,6 @@
           "BouncyCastle.NetCore": "2.2.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
-          "Microsoft.CrmSdk.CoreAssemblies": "9.0.2.52",
-          "Microsoft.CrmSdk.XrmTooling.CoreAssembly": "9.1.1.65",
           "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
           "Microsoft.Extensions.Http": "8.0.0",
@@ -2984,34 +2843,6 @@
       "path": "microsoft.codecoverage/17.1.0",
       "hashPath": "microsoft.codecoverage.17.1.0.nupkg.sha512"
     },
-    "Microsoft.CrmSdk.CoreAssemblies/9.0.2.52": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ZGykSTEinxOCERJ1j5mMJnXJ9x9LdSt0JW79bbSCXiRSfA01nEG2HcwWc9XN8f9mMamZ8jTtNM/xAfiPfu6V9Q==",
-      "path": "microsoft.crmsdk.coreassemblies/9.0.2.52",
-      "hashPath": "microsoft.crmsdk.coreassemblies.9.0.2.52.nupkg.sha512"
-    },
-    "Microsoft.CrmSdk.Deployment/9.0.2.34": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zh4XLqkTT5NEfdmilVSIgTez3oviWyXfgbNOf6H5tnO6xrebdtUWHT8PGaFY7Z4u64eY5Vge6Vcw9cB1NvIZJw==",
-      "path": "microsoft.crmsdk.deployment/9.0.2.34",
-      "hashPath": "microsoft.crmsdk.deployment.9.0.2.34.nupkg.sha512"
-    },
-    "Microsoft.CrmSdk.Workflow/9.0.2.42": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-J/5yOLSOP7o+H3gl5i601m74+ug9KZnT8T/aNk0bcfXuxzSSQ/O1ZDfwzDqZVu0jXwVp8DJA7X7mtP6ZMZB6nA==",
-      "path": "microsoft.crmsdk.workflow/9.0.2.42",
-      "hashPath": "microsoft.crmsdk.workflow.9.0.2.42.nupkg.sha512"
-    },
-    "Microsoft.CrmSdk.XrmTooling.CoreAssembly/9.1.1.65": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-dHQMgZr/KuTpX2SZc6y32dAKf6xjFZMR7kBg11BKAnK9aVIf751LKC7L5fIazOKCPQ47/NMmQ0LqPg7H6Xmz6g==",
-      "path": "microsoft.crmsdk.xrmtooling.coreassembly/9.1.1.65",
-      "hashPath": "microsoft.crmsdk.xrmtooling.coreassembly.9.1.1.65.nupkg.sha512"
-    },
     "Microsoft.CSharp/4.5.0": {
       "type": "package",
       "serviceable": true,
@@ -3229,13 +3060,6 @@
       "path": "microsoft.identity.client/4.21.1",
       "hashPath": "microsoft.identity.client.4.21.1.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Clients.ActiveDirectory/3.19.8": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-PRTE+0vg/e+wNFDBEPdZlDVVwopyOZtGnbg0B4ANxR0eeZKoEwfumBoAIO6iC91jRLMTpCfYXTArmn8BpyLIIg==",
-      "path": "microsoft.identitymodel.clients.activedirectory/3.19.8",
-      "hashPath": "microsoft.identitymodel.clients.activedirectory.3.19.8.nupkg.sha512"
-    },
     "Microsoft.IdentityModel.JsonWebTokens/6.10.0": {
       "type": "package",
       "serviceable": true,
@@ -3305,13 +3129,6 @@
       "sha512": "sha512-Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
-    },
-    "Microsoft.Rest.ClientRuntime/2.3.24": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-hZH7XgM3eV2jFrnq7Yf0nBD4WVXQzDrer2gEY7HMNiwio2hwDsTHO6LWuueNQAfRpNp4W7mKxcXpwXUiuVIlYw==",
-      "path": "microsoft.rest.clientruntime/2.3.24",
-      "hashPath": "microsoft.rest.clientruntime.2.3.24.nupkg.sha512"
     },
     "Microsoft.TestPlatform.ObjectModel/17.1.0": {
       "type": "package",
@@ -3852,13 +3669,6 @@
       "path": "system.objectmodel/4.3.0",
       "hashPath": "system.objectmodel.4.3.0.nupkg.sha512"
     },
-    "System.Private.DataContractSerialization/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-yDaJ2x3mMmjdZEDB4IbezSnCsnjQ4BxinKhRAaP6kEgL6Bb6jANWphs5SzyD8imqeC/3FxgsuXT6ykkiH1uUmA==",
-      "path": "system.private.datacontractserialization/4.3.0",
-      "hashPath": "system.private.datacontractserialization.4.3.0.nupkg.sha512"
-    },
     "System.Private.ServiceModel/4.8.1": {
       "type": "package",
       "serviceable": true,
@@ -4005,13 +3815,6 @@
       "sha512": "sha512-KT591AkTNFOTbhZlaeMVvfax3RqhH1EJlcwF50Wm7sfnBLuHiOeZRRKrr1ns3NESkM20KPZ5Ol/ueMq5vg4QoQ==",
       "path": "system.runtime.serialization.formatters/4.3.0",
       "hashPath": "system.runtime.serialization.formatters.4.3.0.nupkg.sha512"
-    },
-    "System.Runtime.Serialization.Json/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-CpVfOH0M/uZ5PH+M9+Gu56K0j9lJw3M+PKRegTkcrY/stOIvRUeonggxNrfBYLA5WOHL2j15KNJuTuld3x4o9w==",
-      "path": "system.runtime.serialization.json/4.3.0",
-      "hashPath": "system.runtime.serialization.json.4.3.0.nupkg.sha512"
     },
     "System.Runtime.Serialization.Primitives/4.3.0": {
       "type": "package",
@@ -4236,13 +4039,6 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
-    },
-    "System.Xml.XmlSerializer/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
-      "path": "system.xml.xmlserializer/4.3.0",
-      "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "xunit/2.4.1": {
       "type": "package",

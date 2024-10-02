@@ -80,6 +80,14 @@ C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\obj\
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.sourcelink.json
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\bin\Debug\net6.0\User.Gestion.Data.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\bin\Debug\net6.0\User.Gestion.Data.pdb
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.csproj.AssemblyReference.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.AssemblyInfoInputs.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.AssemblyInfo.cs
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.sourcelink.json
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\TraceReloggerLib.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Dia2Lib.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\appsettings.Development.json
@@ -126,12 +134,6 @@ C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion U
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Crm.Sdk.Proxy.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Xrm.Sdk.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Xrm.Sdk.Deployment.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Xrm.Sdk.Workflow.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Rest.ClientRuntime.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Xrm.Tooling.Connector.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Diagnostics.NETCore.Client.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Diagnostics.Runtime.dll
@@ -156,8 +158,6 @@ C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion U
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.Identity.Client.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
@@ -248,14 +248,6 @@ C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion U
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\User.Gestion.Service.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\User.Gestion.Service.pdb
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\User.Gestion.Data.pdb
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.csproj.AssemblyReference.cache
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.AssemblyInfoInputs.cache
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.AssemblyInfo.cs
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.csproj.CoreCompileInputs.cache
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.sourcelink.json
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\obj\Debug\net6.0\staticwebassets\msbuild.Gestion User.Microsoft.AspNetCore.StaticWebAssets.props
