@@ -14,12 +14,12 @@ namespace User.Gestion.Data.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        public string Response { get; set; }
+        public string Response { get; set; } = string.Empty;
 
         public DateTime ResponseDate { get; set; }
 
         [ForeignKey("TicketId")]
-        public Ticket Ticket { get; set; }
+        public Ticket Ticket { get; set; } = new Ticket();
 
         public Guid TicketId { get; set; }
     }

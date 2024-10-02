@@ -10,7 +10,7 @@ namespace User.Gestion.Data.Models
     {
         public Guid Id { get; set; }
 
-        public string Response { get; set; }
+        public string Response { get; set; } = string.Empty;
 
         public Guid TicketId { get; set; }
 

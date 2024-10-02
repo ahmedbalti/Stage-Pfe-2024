@@ -13,7 +13,7 @@ namespace Gestion_User.Models.Authentication.SignUp
 
         [Required(ErrorMessage = "Password is required")]
         public string? Password { get; set; }
-        public List<string>? Roles { get; set; }
+        public List<string>? Roles { get; set; } = new List<string>();
 
     }
 }
