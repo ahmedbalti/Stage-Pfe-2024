@@ -12,16 +12,16 @@ namespace User.Gestion.Data.Models
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenExpiry { get; set; }
 
-        public ICollection<Ticket> Tickets { get; set; }
+        public ICollection<Ticket>? Tickets { get; set; } = new List<Ticket>();
 
-        public ICollection<Contract> Contracts { get; set; }  // Ajout de cette ligne
+        public ICollection<Contract>? Contracts { get; set; }  // Ajout de cette ligne
 
-        public ICollection<Sinistre> Sinistres { get; set; }
+        public ICollection<Sinistre>? Sinistres { get; set; }
 
-        public ICollection<Devis> Devis { get; set; }
+        public ICollection<Devis>? Devis { get; set; }
 
-        public ICollection<Opportunity> Opportunities { get; set; }
+        public ICollection<Opportunity>? Opportunities { get; set; }
 
-        public ICollection<Feedback> Feedbacks { get; set; }
+        public ICollection<Feedback>? Feedbacks { get; set; }
     }
 }
