@@ -12,17 +12,17 @@ namespace User.Gestion.Data.Models
         {
         }
 
-        public DbSet<Ticket> Tickets { get; set; }
-        public DbSet<Contract> Contracts { get; set; }
-        public DbSet<Sinistre> Sinistres { get; set; }
-        public DbSet<Devis> Devis { get; set; }
-        public DbSet<Opportunity> Opportunities { get; set; }
-        public DbSet<DevisAuto> DevisAuto { get; set; }
-        public DbSet<DevisSante> DevisSante { get; set; }
-        public DbSet<DevisHabitation> DevisHabitation { get; set; }
-        public DbSet<DevisVie> DevisVie { get; set; }
-        public DbSet<TicketResponse> TicketResponses { get; set; }
-        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<Ticket>? Tickets { get; set; }
+        public DbSet<Contract>? Contracts { get; set; }
+        public DbSet<Sinistre>? Sinistres { get; set; }
+        public DbSet<Devis>? Devis { get; set; }
+        public DbSet<Opportunity>? Opportunities { get; set; }
+        public DbSet<DevisAuto>? DevisAuto { get; set; }
+        public DbSet<DevisSante>? DevisSante { get; set; }
+        public DbSet<DevisHabitation>? DevisHabitation { get; set; }
+        public DbSet<DevisVie>? DevisVie { get; set; }
+        public DbSet<TicketResponse>? TicketResponses { get; set; }
+        public DbSet<Feedback>? Feedbacks { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
