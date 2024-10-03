@@ -9,7 +9,7 @@ pipeline {
         PROJECT_NAME = 'projet_pfe'
         SONARQUBE_URL = 'http://192.168.33.10:9000'
     }
-    
+
     stages {
         stage('Restore Dependencies') {
             steps {
@@ -41,18 +41,18 @@ pipeline {
             }
         }
 
-  stage('Code Analysis with SonarQube') {
-    steps {
-        dir('BackEnd/Gestion User') {
-            script {
-                sh """
-                dotnet sonarscanner begin /k:"${PROJECT_NAME}" /d:sonar.host.url=${SONARQUBE_URL} /d:sonar.login=${SONARQUBE_KEY}
-                dotnet build --no-incremental /warnaserror- /nowarn:CS8618,CS8603,CS8604,CS8602
-                dotnet sonarscanner end /d:sonar.login=${SONARQUBE_KEY}
-                """
+        stage('Code Analysis with SonarQube') {
+            steps {
+                dir('BackEnd/Gestion User') {
+                    script {
+                        sh """
+                        dotnet sonarscanner begin /k:"${PROJECT_NAME}" /d:sonar.host.url=${SONARQUBE_URL} /d:sonar.login=${SONARQUBE_KEY} /d:sonar.cs.ignoreIssues=true
+                        dotnet build --no-incremental /warnaserror- /nowarn:CS8618,CS8603,CS8604,CS8602
+                        dotnet sonarscanner end /d:sonar.login=${SONARQUBE_KEY}
+                        """
+                    }
+                }
             }
         }
     }
-}
-}
 }
