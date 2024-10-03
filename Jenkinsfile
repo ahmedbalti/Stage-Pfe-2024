@@ -46,7 +46,7 @@ pipeline {
                 dir('BackEnd/Gestion User') {
                     script {
                         sh """
-                        dotnet sonarscanner begin /k:"${PROJECT_NAME}" /d:sonar.host.url=${SONARQUBE_URL} /d:sonar.login=${SONARQUBE_KEY} /d:sonar.issue.ignore.allfile=true
+                        dotnet sonarscanner begin /k:"${PROJECT_NAME}" /d:sonar.host.url=${SONARQUBE_URL} /d:sonar.login=${SONARQUBE_KEY} /d:sonar.issuesReport.console.enable=false /d:sonar.issuesReport.html.enable=false /d:sonar.cs.ignoreIssues=false
                         dotnet build --no-incremental /warnaserror- /nowarn:CS8618,CS8603,CS8604,CS8602
                         dotnet sonarscanner end /d:sonar.login=${SONARQUBE_KEY}
                         """
