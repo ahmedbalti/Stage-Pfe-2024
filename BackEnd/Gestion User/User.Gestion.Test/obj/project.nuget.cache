@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "whZefRrjC2fTqnKifVphJIVZO9CMEzQlRdXD3trE3+mkzEmnTjPuy0GMjP8YL5Vhvf4XKEZ8Em+j8lLy4HSDrg==",
+  "dgSpecHash": "D+wg8FVNw/PqjwWTkAkI4qyakSWkoe5gYJrH0lqaiqLBjAo4PqR5bWuV0BHrkAQVKsAsaGTyUkJEPECAikJIaw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Test\\User.Gestion.Test.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\dotnet-framework-sonarscanner\\7.1.1\\dotnet-framework-sonarscanner.7.1.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\gee.external.capstone\\2.3.0\\gee.external.capstone.2.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\iced\\1.17.0\\iced.1.17.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\itext\\8.0.4\\itext.8.0.4.nupkg.sha512",
@@ -122,6 +123,7 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\serilog.extensions.logging\\8.0.0\\serilog.extensions.logging.8.0.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\serilog.sinks.console\\6.0.0\\serilog.sinks.console.6.0.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\serilog.sinks.file\\6.0.0\\serilog.sinks.file.6.0.0.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\sonarqube.scanner.dotnetcore.tool\\4.3.1\\sonarqube.scanner.dotnetcore.tool.4.3.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

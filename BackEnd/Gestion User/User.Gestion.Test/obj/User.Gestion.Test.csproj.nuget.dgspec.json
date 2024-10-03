@@ -115,6 +115,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "SonarQube.Scanner.DotNetCore.Tool": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -122,6 +126,10 @@
             "System.Text.Json": {
               "target": "Package",
               "version": "[8.0.4, )"
+            },
+            "dotnet-framework-sonarscanner": {
+              "target": "Package",
+              "version": "[7.1.1, )"
             },
             "itext7": {
               "target": "Package",
@@ -263,6 +271,14 @@
             "Serilog.Sinks.File": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "SonarQube.Scanner.DotNetCore.Tool": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            },
+            "dotnet-framework-sonarscanner": {
+              "target": "Package",
+              "version": "[7.1.1, )"
             },
             "itext7": {
               "target": "Package",
@@ -410,6 +426,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "SonarQube.Scanner.DotNetCore.Tool": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -417,6 +437,10 @@
             "System.ServiceModel.Http": {
               "target": "Package",
               "version": "[4.8.1, )"
+            },
+            "dotnet-framework-sonarscanner": {
+              "target": "Package",
+              "version": "[7.1.1, )"
             },
             "itext7": {
               "target": "Package",

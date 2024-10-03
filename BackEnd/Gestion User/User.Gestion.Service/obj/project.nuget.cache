@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "cnGIgbOfLcRnhweIDcm3NPsu5yMsaRLKmyNUc1rbC5CTcTArXXNTEkDmyftPk/CHBvsfe7PQeT9JQTLCim63Cg==",
+  "dgSpecHash": "N1wS93IWsvlPyMpS+QsttxXuxTu0LjTl4FVLRsVjyEU3O6/s5hR0bEAVFv6qfsha9aAHfg9qnOBKLVuwoDvZ6g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Service\\User.Gestion.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ahmed\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\bouncycastle.netcore\\2.2.1\\bouncycastle.netcore.2.2.1.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\dotnet-framework-sonarscanner\\7.1.1\\dotnet-framework-sonarscanner.7.1.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\itext\\8.0.4\\itext.8.0.4.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\itext.bouncy-castle-adapter\\8.0.4\\itext.bouncy-castle-adapter.8.0.4.nupkg.sha512",
@@ -80,6 +81,7 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\serilog.extensions.logging\\8.0.0\\serilog.extensions.logging.8.0.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\serilog.sinks.console\\6.0.0\\serilog.sinks.console.6.0.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\serilog.sinks.file\\6.0.0\\serilog.sinks.file.6.0.0.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\sonarqube.scanner.dotnetcore.tool\\4.3.1\\sonarqube.scanner.dotnetcore.tool.4.3.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

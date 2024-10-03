@@ -24,6 +24,8 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Pkgxunit_analyzers Condition=" '$(Pkgxunit_analyzers)' == '' ">C:\Users\Ahmed\.nuget\packages\xunit.analyzers\0.10.0</Pkgxunit_analyzers>
+    <PkgSonarQube_Scanner_DotNetCore_Tool Condition=" '$(PkgSonarQube_Scanner_DotNetCore_Tool)' == '' ">C:\Users\Ahmed\.nuget\packages\sonarqube.scanner.dotnetcore.tool\4.3.1</PkgSonarQube_Scanner_DotNetCore_Tool>
+    <Pkgdotnet-framework-sonarscanner Condition=" '$(Pkgdotnet-framework-sonarscanner)' == '' ">C:\Users\Ahmed\.nuget\packages\dotnet-framework-sonarscanner\7.1.1</Pkgdotnet-framework-sonarscanner>
     <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\Ahmed\.nuget\packages\microsoft.extensions.apidescription.server\3.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
     <PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets Condition=" '$(PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets)' == '' ">C:\Users\Ahmed\.nuget\packages\microsoft.visualstudio.azure.containers.tools.targets\1.19.6</PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets>
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\Ahmed\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.3</PkgMicrosoft_CodeAnalysis_Analyzers>
