@@ -42,6 +42,15 @@ pipeline {
             }
         }
 
+ stage('Install SonarScanner') {
+            steps {
+                // Install dotnet-sonarscanner
+                sh 'dotnet tool install --global dotnet-sonarscanner'
+                // Add dotnet tools to PATH
+                sh 'export PATH="$PATH:$HOME/.dotnet/tools"'
+            }
+        }
+
        stage('Code Analysis with SonarQube') {
     steps {
         dir('BackEnd/Gestion User') {
