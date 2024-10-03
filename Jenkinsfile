@@ -8,6 +8,7 @@ pipeline {
         SONARQUBE_KEY = 'squ_9d5e5b0c3916633347cdbdc85ec4bb3e54e89c5e'
         PROJECT_NAME = 'projet_pfe'
         SONARQUBE_URL = 'http://192.168.33.10:9000'
+        DOTNET_TOOLS_PATH = "$HOME/.dotnet/tools"
     }
 
     stages {
@@ -43,14 +44,16 @@ pipeline {
 
         stage('Install SonarScanner') {
             steps {
-                // Install dotnet-sonarscanner
-                sh 'dotnet tool install --global dotnet-sonarscanner'
+                script {
+                    // Install dotnet-sonarscanner if not already installed
+                    sh 'dotnet tool install --global dotnet-sonarscanner || true'
+                }
             }
         }
 
         stage('Code Analysis with SonarQube') {
             environment {
-                PATH = "$HOME/.dotnet/tools:${env.PATH}"
+                PATH = "${env.DOTNET_TOOLS_PATH}:${env.PATH}"
             }
             steps {
                 dir('BackEnd/Gestion User') {
