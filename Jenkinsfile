@@ -69,7 +69,7 @@ pipeline {
                         /d:sonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cs \
                         /d:sonar.issue.ignore.multicriteria.e2.resourceKey=**/*.cs \
                         /d:sonar.issue.ignore.multicriteria.e3.resourceKey=**/*.cs
-                        dotnet build --no-incremental /warnaserror- /nowarn:CS8618,CS8603,CS8604,CS8602
+                        dotnet build --no-incremental /warnaserror /nowarn:CS8618,CS8603,CS8604,CS8602
                         dotnet sonarscanner end /d:sonar.login=${SONARQUBE_KEY}
                         """
                     }
