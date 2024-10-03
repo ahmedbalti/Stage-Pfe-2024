@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#pragma warning disable CS8618 // Suppress "Non-nullable property must contain a non-null value" warnings
+
+using System.ComponentModel.DataAnnotations;
 
 namespace User.Gestion.Service.Models.Feedback
 {
@@ -11,3 +13,4 @@ namespace User.Gestion.Service.Models.Feedback
         public string? Comment { get; set; }
     }
 }
+#pragma warning restore CS8618

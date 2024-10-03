@@ -1,4 +1,5 @@
-﻿
+﻿#pragma warning disable CS8618 // Suppress "Non-nullable property must contain a non-null value" warnings
+
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -123,3 +124,4 @@ namespace User.Gestion.Data.Models
         }
     }
 }
+#pragma warning restore CS8618

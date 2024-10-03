@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿#pragma warning disable CS8618 // Suppress "Non-nullable property must contain a non-null value" warnings
+
+using Microsoft.AspNetCore.Identity;
 
 
 namespace User.Gestion.Data.Models
@@ -25,3 +27,4 @@ namespace User.Gestion.Data.Models
         public ICollection<Feedback>? Feedbacks { get; set; }
     }
 }
+#pragma warning restore CS8618

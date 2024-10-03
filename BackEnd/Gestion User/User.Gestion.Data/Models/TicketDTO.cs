@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable CS8618 // Suppress "Non-nullable property must contain a non-null value" warnings
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,3 +27,4 @@ namespace User.Gestion.Data.Models
         public DateTime? ResolutionDate { get; set; }
     }
 }
+#pragma warning restore CS8618

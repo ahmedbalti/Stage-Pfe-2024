@@ -1,4 +1,7 @@
-﻿using System;
+﻿#pragma warning disable CS8618 // Suppress "Non-nullable property must contain a non-null value" warnings
+
+
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -23,3 +26,4 @@ namespace User.Gestion.Data.Models
         public ApplicationUser User { get; set; }
     }
 }
+#pragma warning restore CS8618

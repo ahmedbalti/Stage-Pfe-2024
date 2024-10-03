@@ -1,4 +1,7 @@
-﻿using System;
+﻿#pragma warning disable CS8618 // Suppress "Non-nullable property must contain a non-null value" warnings
+
+
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace User.Gestion.Data.Models
@@ -39,3 +42,4 @@ namespace User.Gestion.Data.Models
         public bool IsApproved { get; set; } = false; // Indique si l'opportunité est approuvée
     }
 }
+#pragma warning restore CS8618

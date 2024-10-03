@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable CS8618 // Suppress "Non-nullable property must contain a non-null value" warnings
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,3 +19,4 @@ namespace User.Gestion.Data.Models
         // Ajoutez d'autres propriétés si nécessaire
     }
 }
+#pragma warning restore CS8618
