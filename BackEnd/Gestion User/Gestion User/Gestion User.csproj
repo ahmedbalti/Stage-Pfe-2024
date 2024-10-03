@@ -7,6 +7,8 @@
     <RootNamespace>Gestion_User</RootNamespace>
     <UserSecretsId>245adab4-22f5-41df-b878-f1441b0aa339</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	  <NoWarn>CS8618,CS8603,CS8604,CS8602,CS8605</NoWarn>
+
   </PropertyGroup>
 
   <ItemGroup>
