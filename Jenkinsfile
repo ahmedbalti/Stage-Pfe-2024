@@ -25,7 +25,8 @@ pipeline {
             steps {
                 dir('BackEnd/Gestion User') {
                     script {
-                        sh 'dotnet build --configuration Release'
+                                        sh 'dotnet build --configuration Release --no-incremental /nowarn:CS8618,CS8603,CS8604,CS8602,CS8605'
+
                     }
                 }
             }
