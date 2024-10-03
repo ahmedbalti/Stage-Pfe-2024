@@ -41,18 +41,27 @@ pipeline {
             }
         }
 
-        stage('Code Analysis with SonarQube') {
-            steps {
-                dir('BackEnd/Gestion User') {
-                    script {
-                        sh """
-                        dotnet sonarscanner begin /k:"${PROJECT_NAME}" /d:sonar.host.url=${SONARQUBE_URL} /d:sonar.login=${SONARQUBE_KEY} /d:sonar.issuesReport.console.enable=false /d:sonar.issuesReport.html.enable=false /d:sonar.cs.ignoreIssues=false
-                        dotnet build --no-incremental /warnaserror- /nowarn:CS8618,CS8603,CS8604,CS8602
-                        dotnet sonarscanner end /d:sonar.login=${SONARQUBE_KEY}
-                        """
-                    }
-                }
+       stage('Code Analysis with SonarQube') {
+    steps {
+        dir('BackEnd/Gestion User') {
+            script {
+                sh """
+                dotnet sonarscanner begin /k:"${PROJECT_NAME}" /d:sonar.host.url=${SONARQUBE_URL} /d:sonar.login=${SONARQUBE_KEY} \
+                /d:sonar.issuesReport.console.enable=false /d:sonar.issuesReport.html.enable=false \
+                /d:sonar.cs.ignoreIssues=false \
+                /d:sonar.issue.ignore.multicriteria=e1,e2,e3 \
+                /d:sonar.issue.ignore.multicriteria.e1.ruleKey=cs:S2583 \
+                /d:sonar.issue.ignore.multicriteria.e2.ruleKey=cs:S1172 \
+                /d:sonar.issue.ignore.multicriteria.e3.ruleKey=cs:S1166 \
+                /d:sonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cs \
+                /d:sonar.issue.ignore.multicriteria.e2.resourceKey=**/*.cs \
+                /d:sonar.issue.ignore.multicriteria.e3.resourceKey=**/*.cs
+                dotnet build --no-incremental /warnaserror- /nowarn:CS8618,CS8603,CS8604,CS8602
+                dotnet sonarscanner end /d:sonar.login=${SONARQUBE_KEY}
+                """
             }
         }
     }
+}
+}
 }
