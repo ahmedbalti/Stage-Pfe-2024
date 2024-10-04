@@ -1,4 +1,4 @@
-C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\CoverletSourceRootsMapping
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\CoverletSourceRootsMapping_User.Gestion.Test
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\testhost.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\TraceReloggerLib.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\User.Gestion.Test\bin\Debug\net6.0\Dia2Lib.dll

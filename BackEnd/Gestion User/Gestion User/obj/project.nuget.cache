@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pccCCU143tBZF8XycE8tAw1NLFobj3NmO7xxgYTECdZyqfF+cLVer+S7jn50IfcdwGq2+K6qybgIrbA5L7YXIA==",
+  "dgSpecHash": "WGkyMUCX+e182P4Sxc1wtnHUocAhiq5mZTUCZ7dy/tZ3APPRbtOnrUa1AEfe4abMZRa1x4y3S+8L/3y+v9E72g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\Gestion User\\Gestion User.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\bouncycastle.netcore\\2.2.1\\bouncycastle.netcore.2.2.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\dotnet-framework-sonarscanner\\7.1.1\\dotnet-framework-sonarscanner.7.1.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\gee.external.capstone\\2.3.0\\gee.external.capstone.2.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

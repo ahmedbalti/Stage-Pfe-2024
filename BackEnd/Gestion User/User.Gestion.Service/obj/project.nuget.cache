@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "N1wS93IWsvlPyMpS+QsttxXuxTu0LjTl4FVLRsVjyEU3O6/s5hR0bEAVFv6qfsha9aAHfg9qnOBKLVuwoDvZ6g==",
+  "dgSpecHash": "n0r3M4z0zXEf8sk9+e79RogM15Z+kzDChiWkDhj8Cofk9ccgv7rwfexRLAHXG2ncABywcFJH82blRQrO7zjN+A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Service\\User.Gestion.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ahmed\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\bouncycastle.netcore\\2.2.1\\bouncycastle.netcore.2.2.1.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\dotnet-framework-sonarscanner\\7.1.1\\dotnet-framework-sonarscanner.7.1.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\itext\\8.0.4\\itext.8.0.4.nupkg.sha512",

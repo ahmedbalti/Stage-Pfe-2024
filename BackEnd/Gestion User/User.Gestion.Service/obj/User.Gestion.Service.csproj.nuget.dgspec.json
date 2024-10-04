@@ -103,6 +103,12 @@
               "target": "Package",
               "version": "[4.3.1, )"
             },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
             "dotnet-framework-sonarscanner": {
               "target": "Package",
               "version": "[7.1.1, )"
@@ -264,6 +270,12 @@
             "System.ServiceModel.Http": {
               "target": "Package",
               "version": "[4.8.1, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.2, )"
             },
             "dotnet-framework-sonarscanner": {
               "target": "Package",

@@ -27,6 +27,7 @@
           "Swashbuckle.AspNetCore": "6.2.3",
           "System.ServiceModel.Http": "4.8.1",
           "User.Gestion.Data": "1.0.0",
+          "coverlet.collector": "6.0.2",
           "dotnet-framework-sonarscanner": "7.1.1",
           "itext7": "8.0.4",
           "itext7.bouncy-castle-adapter": "8.0.4"
@@ -55,6 +56,7 @@
         }
       },
       "BouncyCastle.NetCore/2.2.1": {},
+      "coverlet.collector/6.0.2": {},
       "dotnet-framework-sonarscanner/7.1.1": {},
       "Humanizer.Core/2.8.26": {
         "runtime": {
@@ -1545,6 +1547,13 @@
       "sha512": "sha512-yfWn8JYPc4rkeM2kcsCqFVFOvwCuuQvIieGtQWcjoWxOioeznXQB3M/GmHgbCWbJjc8ycrwGhZaZPiasifYi4A==",
       "path": "bouncycastle.netcore/2.2.1",
       "hashPath": "bouncycastle.netcore.2.2.1.nupkg.sha512"
+    },
+    "coverlet.collector/6.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bJShQ6uWRTQ100ZeyiMqcFlhP7WJ+bCuabUs885dJiBEzMsJMSFr7BOyeCw4rgvQokteGi5rKQTlkhfQPUXg2A==",
+      "path": "coverlet.collector/6.0.2",
+      "hashPath": "coverlet.collector.6.0.2.nupkg.sha512"
     },
     "dotnet-framework-sonarscanner/7.1.1": {
       "type": "package",

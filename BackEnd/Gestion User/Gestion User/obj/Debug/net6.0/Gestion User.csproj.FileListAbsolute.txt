@@ -80,6 +80,7 @@ C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\obj\
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\obj\Debug\net6.0\Gestion User.sourcelink.json
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\bin\Debug\net6.0\User.Gestion.Data.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\Gestion User\Gestion User\bin\Debug\net6.0\User.Gestion.Data.pdb
+C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\CoverletSourceRootsMapping_Gestion User
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\TraceReloggerLib.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\Dia2Lib.dll
 C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\bin\Debug\net6.0\appsettings.Development.json
