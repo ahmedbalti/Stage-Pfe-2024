@@ -1,0 +1,32 @@
+2024-10-04 01:12:47.881 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 01:12:50.098 +01:00 [INF] Now listening on: https://localhost:7021
+2024-10-04 01:12:50.104 +01:00 [INF] Now listening on: http://localhost:5158
+2024-10-04 01:12:50.203 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 01:12:50.271 +01:00 [INF] Hosting environment: Development
+2024-10-04 01:12:50.308 +01:00 [INF] Content root path: C:\Users\Ahmed\Desktop\Stage PFE 2024\Projet .net\BackEnd\Gestion User\Gestion User\
+2024-10-04 01:12:52.296 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7021/swagger/index.html - -
+2024-10-04 01:12:53.635 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7021/swagger/index.html - - - 200 - text/html;charset=utf-8 1357.8258ms
+2024-10-04 01:12:53.805 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7021/_framework/aspnetcore-browser-refresh.js - -
+2024-10-04 01:12:53.808 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7021/_vs/browserLink - -
+2024-10-04 01:12:53.893 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7021/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 87.6550ms
+2024-10-04 01:12:54.146 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7021/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 337.5264ms
+2024-10-04 01:12:54.267 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7021/swagger/v1/swagger.json - -
+2024-10-04 01:12:55.329 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7021/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1061.6543ms
+2024-10-04 01:13:22.319 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7021/api/Authentication/login application/json 52
+2024-10-04 01:13:22.361 +01:00 [INF] CORS policy execution successful.
+2024-10-04 01:13:22.574 +01:00 [INF] Executing endpoint 'Gestion_User.Controllers.AuthenticationController.Login (Gestion User)'
+2024-10-04 01:13:22.694 +01:00 [INF] Route matched with {action = "Login", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Gestion_User.Models.Authentication.Login.LoginModel) on controller Gestion_User.Controllers.AuthenticationController (Gestion User).
+2024-10-04 01:13:26.897 +01:00 [INF] Entity Framework Core 6.0.10 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: MigrationsAssembly=User.Gestion.Data 
+2024-10-04 01:13:29.690 +01:00 [INF] Executed DbCommand (344ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfileImage], [a].[RefreshToken], [a].[RefreshTokenExpiry], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-10-04 01:13:30.448 +01:00 [INF] Executed DbCommand (29ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-10-04 01:13:30.928 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-04 01:13:31.022 +01:00 [INF] Executed action Gestion_User.Controllers.AuthenticationController.Login (Gestion User) in 8307.6066ms
+2024-10-04 01:13:31.033 +01:00 [INF] Executed endpoint 'Gestion_User.Controllers.AuthenticationController.Login (Gestion User)'
+2024-10-04 01:13:31.104 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7021/api/Authentication/login application/json 52 - 200 - application/json;+charset=utf-8 8784.4715ms
