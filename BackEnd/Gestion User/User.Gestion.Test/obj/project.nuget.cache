@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "K2bux6ePFy00sfcPobif5kou+j9ytPVhLqBPEx1M3CRWdJVAnCpabeOgJSTPFZcG8aWywNeegwegXSv0god/kg==",
+  "dgSpecHash": "IuC03YMZZ+El0sP6yjw8ezaKl/imDvNRV5vu3o4rZCKCtKrD+3myb2Q4x1i3q+OyeiVkJZlZ0FgwRJWeE0WIaw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Test\\User.Gestion.Test.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,7 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\bouncycastle.netcore\\2.2.1\\bouncycastle.netcore.2.2.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\dotnet-framework-sonarscanner\\7.1.1\\dotnet-framework-sonarscanner.7.1.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\gee.external.capstone\\2.3.0\\gee.external.capstone.2.3.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\iced\\1.17.0\\iced.1.17.0.nupkg.sha512",
@@ -226,8 +226,8 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\xunit.extensibility.core\\2.4.1\\xunit.extensibility.core.2.4.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\xunit.extensibility.execution\\2.4.1\\xunit.extensibility.execution.2.4.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.3\\xunit.runner.visualstudio.2.4.3.nupkg.sha512",
-    "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512"
   ],
   "logs": []

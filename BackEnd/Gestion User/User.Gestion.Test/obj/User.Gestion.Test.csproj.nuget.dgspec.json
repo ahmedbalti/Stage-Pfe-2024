@@ -131,7 +131,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[3.1.2, )"
             },
             "dotnet-framework-sonarscanner": {
               "target": "Package",
@@ -286,7 +286,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[3.1.2, )"
             },
             "dotnet-framework-sonarscanner": {
               "target": "Package",
@@ -454,7 +454,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[3.1.2, )"
             },
             "dotnet-framework-sonarscanner": {
               "target": "Package",
@@ -570,7 +570,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[3.1.2, )"
             },
             "xunit": {
               "target": "Package",

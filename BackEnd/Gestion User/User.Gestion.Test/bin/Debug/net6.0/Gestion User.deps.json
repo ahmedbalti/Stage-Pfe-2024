@@ -28,7 +28,7 @@
           "Swashbuckle.AspNetCore": "6.2.3",
           "System.Text.Json": "8.0.4",
           "User.Gestion.Service": "1.0.0",
-          "coverlet.collector": "6.0.2",
+          "coverlet.collector": "3.1.2",
           "dotnet-framework-sonarscanner": "7.1.1",
           "itext7": "8.0.4"
         },
@@ -92,7 +92,7 @@
           }
         }
       },
-      "coverlet.collector/6.0.2": {},
+      "coverlet.collector/3.1.2": {},
       "dotnet-framework-sonarscanner/7.1.1": {},
       "Gee.External.Capstone/2.3.0": {
         "runtime": {
@@ -2008,12 +2008,12 @@
       "path": "commandlineparser/2.9.1",
       "hashPath": "commandlineparser.2.9.1.nupkg.sha512"
     },
-    "coverlet.collector/6.0.2": {
+    "coverlet.collector/3.1.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bJShQ6uWRTQ100ZeyiMqcFlhP7WJ+bCuabUs885dJiBEzMsJMSFr7BOyeCw4rgvQokteGi5rKQTlkhfQPUXg2A==",
-      "path": "coverlet.collector/6.0.2",
-      "hashPath": "coverlet.collector.6.0.2.nupkg.sha512"
+      "sha512": "sha512-wuLDIDKD5XMt0A7lE31JPenT7QQwZPFkP5rRpdJeblyXZ9MGLI8rYjvm5fvAKln+2/X+4IxxQDxBtwdrqKNLZw==",
+      "path": "coverlet.collector/3.1.2",
+      "hashPath": "coverlet.collector.3.1.2.nupkg.sha512"
     },
     "dotnet-framework-sonarscanner/7.1.1": {
       "type": "package",
