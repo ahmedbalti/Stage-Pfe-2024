@@ -18,7 +18,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\PackagingProject\\PackagingProject.csproj",
-      "projectName": "ProjetPfe.All",
+      "projectName": "Gestion.User",
       "projectPath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\PackagingProject\\PackagingProject.csproj",
       "packagesPath": "C:\\Users\\Ahmed\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\PackagingProject\\obj\\",
