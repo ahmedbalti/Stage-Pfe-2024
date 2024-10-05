@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "u3to7odlE1Q9EdxHlEpyhbBhync8QPQZgm7J0f7PWTDFH7JdfxcZpaiZpNpPAdsoaeR3q1SzJh5GmaC4KvZmuQ==",
-  "success": false,
+  "dgSpecHash": "XPliWDGPKkm4Key/yPIyTw2/wA9hguO0EZ86YMkCzSbiZCJa9GUqitIhxJ/MNKhwyUN8svymzkx+sqInsJx7mg==",
+  "success": true,
   "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Test\\User.Gestion.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ahmed\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
@@ -230,15 +230,5 @@
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1108",
-      "level": "Error",
-      "message": "Cycle détecté. \r\n  User.Gestion.Test -> Gestion User -> User.Gestion.Test.",
-      "libraryId": "User.Gestion.Test",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

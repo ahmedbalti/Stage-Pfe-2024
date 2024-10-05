@@ -4169,7 +4169,6 @@
           "System.Text.Json": "8.0.4",
           "User.Gestion.Data": "1.0.0",
           "User.Gestion.Service": "1.0.0",
-          "User.Gestion.Test": "1.0.0",
           "dotnet-framework-sonarscanner": "7.1.1",
           "itext7": "8.0.4"
         },
@@ -12495,16 +12494,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1108",
-      "level": "Error",
-      "message": "Cycle détecté. \r\n  User.Gestion.Test -> Gestion User -> User.Gestion.Test.",
-      "libraryId": "User.Gestion.Test",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }

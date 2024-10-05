@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Version>1.0.0</Version>
+		<PackageId>ProjetPfe.All</PackageId>
+		<!-- Use a unique Package ID -->
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Add references to other projects here -->
+		<ProjectReference Include="..\User.Gestion.Data\User.Gestion.Data.csproj" />
+		<ProjectReference Include="..\User.Gestion.Service\User.Gestion.Service.csproj" />
+		<ProjectReference Include="..\Gestion User\Gestion User.csproj" />
+	</ItemGroup>
+</Project>
