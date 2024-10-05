@@ -66,6 +66,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\User.Gestion.Service\User.Gestion.Service.csproj" />
+      <ProjectReference Include="..\User.Gestion.Test\User.Gestion.Test.csproj" />
+	      <ProjectReference Include="..\User.Gestion.Data\User.Gestion.Data.csproj" />
+
+
   </ItemGroup>
 
   <ItemGroup>

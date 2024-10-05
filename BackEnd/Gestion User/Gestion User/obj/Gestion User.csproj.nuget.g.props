@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">False</RestoreSuccess>
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
@@ -21,6 +21,7 @@
     <Import Project="$(NuGetPackageRoot)microsoft.diagnostics.tracing.traceevent\3.1.8\buildTransitive\Microsoft.Diagnostics.Tracing.TraceEvent.props" Condition="Exists('$(NuGetPackageRoot)microsoft.diagnostics.tracing.traceevent\3.1.8\buildTransitive\Microsoft.Diagnostics.Tracing.TraceEvent.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Pkgxunit_analyzers Condition=" '$(Pkgxunit_analyzers)' == '' ">C:\Users\Ahmed\.nuget\packages\xunit.analyzers\0.10.0</Pkgxunit_analyzers>
     <PkgSonarQube_Scanner_DotNetCore_Tool Condition=" '$(PkgSonarQube_Scanner_DotNetCore_Tool)' == '' ">C:\Users\Ahmed\.nuget\packages\sonarqube.scanner.dotnetcore.tool\4.3.1</PkgSonarQube_Scanner_DotNetCore_Tool>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\Ahmed\.nuget\packages\microsoft.entityframeworkcore.tools\6.0.10</PkgMicrosoft_EntityFrameworkCore_Tools>
     <Pkgdotnet-framework-sonarscanner Condition=" '$(Pkgdotnet-framework-sonarscanner)' == '' ">C:\Users\Ahmed\.nuget\packages\dotnet-framework-sonarscanner\7.1.1</Pkgdotnet-framework-sonarscanner>

@@ -28,8 +28,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Data\\User.Gestion.Data.csproj": {
+                "projectPath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Data\\User.Gestion.Data.csproj"
+              },
               "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Service\\User.Gestion.Service.csproj": {
                 "projectPath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Service\\User.Gestion.Service.csproj"
+              },
+              "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Test\\User.Gestion.Test.csproj": {
+                "projectPath": "C:\\Users\\Ahmed\\Desktop\\Stage PFE 2024\\Projet .net\\BackEnd\\Gestion User\\User.Gestion.Test\\User.Gestion.Test.csproj"
               }
             }
           }
