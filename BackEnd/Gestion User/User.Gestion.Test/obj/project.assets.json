@@ -4145,7 +4145,7 @@
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
       },
-      "Gestion User/1.0.0": {
+      "Gestion.User/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -4173,10 +4173,10 @@
           "itext7": "8.0.4"
         },
         "compile": {
-          "bin/placeholder/Gestion User.dll": {}
+          "bin/placeholder/Gestion.User.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Gestion User.dll": {}
+          "bin/placeholder/Gestion.User.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -12349,7 +12349,7 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "Gestion User/1.0.0": {
+    "Gestion.User/1.0.0": {
       "type": "project",
       "path": "../Gestion User/Gestion User.csproj",
       "msbuildProject": "../Gestion User/Gestion User.csproj"
@@ -12367,7 +12367,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Gestion User >= 1.0.0",
+      "Gestion.User >= 1.0.0",
       "Microsoft.EntityFrameworkCore.InMemory >= 6.0.10",
       "Microsoft.NET.Test.Sdk >= 17.1.0",
       "Moq >= 4.20.72",
