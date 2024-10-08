@@ -1,5 +1,5 @@
 // forgot-password.component.ts
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 
@@ -33,7 +33,7 @@ export class ForgotPasswordComponent {
     });
   }
 }
-
+*/
 
 /*import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

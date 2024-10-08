@@ -1,7 +1,7 @@
-<main class="profile-page">
-  <section class="section-profile-cover section-shaped my-0">
+<main >
+  <section class="section section-lg section-shaped pb-100">
     <!-- Circles background -->
-    <div class="shape shape-style-1 shape-primary alpha-4">
+    <div class="shape shape-style-1 shape-default">
       <span></span>
       <span></span>
       <span></span>
@@ -20,45 +20,29 @@
       <div class="container">
         <br>
         <br>
+        <h2 class="text-center">Votre liste de contrats</h2>
 
-  <div class="container mt-3">
-      <h2>Votre liste de contrats</h2>
-      <table *ngIf="contracts.length > 0; else noContracts" class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Policy Number</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let contract of contracts">
-            <td>{{ contract.id }}</td>
-            <td>{{ contract.policyNumber }}</td>
-            <td>{{ contract.startDate | date }}</td>
-            <td>{{ contract.endDate | date }}</td>
-            <td>{{ contract.isActive ? 'Active' : 'Inactive' }}</td>
-            <td>
-              <button (click)="renewContract(contract.id)" [disabled]="!contract.isActive">Renew</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <ng-template #noContracts>
-        <p>No contracts available.</p>
-      </ng-template>
-      <br>
-  <!-- Ajout du titre et du bouton de téléchargement PDF -->
-  <div class="container mt-3">
-    <h3>Voulez-vous télécharger la liste de vos contrats ?</h3>
-    <button (click)="downloadPdf()">Télécharger PDF</button>
-  </div>
-  <br>
+        <div class="card-deck">
+          <div *ngFor="let contract of contracts" class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa fa-file-contract card-icon"></i> Numéro de police: {{ contract.policyNumber }}</h5>
+              <p class="card-text"><i class="fa fa-calendar-alt card-icon"></i> Date de début: {{ contract.startDate | date }}</p>
+              <p class="card-text"><i class="fa fa-calendar-alt card-icon"></i> Date de fin: {{ contract.endDate | date }}</p>
+              <p class="card-text"><i class="fa fa-info-circle card-icon"></i> Statut: {{ contract.isActive ? 'Active' : 'Inactive' }}</p>
+        <!--      <button class="btn btn-info btn-sm" (click)="renewContract(contract.id)" [disabled]="!contract.isActive">Renouveler</button>-->
+            </div>
+          </div>
+        </div>
 
-    </div>
-  
-  <!--</section>-->
- 
+        <ng-template #noContracts>
+          <p class="text-center">Aucun contrat disponible.</p>
+        </ng-template>
+
+        <div class="container mt-3">
+          <h3 class="text-center">Voulez-vous télécharger la liste de vos contrats ?</h3>
+          <button class="btn btn-primary" (click)="downloadPdf()">Télécharger PDF</button>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>

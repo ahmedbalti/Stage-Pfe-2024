@@ -11,23 +11,34 @@ export class ContractService {
 
   constructor(private http: HttpClient) {}
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('accessToken');
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-  }
 
   getContracts(): Observable<Contract[]> {
-    return this.http.get<Contract[]>(this.apiUrl, { headers: this.getHeaders() });
+    return this.http.get<Contract[]>(this.apiUrl);
+  }
+
+  getContracts1(): Observable<Contract[]> {
+    return this.http.get<Contract[]>(`${this.apiUrl}/all`);
   }
 
   renewContract(request: RenewalRequest): Observable<any> {
-    return this.http.post(`${this.apiUrl}/renew`, request, { headers: this.getHeaders() });
+    return this.http.post(`${this.apiUrl}/renew`, request);
+  }
+
+  
+
+  addContract(contract: Partial<Contract>): Observable<Contract> {
+    return this.http.post<Contract>(this.apiUrl, contract);
+  }
+
+  updateContract(id: number, contract: Partial<Contract>): Observable<string> {
+    return this.http.put(`${this.apiUrl}/${id}`, contract, { responseType: 'text' });
   }
 
   downloadContractsPdf(): Observable<Blob> {
-    return this.http.get(`${this.apiUrl}/pdf/all`, { headers: this.getHeaders(), responseType: 'blob' });
+    return this.http.get(`${this.apiUrl}/pdf/all`, {responseType: 'blob' });
+  }
+
+  getClients(): Observable<any[]> {  // New method to fetch clients
+    return this.http.get<any[]>(`${this.apiUrl}/clients`);
   }
 }

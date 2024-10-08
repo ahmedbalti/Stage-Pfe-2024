@@ -1,0 +1,159 @@
+<!--<app-navbar2></app-navbar2>-->
+
+
+<main>
+  <div class="position-relative">
+      <section class="section section-lg section-shaped pb-100">
+          <div class="shape shape-style-1 shape-default">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+
+          <div class="container mt-5">
+              <h2 class="mb-4 text-white">Cher employé , Bienvenue dans votre espace ticket</h2>
+
+
+
+              <div class="row mt-5">
+                <div class="col-md-6">
+                  <h3 class="text-white">Ticket Resolution Status</h3>
+                  <div class="chart-container">
+                    <canvas id="resolutionStatusChart"></canvas>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h3 class="text-white">Ticket Priority</h3>
+                  <div class="chart-container">
+                    <canvas id="priorityChart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+              <hr>
+
+
+
+              <div class="row mb-4">
+                  <div class="col-md-6">
+                      <label for="selectTitle" class="form-label text-white">Filtrer par titre :</label>
+                      <select class="form-control" id="selectTitle" [(ngModel)]="selectedTitle" (ngModelChange)="filterTickets()">
+                          <option value="">Tous les tickets</option>
+                          <option *ngFor="let title of ticketTitles" [ngvalue]="title">{{ title }}</option>
+                      </select>
+                  </div>
+                  <div class="col-md-6">
+                      <label for="selectStatus" class="form-label text-white">Filtrer par statut :</label>
+                      <select class="form-control" id="selectStatus" [(ngModel)]="selectedStatus" (ngModelChange)="filterTickets()">
+                          <option value="">Tous les statuts</option>
+                          <option *ngFor="let status of statuses" [ngvalue]="status">{{ status }}</option>
+                      </select>
+                  </div>
+              </div>
+
+            
+
+              <div class="card-deck">
+                  <div *ngFor="let ticket of filteredTickets" class="card mb-4 shadow-sm">
+                      <div class="card-body">
+                          <h5 class="card-title"><i class="fa fa-ticket-alt card-icon"></i>{{ ticket.titre }}</h5>
+                          <p class="card-text"><i class="fa fa-align-left card-icon"></i>Description: {{ ticket.description }}</p>
+                          <p class="card-text"><i class="fa fa-flag card-icon"></i>Priorité: {{ ticket.priority }}</p>
+                          <p class="card-text"><i class="fa fa-info-circle card-icon"></i>Statut: {{ ticket.statut }}</p>
+                          <p class="card-text"><i class="fa fa-calendar-alt card-icon"></i>Créé le: {{ ticket.createdOn | date:'short' }}</p>
+                          <button class="btn btn-info btn-sm mr-2" (click)="openResponseForm(ticket.idTicket)">Répondre</button>
+                          <button class="btn btn-secondary btn-sm" (click)="openStatusForm(ticket)">Changer le statut</button>
+                          <button class="btn btn-warning btn-sm" (click)="loadTicketResponses(ticket.idTicket)">Voir les réponses</button>
+
+                      </div>
+                  </div>
+              </div>
+
+  
+              <!-- Formulaire de réponse -->
+              <div class="modal" tabindex="-1" [ngClass]="{'show': isResponseFormVisible}" [ngStyle]="{'display': isResponseFormVisible ? 'block' : 'none'}">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title">Répondre au Ticket</h5>
+                              <button type="button" class="btn-close" (click)="closeResponseForm()"></button>
+                          </div>
+                          <div class="modal-body">
+                              <form [formGroup]="responseForm" (ngSubmit)="onSubmitResponse()">
+                                  <div class="mb-3 form-group">
+                                      <label for="response" class="form-label">Réponse</label>
+                                      <textarea class="form-control large-textarea" id="response" formControlName="response" rows="5"></textarea>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" (click)="closeResponseForm()">Fermer</button>
+                                      <button type="submit" class="btn btn-primary">Envoyer</button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          
+
+   <!-- Formulaire de changement de statut -->
+   <div class="modal" tabindex="-1" [ngClass]="{'show': isStatusFormVisible}" [ngStyle]="{'display': isStatusFormVisible ? 'block' : 'none'}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Changer le Statut du Ticket</h5>
+          <button type="button" class="btn-close" (click)="closeStatusForm()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="statusForm" (ngSubmit)="onSubmitStatus()">
+            <div class="mb-3 form-group">
+              <label for="statut" class="form-label">Statut</label>
+              <select class="form-control" id="statut" formControlName="statut">
+                <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeStatusForm()">Fermer</button>
+              <button type="submit" class="btn btn-primary">Changer le statut</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Formulaire de visualisation des réponses -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': isResponseListVisible}" [ngStyle]="{'display': isResponseListVisible ? 'block' : 'none'}">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Réponses au Ticket</h5>
+              <button type="button" class="btn-close" (click)="closeResponseView()"></button>
+          </div>
+          <div class="modal-body">
+              <div *ngIf="ticketResponses.length === 0">
+                  <p>Aucune réponse disponible pour ce ticket.</p>
+              </div>
+              <div *ngFor="let response of ticketResponses">
+                  <div class="card mb-2">
+                      <div class="card-body">
+                          <p class="card-text"><i class="fa fa-align-left card-icon"></i>{{ response.response }}</p>
+                          <p class="card-text text-muted"><i class="fa fa-calendar-alt card-icon"></i>{{ response.responseDate | date:'short' }}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeResponseView()">Fermer</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+

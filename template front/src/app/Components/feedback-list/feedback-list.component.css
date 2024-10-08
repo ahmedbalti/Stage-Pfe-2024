@@ -1,0 +1,179 @@
+/* Comment section header */
+.comment-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+/* General rule to make all h2 and h3 headings white */
+h2, h3 {
+  color: white;
+}
+
+/* Specific styling for "Note Moyenne" */
+.note-moyenne-title {
+  color: #3857e0; /* Blue color for "Note Moyenne" */
+}
+
+
+.comment-user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.comment-rating .fa-star {
+  color: #ffd700;
+  margin-right: 5px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.comment-rating .fa-star.filled {
+  color: #FFCC00;
+}
+.comment-rating .fa-star.empty {
+  color: #e0e0e0; /* Une couleur grise pour les étoiles vides */
+}
+
+.comment-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 10px auto;
+  animation: fadeIn 0.5s ease-in-out forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comment-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Feedback summary */
+.feedback-summary {
+  margin: 20px auto;
+  max-width: 700px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Rating bars */
+.rating-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rating-stars {
+  width: 80px;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
+}
+
+.rating-bar-container {
+  flex: 1;
+  background-color: #e0e0e0;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 10px;
+}
+
+.rating-bar {
+  height: 100%;
+  background-color: #3857e0;
+  border-radius: 6px;
+  width: 0%;
+  transition: width 1.5s ease-in-out;
+}
+
+.rating-bar.animated {
+  width: 100%;
+}
+
+.rating-percentage {
+  width: 50px;
+  text-align: right;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Average rating */
+.average-rating-container {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.average-rating {
+  font-size: 1.8rem;
+  color: #3857e0;
+  animation: fadeInGrow 2s ease-in-out forwards;
+}
+
+/* Animation for the rating and fade-in effects */
+@keyframes fadeInGrow {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Animation for the floating elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Shape styling */
+.shape {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.shape span {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  margin: 10px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.text-white {
+  color: white !important;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+

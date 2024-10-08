@@ -21,8 +21,8 @@ export class SinistresComponent implements OnInit {
 
   statuts = [
     { value: 0, label: 'Ouverte' },
-    { value: 1, label: 'En Cours' },
-    { value: 2, label: 'Fermée' }
+    { value: 1, label: 'EnCours' },
+    { value: 2, label: 'Fermee' }
   ];
 
   constructor(private sinistreService: SinistreService, private fb: FormBuilder) {

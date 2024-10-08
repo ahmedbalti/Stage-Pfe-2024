@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+/*import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../Services/auth.service';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-login-otp',
@@ -9,44 +8,26 @@ import { AuthService } from '../../Services/auth.service';
   styleUrls: ['./login-otp.component.css']
 })
 export class LoginOtpComponent {
-  loginForm: FormGroup;
-  errorMessage: string | null = null;
+  otp: string = '';
+  errorMessage: string = '';
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
-  ) {
-    this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      otp: ['', Validators.required]
-    });
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      const { username, otp } = this.loginForm.value;
-      this.authService.loginWithOTP(otp, username).subscribe(
-        response => {
-          console.log('Login successful', response);
-          if (response.isSuccess) {
-            // Stockez le jeton et redirigez l'utilisateur
-            localStorage.setItem('accessToken', response.response.accessToken.token);
-            localStorage.setItem('refreshToken', response.response.refreshToken.token);
-            this.router.navigate(['/dashboard']); // Exemple de redirection
-          } else {
-            this.errorMessage = response.message;
-          }
-        },
-        error => {
-          console.error('Login failed', error);
-          if (error.status === 404) {
-            this.errorMessage = 'Endpoint not found. Please check your backend URL.';
-          } else {
-            this.errorMessage = error.message;
-          }
-        }
-      );
+    const username = localStorage.getItem('username');
+    if (!username) {
+      this.errorMessage = 'No username found. Please login first.';
+      return;
     }
+
+    this.authService.verifyOtp({ Username: username, OTP: this.otp }).subscribe({
+      next: (response) => {
+        alert('Login link has been sent to your email.');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        this.errorMessage = 'Invalid OTP';
+      }
+    });
   }
-}
+}*/

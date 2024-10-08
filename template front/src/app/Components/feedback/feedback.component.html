@@ -1,0 +1,43 @@
+<main>
+  <div class="position-relative">
+      <!-- shape Hero -->
+      <section class="section section-lg section-shaped pb-100">
+          <div class="shape shape-style-1 shape-default">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+
+<div class="feedback-container">
+  <h2 class="feedback-title">Partagez votre avis</h2>
+
+  <form #feedbackForm="ngForm" (ngSubmit)="onSubmit(feedbackForm)" class="feedback-form">
+    <div class="form-group rating-group">
+      <label for="rating" class="form-label">Votre Note :</label>
+      <ngx-star-rating [(ngModel)]="rating" name="rating" [starCount]="5" [size]="30"></ngx-star-rating>
+    </div>
+
+    <div class="form-group">
+      <label for="comment" class="form-label">Votre Commentaire :</label>
+      <textarea id="comment" name="comment" [(ngModel)]="comment" class="form-control feedback-comment" rows="4" placeholder="Exprimez votre opinion ici..."></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit">Envoyer</button>
+  </form>
+</div>
+
+
+
+<div class="separator separator-bottom separator-skew">
+  <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+  </svg>
+</div>
+</section>
+</div>
+</main>

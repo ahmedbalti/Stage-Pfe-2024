@@ -1,3 +1,47 @@
+
+
+<!--<div class="container mt-5">
+  <h2 class="mb-4">Profile Information</h2>
+  
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>  
+
+  <div class="mb-3">
+    <img [src]="imageUrl" *ngIf="imageUrl" class="img-thumbnail" style="max-width: 150px;" />
+    <input type="file" (change)="onFileSelected($event)" />
+    <button class="btn btn-primary mt-2" (click)="onUpload()">Upload Image</button>
+  </div>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="userName" class="form-label">Username</label>
+      <input id="userName" formControlName="userName" class="form-control" type="text" />
+    </div>
+    
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input id="email" formControlName="email" class="form-control" type="email" />
+    </div>
+
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number</label>
+      <input id="phoneNumber" formControlName="phoneNumber" class="form-control" type="text" />
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <input id="address" formControlName="address" class="form-control" type="text" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Profile</button>
+  </form>
+</div>-->
+
 <main class="profile-page">
   <section class="section-profile-cover section-shaped my-0">
     <!-- Circles background -->
@@ -17,6 +61,7 @@
       </svg>
     </div>
   </section>
+
   <section class="section">
     <div class="container">
       <div class="card card-profile shadow mt--300">
@@ -25,46 +70,60 @@
             <div class="col-lg-3 order-lg-2">
               <div class="card-profile-image">
                 <a href="javascript:void(0)">
-                  <img src="./assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                  <img [src]="imageUrl || 'assets/img/default-avatar.png'" class="rounded-circle">
                 </a>
               </div>
             </div>
             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
               <div class="card-profile-actions py-4 mt-lg-0">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info mr-4">Connect</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-default float-right">Message</a>
+                <!-- Button to trigger image selection -->
+                <input type="file" (change)="onFileSelected($event)" hidden #fileInput />
+                <button class="btn btn-sm btn-info mr-4" (click)="fileInput.click()">Choose Image</button>
+                <button class="btn btn-sm btn-default float-right" (click)="onUpload()">Upload</button>
               </div>
             </div>
             <div class="col-lg-4 order-lg-1">
               <div class="card-profile-stats d-flex justify-content-center">
-                <div>
-                  <span class="heading">22</span>
-                  <span class="description">Friends</span>
-                </div>
-                <div>
-                  <span class="heading">10</span>
-                  <span class="description">Photos</span>
-                </div>
-                <div>
-                  <span class="heading">89</span>
-                  <span class="description">Comments</span>
-                </div>
+                <!-- Optional: stats -->
               </div>
             </div>
           </div>
+
           <div class="text-center mt-5">
-            <h3>Jessica Jones
-              <span class="font-weight-light">, 27</span>
-            </h3>
-            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Bucharest, Romania</div>
-            <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer</div>
-            <div><i class="ni education_hat mr-2"></i>University of Computer Science</div>
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="userName" class="form-label">Username</label>
+                <input id="userName" formControlName="userName" class="form-control" type="text" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" formControlName="email" class="form-control" type="email" />
+              </div>
+              <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <input id="phoneNumber" formControlName="phoneNumber" class="form-control" type="text" />
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input id="address" formControlName="address" class="form-control" type="text" />
+              </div>
+              <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
           </div>
+
+          <div *ngIf="successMessage || errorMessage" class="mt-4">
+            <div *ngIf="successMessage" class="alert alert-success">
+              {{ successMessage }}
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+              {{ errorMessage }}
+            </div>
+          </div>
+
           <div class="mt-5 py-5 border-top text-center">
             <div class="row justify-content-center">
               <div class="col-lg-9">
-                <p>An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
-                <a href="javascript:void(0)">Show more</a>
+                <p>Vous pouvez gérer votre espace personnel ici . Vous pouvez mettre à jour vos informations et changer votre photo .</p>
               </div>
             </div>
           </div>

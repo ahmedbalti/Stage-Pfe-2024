@@ -1,0 +1,90 @@
+/* Adjust the heading size */
+h3 {
+    font-size: 24px; /* Decrease the size to your preferred value */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #5e72e4; /* Optional: Change the color if needed */
+  }
+  
+  /* Ensure consistency with the login component */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-group-alternative {
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-group-prepend {
+    background-color: #f6f6f6;
+  }
+  
+  .input-group-text {
+    background-color: transparent;
+    border-right: 1px solid #e3e3e3;
+  }
+  
+  .form-control {
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+  }
+  
+  /* Button consistency */
+  .btn-block {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .btn-primary {
+    background-color: #5e72e4;
+    border-color: #5e72e4;
+  }
+  
+  .btn-primary:hover {
+    background-color: #324cdd;
+    border-color: #324cdd;
+  }
+  
+  /* Card styling for consistency */
+  .card {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Shape styling and animations */
+  .shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .shape span {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    margin: 20px;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  

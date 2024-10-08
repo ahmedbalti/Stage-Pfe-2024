@@ -1,0 +1,156 @@
+
+
+/* Button styling */
+.btn-info, .btn-warning {
+  background-color: #007bff; /* Adjust color for .btn-info */
+  border-color: #007bff;
+  width: 80%; /* Stretch the button width */
+  margin: 10px 0; /* Add vertical margin */
+  padding: 5px; /* Adjust padding for better appearance */
+  font-size: 12px; /* Increase font size for readability */
+  text-align: center; /* Center the text */
+  display: block; /* Ensure the buttons stack vertically */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-warning {
+  background-color: #ffc107; /* Adjust color for .btn-warning */
+  border-color: #ffc107;
+}
+
+.btn-info:hover, .btn-warning:hover {
+  background-color: #0056b3; /* Darken on hover for .btn-info */
+}
+
+.btn-warning:hover {
+  background-color: #e0a800; /* Darken on hover for .btn-warning */
+}
+
+/* Ensure buttons are vertically and horizontally aligned in the card */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  height: 100%; /* Ensure card body takes full height for vertical centering */
+  text-align: left; /* Ensure text content is aligned left */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: left;
+  width: 100%; /* Ensure the title spans the entire width */
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  width: 100%; /* Ensure text spans the entire width */
+}
+
+/* Card styling */
+.card {
+  flex: 1 1 calc(50% - 2rem); /* Adjusted spacing */
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: transform 0.2s;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9; /* Light background */
+  display: flex; /* Make the card body take full height */
+  flex-direction: column;
+  justify-content: center; /* Center content in the middle vertically */
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+/* Deck styling */
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+/* Primary button styling */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Heading styles */
+h2, h3 {
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+/* Shape styling and animations */
+.shape {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.shape span {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  margin: 20px;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Warning and info button hover styling */
+.btn-info:hover, .btn-warning:hover {
+  background-color: #0056b3; /* Darken on hover for .btn-info */
+}
+
+.btn-warning:hover {
+  background-color: #e0a800; /* Darken on hover for .btn-warning */
+}
+
+/* Text styling */
+.text-white {
+  color: white;
+  font-size: 2rem; /* Adjust size as needed */
+  margin-bottom: 1rem; /* Adjust bottom margin */
+}
+
+/* Center title */
+.text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Icon styling */
+.card-icon {
+  font-size: 0.9rem;
+  margin-right: 1rem;
+}

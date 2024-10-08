@@ -1,0 +1,113 @@
+<main >
+  <section class="section section-lg section-shaped pb-100">
+    <div class="shape shape-style-1 shape-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container">
+      <br><br>
+      <h2 class="text-center">Cher employé, Bienvenue dans votre espace des contrats</h2>
+
+      <div class="card-deck">
+        <div *ngFor="let contract of contracts" class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fa fa-file-contract card-icon"></i> Numéro de police: {{ contract.policyNumber }}</h5>
+            <p class="card-text"><i class="fa fa-user card-icon"></i> Client: {{ contract.clientName }}</p> 
+            <p class="card-text"><i class="fa fa-calendar-alt card-icon"></i> Date de début: {{ contract.startDate | date }}</p>
+            <p class="card-text"><i class="fa fa-calendar-alt card-icon"></i> Date de fin: {{ contract.endDate | date }}</p>
+            <p class="card-text"><i class="fa fa-info-circle card-icon"></i> Statut: {{ contract.isActive ? 'Actif' : 'Inactif' }}</p>
+            <br>
+            <button class="btn btn-info btn-sm me-2" (click)="renewContract(contract.id)" [disabled]="!contract.isActive">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                <path d="M11.534 7h-5V5h5V2.5l3.5 3-3.5 3V7zm-7 2h5v2h-5v2.5L1 9l3.5-3V7z"/>
+              </svg> Renouveler
+            </button>
+            
+            <button class="btn btn-info btn-sm me-2" (click)="openEditForm(contract)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 3H13v1.793L6 11.793V10h-.5a.5.5 0 0 1-.5-.5V9h-1v1.793l-2.5 2.5L.707 13.707l.707-.707L4 10.207V9h1V8H4.5a.5.5 0 0 1-.5-.5V6h1v1h1V5h-.5a.5.5 0 0 1-.5-.5V3H6V2H4.5a.5.5 0 0 1-.5-.5V1H2.707l1.146 1.146L3.707 3H2V4.293L.854 5.439a1 1 0 0 0 0 1.414L4 10.707l.793.793L6 9.707V9H5v1H3.793L11.207 3z"/>
+              </svg> Modifier
+            </button>
+            
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noContracts>
+        <p class="text-center">Aucun contrat disponible.</p>
+      </ng-template>
+
+      <div class="container mt-5 text-center">
+        <h3>Si vous voulez ajouter un contrat, il faut juste appuyer sur ajouter</h3>
+        <button class="btn btn-primary mb-3" (click)="openCreateForm()">Ajouter Contrat</button>
+      </div>
+      
+      <div class="container mt-5 text-center">
+        <h3>Voulez-vous télécharger la liste de tous les contrats ?</h3>
+        <button class="btn btn-primary mb-3" (click)="downloadPdf()">Télécharger PDF</button>
+      </div>
+    </div>
+
+    <div class="separator separator-bottom separator-skew">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Formulaire d'ajout/modification de contrat -->
+  <div class="modal" tabindex="-1" [ngClass]="{'show': isFormVisible}" [ngStyle]="{'display': isFormVisible ? 'block' : 'none'}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ isEditMode ? 'Modifier Contrat' : 'Ajouter Contrat' }}</h5>
+          <button type="button" class="btn-close" (click)="closeForm()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3 form-group">
+              <label for="policyNumber" class="form-label">Numéro de police</label>
+              <input type="text" class="form-control" id="policyNumber" formControlName="policyNumber" required>
+              <div *ngIf="contractForm.controls['policyNumber'].invalid && contractForm.controls['policyNumber'].touched" class="text-danger">
+                Le numéro de police doit commencer par 'POL' suivi de 5 chiffres.
+              </div>
+            </div>
+
+             <!-- Client selection dropdown -->
+          <div class="mb-3 form-group">
+            <label for="clientId" class="form-label">Choisir un Client</label>
+            <select id="clientId" class="form-control" formControlName="clientId" required>
+              <option value="">Sélectionner un client</option>
+              <option *ngFor="let client of clients" [value]="client.id">{{ client.userName }}</option>
+            </select>
+          </div>
+
+          
+            <div class="mb-3 form-group">
+              <label for="startDate" class="form-label">Date de début</label>
+              <input type="date" class="form-control" id="startDate" formControlName="startDate" required>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="endDate" class="form-label">Date de fin</label>
+              <input type="date" class="form-control" id="endDate" formControlName="endDate" required>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="isActive" class="form-label">Actif</label>
+              <input type="checkbox" id="isActive" formControlName="isActive">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeForm()">Fermer</button>
+              <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier' : 'Ajouter' }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -113,8 +113,8 @@ body {
 
 .shape span {
     display: inline-block;
-    width: 100px; /* Increased size */
-    height: 100px; /* Increased size */
+    width: 120px; /* Increased size */
+    height: 120px; /* Increased size */
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 50%;
     margin: 20px; /* Increased margin */
@@ -191,3 +191,14 @@ body {
 .card-deck {
     margin-top: 20px; /* Add margin to card deck */
 }
+
+.custom-button {
+    background-color: #4fbee0; /* Remplacez par la couleur souhaitée */
+    color: white; /* Optionnel : couleur du texte */
+    border: none; /* Optionnel : retirer la bordure */
+  }
+  
+  .custom-button:hover {
+    background-color: #4fbee0; /* Optionnel : couleur au survol */
+  }
+  

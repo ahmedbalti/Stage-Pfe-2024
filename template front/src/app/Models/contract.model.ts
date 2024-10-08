@@ -5,6 +5,8 @@ export interface Contract {
     endDate: Date;
     isActive: boolean;
     userId: string;
+    clientId: string;
+    clientName: string;  
   }
   
   export interface RenewalRequest {

@@ -11,35 +11,29 @@ export class DevisService {
 
   constructor(private http: HttpClient) {}
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('accessToken');
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-  }
+  
 
   getDevis(): Observable<Devis[]> {
-    return this.http.get<Devis[]>(this.apiUrl, { headers: this.getHeaders() });
+    return this.http.get<Devis[]>(this.apiUrl);
   }
 
   getDevisById(id: number): Observable<Devis> {
-    return this.http.get<Devis>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
+    return this.http.get<Devis>(`${this.apiUrl}/${id}`);
   }
 
   createDevisAuto(devisAuto: DevisAuto): Observable<DevisAuto> {
-    return this.http.post<DevisAuto>(`${this.apiUrl}/auto`, devisAuto, { headers: this.getHeaders() });
+    return this.http.post<DevisAuto>(`${this.apiUrl}/auto`, devisAuto);
   }
 
   createDevisSante(devisSante: DevisSante): Observable<DevisSante> {
-    return this.http.post<DevisSante>(`${this.apiUrl}/sante`, devisSante, { headers: this.getHeaders() });
+    return this.http.post<DevisSante>(`${this.apiUrl}/sante`, devisSante);
   }
 
   createDevisHabitation(devisHabitation: DevisHabitation): Observable<DevisHabitation> {
-    return this.http.post<DevisHabitation>(`${this.apiUrl}/habitation`, devisHabitation, { headers: this.getHeaders() });
+    return this.http.post<DevisHabitation>(`${this.apiUrl}/habitation`, devisHabitation);
   }
 
   createDevisVie(devisVie: DevisVie): Observable<DevisVie> {
-    return this.http.post<DevisVie>(`${this.apiUrl}/vie`, devisVie, { headers: this.getHeaders() });
+    return this.http.post<DevisVie>(`${this.apiUrl}/vie`, devisVie);
   }
 }

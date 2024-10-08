@@ -34,4 +34,29 @@ export enum TicketPriority {
     statut: TicketStatut;
     resolutionDate?: Date;
   }
+
+  export interface TicketResponseDTO {
+    response: string;
+    ticketId: string;
+  }
   
+  export interface TicketFilterDTO {
+    Title?: TicketTitle;
+    Status?: TicketStatut;
+  }
+  
+  export interface TicketStatusUpdateDTO {
+    statut: TicketStatut;
+  }
+
+  export interface TicketStatistics {
+    totalTickets: number;
+    resolvedTickets: number;
+    unresolvedTickets: number;
+    lowPriorityTickets: number;
+    mediumPriorityTickets: number;
+    highPriorityTickets: number;
+  }
+  
+  
+ 

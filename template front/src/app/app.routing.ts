@@ -5,45 +5,51 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { Signup1Component } from './signup1/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { Login1Component } from './login1/login.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
-import { LoginOtpComponent } from './Components/login-otp/login-otp.component';
-import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+//import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { SignupComponent } from './Components/signup/signup.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ContractsComponent } from './Components/contracts/contracts.component';
-import { SetTokenComponent } from './Components/set-token/set-token.component';
 import { SinistresComponent } from './Components/sinistres/sinistres.component';
 import { DevisComponent } from './Components/devis/devis.component';
 import { OpportunityComponent } from './Components/opportunity/opportunity.component';
 import { TicketComponent } from './Components/ticket/ticket.component';
+import { TicketManagementComponent } from './Components/ticket-management/ticket-management.component';
+import { OpportunityManagementComponent } from './Components/opportunity-management/opportunity-management.component';
+import { ContractsManagementComponent } from './Components/contracts-management/contracts-management.component';
+import { SinistresManagementComponent } from './Components/sinistres-management/sinistres-management.component';
+import { FeedbackComponent } from './Components/feedback/feedback.component';
+import { FeedbackListComponent } from './Components/feedback-list/feedback-list.component';
 
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
-    { path: 'user-profile',     component: ProfileComponent },
-    { path: 'register',           component: Signup1Component },
+    { path: 'userProfile',     component: ProfileComponent },
     { path: 'assurances',          component: LandingComponent },
     { path: 'login1',          component: Login1Component },
     
   {path: 'signup', component: SignupComponent},
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'loginOtp', component: LoginOtpComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'setToken', component: SetTokenComponent },
+  //{ path: 'forgotPassword', component: ForgotPasswordComponent },
   { path: 'sinistres', component: SinistresComponent },
   { path: 'devis', component: DevisComponent },
   { path: 'opportunity', component: OpportunityComponent },
   { path: 'ticket', component: TicketComponent },
+  { path: 'ticketManagement', component: TicketManagementComponent },
+  { path: 'opportunityManagement', component: OpportunityManagementComponent },
+  { path: 'sinistreManagement', component: SinistresManagementComponent },
+  { path: 'feedback', component: FeedbackComponent },
+  { path: 'feedbackList', component: FeedbackListComponent },
+
+
 
 
 
   { path: 'contracts', component: ContractsComponent },
+  { path: 'contractsManagement', component: ContractsManagementComponent },
 
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

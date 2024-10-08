@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Ticket, TicketDTO } from 'src/app/Models/ticket.model';
+import { Ticket, TicketDTO, TicketResponseDTO } from 'src/app/Models/ticket.model';
 import { TicketService } from 'src/app/Services/ticket.service';
 
 
@@ -19,6 +19,9 @@ export class TicketComponent implements OnInit {
   ticketPriorities = ['Faible', 'Moyenne', 'Haute'];
   filteredTickets: Ticket[] = [];
   selectedTitle: string = '';
+  ticketResponses: TicketResponseDTO[] = [];
+  isResponseListVisible = false;
+  responseForm: FormGroup;
 
 
   constructor(private fb: FormBuilder, private ticketService: TicketService) {
@@ -26,6 +29,10 @@ export class TicketComponent implements OnInit {
       titre: [''],
       description: [''],
       priority: ['']
+    });
+
+    this.responseForm = this.fb.group({
+      response: ['']
     });
   }
 
@@ -86,5 +93,17 @@ export class TicketComponent implements OnInit {
     }
   }
 
-  
+  loadTicketResponses(ticketId: string): void {
+    this.ticketService.getTicketResponses(ticketId).subscribe(responses => {
+      this.ticketResponses = responses;
+      this.isResponseListVisible = true;
+    });
+  }
+
+  closeResponseView(): void {
+    this.isResponseListVisible = false;
+  }
 }
+
+  
+

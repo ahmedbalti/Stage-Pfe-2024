@@ -1,0 +1,23 @@
+.nav-link-bold {
+    font-weight: bold; /* Makes the text bold */
+  }
+  
+
+  .navbar {
+    z-index: 1000; /* Assurez-vous que la navbar a un z-index suffisamment élevé pour être au-dessus des autres éléments */
+  }
+  
+  .navbar-toggler, .nav-link, .btn {
+    pointer-events: auto; /* Assurez-vous que pointer-events est réglé pour permettre les clics */
+    cursor: pointer; /* Le curseur doit être de type pointer pour les boutons */
+  }
+
+  .rounded-circle {
+    border-radius: 50%;
+  }
+  
+  img {
+    object-fit: cover; /* Assure que l'image est bien coupée dans un cadre carré */
+  }
+  
+  

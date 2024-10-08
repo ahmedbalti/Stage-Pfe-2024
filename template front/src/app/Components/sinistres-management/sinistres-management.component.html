@@ -1,0 +1,43 @@
+<!--<app-navbar2></app-navbar2>-->
+
+
+<main>
+  <div class="position-relative">
+    <section class="section section-lg section-shaped pb-100">
+      <div class="shape shape-style-1 shape-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="container mt-5">
+        <h2 class="mb-4 text-white">Cher Employé, bienvenue dans votre espace de gestion des sinistres</h2>
+
+        <h3 class="mt-5 text-white">Liste des Sinistres</h3>
+
+        <div class="card-deck">
+          <div *ngFor="let sinistre of sinistres" class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa fa-folder-open card-icon"></i>{{ sinistre.numeroDossier }}</h5>
+              <p class="card-text"><i class="fa fa-align-left card-icon"></i>Description: {{ sinistre.description }}</p>
+              <p class="card-text"><i class="fa fa-flag card-icon"></i>Statut: {{ sinistre.statut }}</p>
+              <p class="card-text"><i class="fa fa-calendar-alt card-icon"></i>Date de Déclaration: {{ sinistre.dateDeclaration | date:'short' }}</p>
+              <p class="card-text"><i class="fa fa-money-bill card-icon"></i>Montant Estimé: {{ sinistre.montantEstime }}</p>
+              <p class="card-text"><i class="fa fa-money-bill card-icon"></i>Montant Payé: {{ sinistre.montantPaye }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+  </div>
+</main>

@@ -1,8 +1,10 @@
+<!--<app-navbar1></app-navbar1>-->
+
 <main>
     <div class="position-relative">
         <!-- shape Hero -->
-        <section class="section section-shaped section-lg">
-            <div class="shape shape-style-1 bg-gradient-default">
+        <section class="section section-lg section-shaped pb-100">
+            <div class="shape shape-style-1 shape-default">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -31,7 +33,7 @@
                     <div *ngFor="let devis of devisList" class="card mb-4 shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fa fa-file-alt card-icon"></i>{{ getTypeAssurance(devis.typeAssurance) }}</h5>
-                            <p class="card-text"><i class="fa fa-id-badge card-icon"></i>ID: {{ devis.idDevis }}</p>
+                           <!-- <p class="card-text"><i class="fa fa-id-badge card-icon"></i>ID: {{ devis.idDevis }}</p>-->
                             <p class="card-text"><i class="fa fa-money-bill-alt card-icon"></i>Montant: {{ devis.montant | currency }}</p>
                             <p *ngIf="devis.numeroImmatriculation" class="card-text"><i class="fa fa-car card-icon"></i>Numéro Immatriculation: {{ devis.numeroImmatriculation }}</p>
                             <p *ngIf="devis.nombreDeChevaux" class="card-text"><i class="fa fa-horse card-icon"></i>Nombre de Chevaux: {{ devis.nombreDeChevaux }}</p>

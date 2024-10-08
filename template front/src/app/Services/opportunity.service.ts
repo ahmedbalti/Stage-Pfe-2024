@@ -15,19 +15,17 @@ export class OpportunityService {
 
   constructor(private http: HttpClient) { }
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('accessToken');
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-  }
+ 
 
   getOpportunities(): Observable<Opportunity[]> {
-    return this.http.get<Opportunity[]>(this.apiUrl, { headers: this.getHeaders() });
+    return this.http.get<Opportunity[]>(this.apiUrl);
   }
 
   approveOpportunity(id: number): Observable<any> {
-    return this.http.post(`${this.apiUrl}/approve/${id}`, {}, { headers: this.getHeaders() });
+    return this.http.post(`${this.apiUrl}/approve/${id}`, {});
+  }
+
+  getOpportunities1(): Observable<Opportunity[]> {
+    return this.http.get<Opportunity[]>(`${this.apiUrl}/all`);
   }
 }

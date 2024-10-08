@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SetTokenComponent } from './set-token.component';
+import { FeedbackComponent } from './feedback.component';
 
-describe('SetTokenComponent', () => {
-  let component: SetTokenComponent;
-  let fixture: ComponentFixture<SetTokenComponent>;
+describe('FeedbackComponent', () => {
+  let component: FeedbackComponent;
+  let fixture: ComponentFixture<FeedbackComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SetTokenComponent]
+      declarations: [FeedbackComponent]
     });
-    fixture = TestBed.createComponent(SetTokenComponent);
+    fixture = TestBed.createComponent(FeedbackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

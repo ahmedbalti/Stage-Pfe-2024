@@ -11,27 +11,26 @@ export class SinistreService {
 
   constructor(private http: HttpClient) {}
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('accessToken');
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-  }
+  
 
   getSinistres(): Observable<Sinistre[]> {
-    return this.http.get<Sinistre[]>(this.apiUrl, { headers: this.getHeaders() });
+    return this.http.get<Sinistre[]>(this.apiUrl);
   }
 
   getSinistreById(id: number): Observable<Sinistre> {
-    return this.http.get<Sinistre>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
+    return this.http.get<Sinistre>(`${this.apiUrl}/${id}`);
   }
 
   createSinistre(sinistreDto: SinistreDto): Observable<Sinistre> {
-    return this.http.post<Sinistre>(this.apiUrl, sinistreDto, { headers: this.getHeaders() });
+    return this.http.post<Sinistre>(this.apiUrl, sinistreDto);
   }
   
   updateSinistre(id: number, sinistreDto: SinistreDto): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, sinistreDto, { headers: this.getHeaders() });
+    return this.http.put<void>(`${this.apiUrl}/${id}`, sinistreDto);
   }
+
+  getSinistres1(): Observable<Sinistre[]> {
+    return this.http.get<Sinistre[]>(`${this.apiUrl}/all`);
+  }
+
 }

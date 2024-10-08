@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment'; // Ajustez le chemin si nécessaire
-import { Ticket, TicketDTO } from '../Models/ticket.model';
+import { Ticket, TicketDTO, TicketResponseDTO } from '../Models/ticket.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,33 +11,27 @@ export class TicketService {
 
   constructor(private http: HttpClient) {}
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('accessToken');
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-  }
-
   getTickets(): Observable<Ticket[]> {
-    return this.http.get<Ticket[]>(this.apiUrl, { headers: this.getHeaders() });
+    return this.http.get<Ticket[]>(this.apiUrl);
   }
 
   getTicketById(id: string): Observable<Ticket> {
-    return this.http.get<Ticket>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
+    return this.http.get<Ticket>(`${this.apiUrl}/${id}`);
   }
 
-
   createTicket(ticketDTO: TicketDTO): Observable<Ticket> {
-    return this.http.post<Ticket>(this.apiUrl, ticketDTO, { headers: this.getHeaders() });
+    return this.http.post<Ticket>(this.apiUrl, ticketDTO);
   }
 
   updateTicket(id: string, ticketDTO: TicketDTO): Observable<Ticket> {
-    return this.http.put<Ticket>(`${this.apiUrl}/${id}`, ticketDTO, { headers: this.getHeaders() });
+    return this.http.put<Ticket>(`${this.apiUrl}/${id}`, ticketDTO);
   }
- 
+  
   getTicketsByTitle(title: string): Observable<Ticket[]> {
-    return this.http.get<Ticket[]>(`${this.apiUrl}/filterByTitle/${title}`, { headers: this.getHeaders() });
+    return this.http.get<Ticket[]>(`${this.apiUrl}/filterByTitle/${title}`);
   }
 
+  getTicketResponses(ticketId: string): Observable<TicketResponseDTO[]> {
+    return this.http.get<TicketResponseDTO[]>(`${this.apiUrl}/${ticketId}/responses`);
+  }
 }

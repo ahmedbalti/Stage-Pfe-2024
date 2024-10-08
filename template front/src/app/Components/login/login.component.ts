@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {  AuthService, LoginModel } from 'src/app/Services/auth.service';
+import { AuthService, LoginModel } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,8 +20,8 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.loginData).subscribe({
       next: (response) => {
-        localStorage.setItem('token', response.token);
-        this.router.navigate(['/loginOtp']);
+        // After successful login, navigate to a different page, e.g., dashboard
+        this.router.navigate(['/home']); 
       },
       error: (err) => {
         this.errorMessage = 'Invalid login credentials';
