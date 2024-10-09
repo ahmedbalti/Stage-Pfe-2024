@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  backend:
+    image: ahmedbalti/gestion-user-backend:latest
+    ports:
+      - "7021:80" # Expose .NET application on port 7021
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+
+  frontend:
+    image: ahmedbalti/angular-frontend:latest
+    ports:
+      - "4200:80" # Expose Angular application on port 4200
+
+  sqlserver:
+    image: ahmedbalti/sql-server:latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrongPassword123
+    ports:
+      - "1433:1433" # Expose SQL Server on port 1433

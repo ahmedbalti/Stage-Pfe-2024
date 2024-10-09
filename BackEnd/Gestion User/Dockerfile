@@ -10,7 +10,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copy the project file and restore dependencies
-COPY ["Gestion User/Gestion User.csproj", "Gestion User/"]
+COPY ["BackEnd/Gestion User/Gestion User.csproj", "Gestion User/"]
 RUN dotnet restore "Gestion User/Gestion User.csproj"
 
 # Copy the entire source code and build the application

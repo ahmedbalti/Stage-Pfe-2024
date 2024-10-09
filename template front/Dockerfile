@@ -1,25 +1,17 @@
-# Stage 1: Build the Angular app
-FROM node:18 AS build
+# Étape 1 : Construire l'application Angular
+FROM node:18-alpine AS build
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copier les fichiers package.json et package-lock.json pour installer les dépendances
 COPY package*.json ./
+RUN npm install --force
 
-# Install dependencies with --legacy-peer-deps
-RUN npm install --legacy-peer-deps
-
-# Copy the rest of the application source code
+# Copier le reste du code source et construire l'application
 COPY . .
+RUN npm run build -- --configuration production
 
-# Build the Angular application
-RUN npm run build --prod
-
-# Stage 2: Serve the app using nginx
+# Étape 2 : Servir l'application avec NGINX
 FROM nginx:alpine
-COPY --from=build /app/dist/template front/usr/share/nginx/html
-
-# Expose port 80
+COPY --from=build /app/dist/argon-design-system-angular /usr/share/nginx/html
 EXPOSE 80
-
-# Start nginx server
 CMD ["nginx", "-g", "daemon off;"]
